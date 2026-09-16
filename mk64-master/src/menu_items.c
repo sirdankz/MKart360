@@ -405,7 +405,7 @@ char* gDebugSoundModeNames[] = {
     "monaural",
 };
 
-char* gSoundModeNames[NUM_SOUND_MODES] = { "STEREO", "HEADPHONE", "", "MONO" };
+char* gSoundModeNames[NUM_SOUND_MODES] = { "EST\xA5\xA3REO", "F. DE OUVIDO", "", "MONO" };
 
 char* gWinLoseText[] = {
     "WINNER!",
@@ -454,7 +454,7 @@ char* gTextBattleIntroduction[] = {
 };
 
 // This is plain data, it should not end up in rodata
-char gTextMenuData[] = "a BUTTON*SEE DATA  B BUTTON*EXIT";
+char gTextMenuData[] = "BOT\xA4\xE3O A*VER DADOS  BOT\xA4\xE3O B*SAIR";
 
 // This is plain data, it should not end up in rodata
 char gTextDistance[] = "distance";
@@ -487,165 +487,165 @@ char* D_800E7860[] = {
 };
 
 char* gTextOptionMenu[] = {
-    "RETURN TO GAME SELECT",
-    "SOUND MODE",
-    "COPY N64 CONTROLLER PAK",
-    "ERASE ALL DATA",
+    "RETORNAR A SELE\xA4\xC3\xA4\xE3O DE JOGO",
+    "MODO DE SOM",
+    "COPIAR N64 CONTROLLER PAK",
+    "APAGAR TODOS OS DADOS",
 };
 
 char* D_800E7878[] = {
-    "ALL SAVED DATA WILL BE",
-    "PERMANENTLY ERASED.",
-    "ARE YOU REALLY SURE?",
+    "OS DADOS SALVOS SER\xA4\xE3O",
+    "APAGADOS. TEM CERTEZA",
+    "QUE DESEJA CONTINUAR?",
 };
 
 char* D_800E7884[] = {
     "",
-    "ALL SAVED DATA",
-    "HAS BEEN NOW ERASED.",
+    "TODOS OS DADOS SALVOS",
+    "FORAM APAGADOS AGORA.",
 };
 
 // In a perfect world this would be `char *D_800E7890[][4]`
 char* D_800E7890[] = {
-    "CONTROLLER 1 DOES NOT HAVE ",
-    "N64 CONTROLLER PAK",
+    "N\xA4\xE3O H\xA4\xA3 N64 CONTROLLER ",
+    "PAK NO CONTROLE 1",
     "",
     "",
 
-    "UNABLE TO READ ",
-    "N64 CONTROLLER PAK DATA ",
-    "FROM CONTROLLER 1",
+    "INCAPAZ DE LER OS ",
+    "DADOS DO N64 CONTROLLER ",
+    "PAK DO CONTROLE 1",
     "",
 
-    "UNABLE TO CREATE GAME DATA ",
-    "FROM CONTROLLER 1 ",
-    "N64 CONTROLLER PAK",
+    "INCAPAZ DE CRIAR DADOS DE",
+    "JOGO NO N64 CONTROLLER PAK",
+    "DO CONTROLE 1",
     "",
 
-    "UNABLE TO COPY GHOST ",
-    "-- INSUFFICIENT FREE PAGES ",
-    "IN CONTROLLER 1 ",
-    "N64 CONTROLLER PAK",
+    "INCAPAZ DE COPIAR FANTASMA ",
+    "\xA1\xBC\xA1\xBC P\xA4\xA3GINAS LIVRES INSUFICIENTES ",
+    "NO N64 CONTROLLER PAK ",
+    "DO CONTROLE 1",
 };
 
 // In a perfect world this would be `char *D_800E78D0[][3]`
 char* D_800E78D0[] = {
-    "NO GHOST DATA ",         "IN CONTROLLER 2 ",         "N64 CONTROLLER PAK",
+    "N\xA4\xE3O H\xA4\xA3 DADOS DO FANTASMA ", "NO N64 CONTROLLER PAK ", "DO CONTROLE 2",
 
-    "NO MARIO KART 64 DATA ", "PRESENT IN CONTROLLER 2 ", "N64 CONTROLLER PAK",
+    "N\xA4\xE3O H\xA4\xA3 DADOS DO MARIO ", "KART NO N64 CONTROLLER ", "PAK DO CONTROLE 2",
 
-    "CONTROLLER 2 ",          "DOES NOT HAVE ",           "N64 CONTROLLER PAK SET",
+    "CONTROLE 2 N\xA4\xE3O TEM ", "UM N64 CONTROLLER ", "PAK V\xA4\xA3LIDO",
 
-    "UNABLE TO READ DATA ",   "FROM CONTROLLER 2 ",       "N64 CONTROLLER PAK",
+    "INCAPAZ DE LER DADOS ", "DO N64 CONTROLLER ", "PAK DO CONTROLE 2",
 };
 
 // In a perfect world this would be `char *D_800E7900[][4]`
 char* D_800E7900[] = {
-    "UNABLE TO COPY DATA ", "FROM CONTROLLER 1 ", "N64 CONTROLLER PAK",
+    "INCAPAZ DE COPIAR DADOS ", "DO N64 CONTROLLER ", "PAK DO CONTROLE 1",
 
-    "UNABLE TO READ DATA ", "FROM CONTROLLER 2 ", "N64 CONTROLLER PAK",
+    "INCAPAZ DE LER DADOS ", "DO N64 CONTROLLER ", "PAK DO CONTROLE 2",
 };
 
 char* D_800E7918[] = {
-    "CONTROLLER 1",
-    "CONTROLLER 2",
+    "CONTROLE 1",
+    "CONTROLE 2",
 };
 
 char* D_800E7920[] = {
-    "WHICH FILE DO YOU WANT TO MAKE A COPY OF?",
-    "TO WHICH FILE DO YOU WANT TO COPY?",
+    "DE QUAL ARQUIVO VOC\xA4\xE7 QUER FAZER UMA C\xA5\xA5PIA?",
+    "PARA QUAL ARQUIVO VOC\xA4\xE7 QUER COPIAR?",
 };
 
 char* D_800E7928[] = {
-    "CURRENT DATA WILL BE ERASED,",
-    "IS THIS OK?",
+    "OS DADOS ATUAIS SER\xA4\xE3O APAGADOS,",
+    "TEM CERTEZA?",
 };
 
 char* D_800E7930[] = {
-    "QUIT",
-    "COPY",
+    "SAIR",
+    "COPIAR",
 };
 
 char* D_800E7938[] = {
-    "COPYING",
-    "DATA COPY COMPLETED",
+    "COPIANDO",
+    "C\xA5\xA5PIA DE DADOS CONCLU\xA4\xA5" "DA",
 };
 
 // In a perfect world this would be `char *D_800E7940[][4]`
 char* D_800E7940[] = {
-    "NO N64 CONTROLLER PAK DETECTED",
-    "TO SAVE GHOST DATA, ",
-    "INSERT N64 CONTROLLER PAK ",
-    "INTO CONTROLLER 1",
+    "NENHUM N64 CONTROLLER PAK DETECTADO",
+    "PARA SALVAR O DADO DO ",
+    "FANTASMA, INSIRA UM N64 ",
+    "CONTROLLER PAK NO CONTROLE 1",
 
-    "UNABLE TO READ ",
-    "N64 CONTROLLER PAK DATA",
-    "",
-    "",
-
-    "",
-    "",
+    "INCAPAZ DE LER DADOS ",
+    "DO N64 CONTROLLER PAK",
     "",
     "",
 
-    "INSUFFICIENT FREE PAGES AVAILABLE ",
-    "IN N64 CONTROLLER PAK TO CREATE ",
-    "GAME DATA, PLEASE FREE 121 PAGES.",
-    "SEE INSTRUCTION BOOKLET FOR DETAILS.",
+    "",
+    "",
+    "",
+    "",
+
+    "P\xA4\xA3GINAS LIVRES INSUFICIENTES NO",
+    "N64 CONTROLLER PAK PARA CRIAR ",
+    "DADOS DE JOGO, LIBERE 121 P\xA4\xA3GINAS.",
+    "VEJA O MANUAL PARA DETALHES.",
 };
 
 // Unused?
 char* D_800E7980[] = {
-    "TO SAVE GHOST DATA, ",
-    "INSERT N64 CONTROLLER PAK ",
-    "INTO CONTROLLER 1",
+    "PARA SALVAR DADOS DO ",
+    "FANTASMA, INSIRA UM N64 ",
+    "CONTROLLER PAK NO CONTROLE 1",
 };
 
 // In a perfect world this would be `char *D_800E798C[][7]`
 char* D_800E798C[] = {
     "N64 CONTROLLER PAK ",
-    "NOT DETECTED. ",
-    "IF YOU WANT TO SAVE ",
-    "THE GHOST DATA, ",
-    "PLEASE INSERT ",
+    "N\xA4\xE3O DETECTADO. ",
+    "SE QUISER SALVAR OS ",
+    "DADOS DO FANTASMA,",
+    "POR FAVOR INSIRA UM ",
     "N64 CONTROLLER PAK ",
-    "INTO CONTROLLER 1",
+    "NO CONTROLE 1",
 
     "",
-    "UNABLE TO SAVE ",
-    "     THE GHOST",
-    "",
-    "",
-    "",
-    "",
-
-    "",
-    "UNABLE TO SAVE ",
-    "     THE GHOST",
-    "",
-    "",
-    "",
-    "",
-
-    "INSUFFICIENT ",
-    "FREE PAGES AVAILABLE ",
-    "",
-    "-- GHOST DATA ",
-    "COULD NOT BE SAVED",
-    "",
-    "",
-
-    "",
-    "CANNOT CREATE ",
-    "     GAME DATA",
+    "INCAPAZ DE SALVAR ",
+    "     O FANTASMA",
     "",
     "",
     "",
     "",
 
     "",
-    "THIS GHOST IS ",
-    "     ALREADY SAVED",
+    "INCAPAZ DE SALVAR ",
+    "     O FANTASMA",
+    "",
+    "",
+    "",
+    "",
+
+    "P\xA4\xA3GINAS LIVRES ",
+    "INSUFICIENTES ",
+    "",
+    "\xA1\xBC\xA1\xBC DADOS FANTASMA ",
+    "N\xA4\xE3O SER\xA4\xE3O SALVOS",
+    "",
+    "",
+
+    "",
+    "N\xA4\xE3O PODE CRIAR ",
+    "     DADOS DO JOGO",
+    "",
+    "",
+    "",
+    "",
+
+    "",
+    "ESTE FANTASMA J\xA4\xA3 ",
+    "     EST\xA4\xA3 SALVO",
     "",
     "",
     "",
@@ -653,65 +653,65 @@ char* D_800E798C[] = {
 };
 
 char* D_800E7A34[] = {
-    "RACE DATA CANNOT ",
-    "BE SAVED FOR GHOST",
+    "OS DADOS N\xA4\xE3O PODEM SER ",
+    "SALVOS PELO FANTASMA",
 };
 
 char* D_800E7A3C[] = {
-    "SELECT THE FILE ",
-    "YOU WANT TO SAVE",
+    "SELECIONE O ARQUIVO ",
+    "QUE DESEJA SALVAR",
 };
 
 // Might need a const?
-char* D_800E7A44 = "NO DATA";
+char* D_800E7A44 = "NENHUM DADO";
 
 char* D_800E7A48[] = {
-    "CREATING ",
-    "MARIO KART 64 ",
-    "GAME DATA",
+    "CRIANDO ",
+    "DADOS DO JOGO ",
+    "MARIO KART 64",
 };
 
 char* D_800E7A54[] = {
-    "CANNOT CREATE GAME DATA",
+    "INCAPAZ DE CRIAR DADOS DO JOGO",
     "",
     "",
 };
 
 char* D_800E7A60[] = {
-    "THE PREVIOUS DATA ",
-    "WILL BE ERASED, ",
-    "IS THIS OK?",
+    "OS DADOS ANTERIORES ",
+    "SER\xA4\xE3O APAGADOS,",
+    "TEM CERTEZA?",
 };
 
 char* D_800E7A6C[] = {
-    "QUIT",
-    "SAVE",
+    "SAIR",
+    "SALVAR",
 };
 
 char* D_800E7A74[] = {
-    "SAVING GHOST DATA",
+    "SALVANDO DADOS DO FANTASMA",
     "",
-    "PLEASE WAIT",
+    "POR FAVOR, AGUARDE",
 };
 
 char* D_800E7A80[] = {
-    "UNABLE TO SAVE ",
-    "THE GHOST",
+    "INCAPAZ DE SALVAR ",
+    "O FANTASMA",
 };
 
 char* D_800E7A88[] = {
-    "YOU ARE AWARDED THE",
-    "GOLD CUP",
-    "SILVER CUP",
-    "BRONZE CUP",
+    "VOC\xA4\xE7 GANHOU O",
+    "TROF\xA5\xA3U DE OURO!",
+    "TROF\xA5\xA3U DE PRATA!",
+    "TROF\xA5\xA3U DE BRONZE!",
 };
 
 // Might need a const?
-char* D_800E7A98 = "MAYBE NEXT TIME!";
+char* D_800E7A98 = "TALVEZ NA PR\xA5\xA5XIMA VEZ!";
 
 char* D_800E7A9C[] = {
-    "CONGRATULATIONS!",
-    "WHAT A PITY!",
+    "PARAB\xA5\xA3NS!",
+    "QUE PENA!",
 };
 
 char* gPlaceText[] = {
@@ -841,6 +841,22 @@ MkAnimation* D_800E7E34[] = {
     D_02001F44, D_02001F54, D_02001F64, D_02001F74, D_02001F84, D_02001F94,
 };
 
+/* Xbox 360 BR: custom Portuguese glyphs missing from the stock glyph LUT. */
+static unsigned char x360_font_Atilde[128] = {
+0x00,0x00,0x08,0xCF,0xC8,0x00,0x00,0x00,0x00,0x00,0x8C,0xFC,0x8C,0x80,0x00,0x00,0x00,0x00,0x00,0x00,0x05,0x40,0x00,0x00,0x00,0x00,0x00,0x00,0x6F,0xF8,0x10,0x00,0x00,0x00,0x00,0x06,0xFF,0xFF,0xD5,0x00,0x00,0x00,0x00,0x3E,0xFF,0xFF,0xF7,0x00,0x00,0x00,0x01,0xEF,0xFE,0xFF,0xF2,0x00,0x00,0x00,0x0B,0xFF,0xF5,0xFF,0xC0,0x00,0x00,0x00,0x8F,0xFF,0x66,0xFF,0x80,0x00,0x00,0x04,0xFF,0xF9,0x0A,0xFF,0x40,0x00,0x00,0x1D,0xFF,0xC1,0x2E,0xFF,0x00,0x00,0x00,0x8F,0xFF,0xFF,0xFF,0xFB,0x00,0x00,0x02,0xFF,0xFF,0xFF,0xFF,0xF9,0x00,0x00,0x08,0xFF,0xDA,0x87,0x7F,0xF8,0x00,0x00,0x0B,0xFE,0x20,0x00,0x4F,0xF4,0x00,0x00,0x09,0xF8,0x00,0x00,0x2E,0xF3,0x00,0x00
+};
+static unsigned char x360_font_Eacute[128] = {
+0x00,0x00,0x00,0x00,0x00,0x7A,0x00,0x00,0x00,0x00,0x00,0x00,0x0A,0xF0,0x00,0x00,0x00,0x00,0x00,0x02,0x10,0x00,0x00,0x00,0x00,0x00,0x00,0x1D,0xEB,0xEF,0xB1,0x00,0x00,0x00,0x00,0x8F,0xFF,0xFF,0xF9,0x00,0x00,0x00,0x04,0xFF,0xFF,0xFC,0xBA,0x00,0x00,0x00,0x0C,0xFF,0xE4,0x00,0x00,0x00,0x00,0x00,0x8F,0xFF,0x50,0x00,0x00,0x00,0x00,0x02,0xEF,0xFA,0x68,0x30,0x00,0x00,0x00,0x0A,0xFF,0xFF,0xFF,0xE2,0x00,0x00,0x00,0x4F,0xFF,0xFF,0xFF,0xB4,0x00,0x00,0x00,0xBF,0xFF,0xC7,0x30,0x00,0x00,0x00,0x04,0xFF,0xF6,0x00,0x00,0x00,0x00,0x00,0x0A,0xFF,0xB1,0x68,0x10,0x00,0x00,0x00,0x0B,0xFF,0xCF,0xFF,0xC0,0x00,0x00,0x00,0x08,0xFF,0xFF,0xFF,0xB2,0x00,0x00,0x00
+};
+static MenuTexture x360_font_Atilde_texture[2] = {
+    { 5, x360_font_Atilde, 16, 16, 0, 0, 0x0, 0 },
+    { 0, NULL, 0, 0, 0, 0, 0, 0 },
+};
+static MenuTexture x360_font_Eacute_texture[2] = {
+    { 5, x360_font_Eacute, 16, 16, 0, 0, 0x0, 0 },
+    { 0, NULL, 0, 0, 0, 0, 0, 0 },
+};
+
 MenuTexture* gGlyphTextureLUT[] = {
     seg2_textureFontLetterA,
     seg2_textureFontLetterB,
@@ -933,6 +949,8 @@ MenuTexture* gGlyphTextureLUT[] = {
     D_02002BE4,
     D_02002C0C,
     D_020031AC,
+    &x360_font_Atilde_texture[0],
+    &x360_font_Eacute_texture[0],
 };
 
 MenuTexture* D_800E7FF0[] = {
@@ -1736,10 +1754,18 @@ s32 char_to_glyph_index(char* character) {
         // Handling EUC-JUP characters
         switch (temp_v0) { /* irregular */
             case -92:      // 0xA4
-                index = func_80092E1C(character + 1);
+                if ((u8) character[1] == 0xE3) { // Ã
+                    index = 91;
+                } else {
+                    index = func_80092E1C(character + 1);
+                }
                 break;
             case -91: // 0xA5
-                index = func_80092DF8(character + 1);
+                if ((u8) character[1] == 0xA3) { // É
+                    index = 92;
+                } else {
+                    index = func_80092DF8(character + 1);
+                }
                 break;
             case -95: // 0xA1
             case -93: // 0xA3
