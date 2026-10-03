@@ -1,0 +1,282 @@
+# COMO USAR
+
+### 1. Instale o Visual Studio 2010 e o Xbox 360 XDK ou SDK
+
+Eles são necessários para compilar o projeto para Xbox 360.
+
+------------------------------------------------------------------------
+
+### 2. Copie o Patch
+
+Copie o patch para dentro da pasta `MKart360-Edit-Assets`.
+
+------------------------------------------------------------------------
+
+### 3. Adicione sua ROM
+
+Renomeie sua ROM e coloque-a aqui:
+
+`MKart360-Edit-Assets\mk64-master\baserom.br.z64`
+
+Por exemplo:
+
+------------------------------------------------------------------------
+
+### 4. Instale o Python
+
+Você só precisa fazer isso uma vez.
+
+```powershell
+winget install Python.Python.3
+```
+
+Feche e abra o PowerShell novamente e verifique a instalação:
+
+```powershell
+py --version
+```
+
+Se aparecer algo semelhante a:
+
+```text
+Python 3.13.x
+```
+
+O Python foi instalado corretamente.
+
+------------------------------------------------------------------------
+
+### 5. Instale o Pillow
+
+Você só precisa fazer isso uma vez.
+
+```powershell
+pip install pillow
+```
+
+------------------------------------------------------------------------
+
+### 6. Configure as Ferramentas de Assets do Windows
+
+Execute:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File ".\xbox360\setup_windows_asset_tools.ps1" -SkipTorch
+```
+
+Isso prepara as ferramentas necessárias para trabalhar com os assets
+e texturas do MK64 no Windows.
+
+------------------------------------------------------------------------
+
+### 7. Prepare a ROM e os Assets
+
+Execute:
+
+```powershell
+py .\PUBLIC_PREPARE_MK64_ASSETS.py
+```
+
+Essa etapa prepara a ROM e os assets necessários para o fluxo de
+extração e edição das texturas.
+
+------------------------------------------------------------------------
+
+### 8. Extraia as Texturas
+
+Execute:
+
+```powershell
+py .\EXTRACT_MK64_TEXTURES.py
+```
+
+O script extrai as texturas e também prepara e sincroniza
+automaticamente os manifestos necessários para o sistema de texturas HD.
+
+**IMPORTANTE:**
+
+Não é necessário copiar manualmente nenhum arquivo `.json` da pasta
+`manifest_runtime` para `extracted_textures`.
+
+O `EXTRACT_MK64_TEXTURES.py` faz essa sincronização automaticamente.
+
+Se o script detectar que `extracted_textures` já foi extraído, ele entra
+em modo de continuação e evita sobrescrever as texturas que você já editou.
+
+------------------------------------------------------------------------
+
+### 9. Edite as Texturas
+
+As texturas extraídas serão colocadas em:
+
+```text
+extracted_textures
+```
+
+Abra os arquivos PNG e edite as texturas que desejar. Você pode
+aumentar a resolução, redesenhar ou substituir completamente a
+textura original.
+
+Você também pode aumentar a resolução. Por exemplo, uma textura de
+64×64 pode ser substituída por uma versão de 128×128.
+
+**IMPORTANTE:**
+
+Não renomeie os arquivos nem altere a estrutura das pastas.
+
+O nome do arquivo e o caminho armazenados nos manifestos são usados para
+associar a textura editada à textura original no jogo.
+
+Depois de colocar ou alterar uma textura HD de fundo de menu, execute
+novamente:
+
+```powershell
+py .\EXTRACT_MK64_TEXTURES.py
+```
+
+O script pode detectar as imagens HD já presentes e gerar as variantes
+necessárias para os fundos coloridos dos menus.
+
+------------------------------------------------------------------------
+
+## LIMITES DE MEMÓRIA
+
+O Xbox 360 possui 512 MB de memória compartilhada entre o sistema e os
+gráficos, e o jogo já utiliza parte dessa memória.
+
+Com todos os 2568 sprites incluídos, usando dois arquivos por sprite,
+os tamanhos aproximados das imagens brutas em RGBA32 seriam:
+
+```text
+256×256  →  ~640 MB
+128×128  →  ~160 MB
+96×96    →  ~90 MB
+```
+
+Esses valores são estimativas do tamanho dos dados brutos das imagens e
+não representam o uso real de memória final do jogo.
+
+Resoluções maiores exigem mais memória e aumentam o custo de
+carregamento.
+
+Por isso, 128×128 pode ser uma boa opção para melhorar a qualidade
+visual sem utilizar tanta memória quanto 256×256.
+
+------------------------------------------------------------------------
+
+### 10. Reconstrua as Texturas
+
+Se você modificou apenas uma pasta de texturas, como os karts, execute:
+
+```powershell
+py .\PACK_TEXTURES.py --only karts --pak
+```
+
+Se você modificou texturas de várias pastas ou de todas as pastas de
+texturas, execute:
+
+```powershell
+py .\PACK_TEXTURES.py --pak
+```
+
+O processo cria:
+
+```text
+tex\tex.pak
+```
+
+Esse é um único arquivo contendo as texturas empacotadas.
+
+#### Opções disponíveis
+
+`--pak`
+
+Cria um único arquivo `tex.pak`. Recomendado.
+
+`--only PREFIX`
+
+Limita o processo a uma pasta específica ou a um subconjunto.
+
+Exemplo:
+
+```powershell
+--only karts\bowser
+```
+
+`--out FOLDER`
+
+Define a pasta de saída.
+
+Padrão:
+
+```text
+tex
+```
+
+`--max N`
+
+Ignora imagens maiores que `N` pixels.
+
+Padrão:
+
+```text
+2048
+```
+
+Sem `--pak`, o script cria arquivos `.tex` individuais dentro das
+subpastas.
+
+O formato `.pak` é recomendado para a versão final. Os arquivos `.tex`
+individuais podem ser úteis para testes ou depuração.
+
+**IMPORTANTE:**
+
+Sempre que possível, empacote apenas as texturas que você realmente
+modificou.
+
+Texturas que não foram editadas podem gerar arquivos que substituem
+as texturas originais por cópias idênticas, sem proporcionar nenhuma
+melhoria visual e ainda ocupando espaço adicional.
+
+------------------------------------------------------------------------
+
+### 11. Compile o Projeto para Xbox 360
+
+Execute:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File ".\PUBLIC_BUILD_XBOX360.ps1"
+```
+
+A etapa `PUBLIC_PREPARE_MK64_ASSETS.py` foi executada anteriormente,
+antes da extração das texturas.
+
+------------------------------------------------------------------------
+
+### 12. Obtenha o XEX Compilado
+
+Copie `MK64.xex` de:
+
+```text
+MKart360-Edit-Assets\MK64\Release\MK64.xex
+```
+
+------------------------------------------------------------------------
+
+### 13. Crie a Pasta do Jogo
+
+Crie uma pasta com qualquer nome que desejar. Por exemplo:
+
+```text
+MK64
+```
+
+Coloque os seguintes arquivos dentro dela:
+
+```text
+baserom.br.z64
+MK64.xex
+tex.pak
+```
+
+Pronto. Agora você está preparado para executar o jogo no Xbox 360.

@@ -1,3 +1,4 @@
+#include <xtl.h>
 #include "xbox360/netplay.h"
 #include "xbox360/assets.h"
 #ifdef __cplusplus
@@ -124,12 +125,23 @@ struct TextureHashmapNode {
     uint32_t palette_hash;
 
     uint32_t texture_id;
+    /* Hash da textura HD que esta na GPU neste no (0 = nenhuma). */
+    uint32_t x360_hd_loaded;
+    /* Hash HD pedida a thread de leitura para este no (0 = nenhuma): quando
+       chegar, o no e reimportado para receber a versao HD. */
+    uint32_t x360_hd_pending;
     uint8_t cms, cmt;
     bool linear_filter;
 };
+/* Cache de texturas ampliado (era 512 entradas / mapa de 1024).
+   Quando o pool enche, o cache inteiro e descartado de uma vez -- e cada
+   textura reimportada depois disso relê o .tex HD do disco. Com os sprites
+   de kart (centenas de quadros distintos em rotacao numa corrida) isso
+   acontecia varias vezes por segundo e era a causa dos engasgos.
+   Custo: ~64 bytes por entrada, ou seja poucas centenas de KB. */
 static struct {
-    struct TextureHashmapNode *hashmap[1024];
-    struct TextureHashmapNode pool[512];
+    struct TextureHashmapNode *hashmap[2048];
+    struct TextureHashmapNode pool[1024];
     uint32_t pool_pos;
 } gfx_texture_cache;
 
@@ -254,6 +266,68 @@ static uint32_t x360_texture_hash(const uint8_t *data, uint32_t size) {
     for (uint32_t i = 0; i < size; ++i) h = (h ^ data[i]) * 16777619U;
     return h;
 }
+
+/* ===== HD TEXTURE REPLACEMENT (inicio) ===================================
+   Le game:\tex\<hash8hex>.tex : magic(4) + width(4) + height(4) + RGBA32 cru.
+   node->width/height NAO sao tocados por isto -- continuam com o tamanho N64
+   original, que e o que a normalizacao de UV e o wrap/mask esperam. */
+#define X360_HDTEX_MAGIC 0x54584448u
+
+struct X360HDTexHeader {
+    uint32_t magic, width, height;
+};
+
+/* Cache de resultados por hash, com enderecamento aberto (O(1)).
+   Substitui a versao anterior com busca linear, que tinha dois problemas:
+   (1) o contador podia passar do tamanho do array, fazendo a busca ler FORA
+       dos limites (corrupcao de memoria);
+   (2) a busca linear ficava cada vez mais lenta conforme enchia.
+   Guardar tambem os "hits" evita reabrir o mesmo arquivo do disco toda vez
+   que a textura e reimportada (o que causava engasgos com muitas texturas
+   HD, ex: sprites de kart). */
+#define X360_HDTEX_CACHE_BITS 14   /* era 12 (4096): o tex.pak passa de 7 mil texturas */
+#define X360_HDTEX_CACHE_SIZE (1u << X360_HDTEX_CACHE_BITS)   /* 16384 entradas */
+#define X360_HDTEX_ST_EMPTY 0
+#define X360_HDTEX_ST_MISS  1
+#define X360_HDTEX_ST_HIT   2
+#define X360_HDTEX_ST_PENDING 3   /* pedida a thread de leitura, ainda nao chegou */
+
+static uint32_t x360_hdtex_key[X360_HDTEX_CACHE_SIZE];
+static uint8_t  x360_hdtex_state[X360_HDTEX_CACHE_SIZE];
+static unsigned x360_hdtex_used;
+
+static unsigned x360_hdtex_slot(uint32_t hash) {
+    unsigned i = hash & (X360_HDTEX_CACHE_SIZE - 1);
+    for (unsigned probe = 0; probe < X360_HDTEX_CACHE_SIZE; ++probe) {
+        if (x360_hdtex_state[i] == X360_HDTEX_ST_EMPTY || x360_hdtex_key[i] == hash)
+            return i;
+        i = (i + 1) & (X360_HDTEX_CACHE_SIZE - 1);
+    }
+    return i; /* cheio: devolve algo valido; o caller trata como nao-cacheado */
+}
+
+static uint8_t x360_hdtex_lookup(uint32_t hash) {
+    unsigned i = x360_hdtex_slot(hash);
+    return (x360_hdtex_key[i] == hash) ? x360_hdtex_state[i] : X360_HDTEX_ST_EMPTY;
+}
+
+static void x360_hdtex_remember(uint32_t hash, uint8_t st) {
+    unsigned i = x360_hdtex_slot(hash);
+    if (x360_hdtex_state[i] != X360_HDTEX_ST_EMPTY && x360_hdtex_key[i] == hash) {
+        x360_hdtex_state[i] = st;   /* atualizar e sempre permitido (ex.: carregando -> pronta) */
+        return;
+    }
+    if (x360_hdtex_used >= X360_HDTEX_CACHE_SIZE - 1) return; /* nunca enche de vez */
+    if (x360_hdtex_state[i] == X360_HDTEX_ST_EMPTY) {
+        x360_hdtex_key[i] = hash;
+        ++x360_hdtex_used;
+    }
+    x360_hdtex_state[i] = st;
+}
+
+/* x360_try_load_hd_texture() fica logo apos a declaracao de gfx_rapi mais
+   abaixo neste arquivo (precisa dela para o upload_texture). */
+/* ===== HD TEXTURE REPLACEMENT (fim) ====================================== */
 
 /* B17G7E DXT-TMEM-LAYOUT-VERIFY: hash the byte order produced by G_LOADBLOCK's DXT-driven
  * odd-line 32-bit-half swap, without changing source RAM or rendering. */
@@ -419,6 +493,713 @@ static bool x360_b9_marker_logged;
 static struct GfxWindowManagerAPI *gfx_wapi;
 static struct GfxRenderingAPI *gfx_rapi;
 
+/* ===== HD TEXTURE REPLACEMENT: upload (precisa de gfx_rapi acima) ===== */
+/* Buffer unico compartilhado pelos dois caminhos de carregamento HD
+   (import_texture e o desenho de imagem inteira de menu). Ambos rodam na
+   mesma thread de render, um por vez, entao compartilhar e seguro e evita
+   gastar 16 MB de .bss duas vezes. */
+static uint8_t x360_hd_buf[2048 * 2048 * 4];
+
+/* Cache em RAM dos dados HD ja lidos do disco.
+   Sem isto, toda reimportacao de textura (que acontece o tempo todo quando
+   muitos sprites estao em rotacao) reabria o .tex no USB/HDD. Dezenas de
+   aberturas de arquivo por segundo, cada uma com latencia de milissegundos,
+   eram a causa principal dos engasgos -- inclusive nos menus, onde os
+   sprites de kart ficam animando.
+   Orcamento fixo; quando estoura, descarta a entrada usada ha mais tempo. */
+/* Estatisticas de desempenho do HD (desligadas). Com 1, grava a cada ~60
+   quadros em game:\hdtex-stats.log quantas leituras do tex.pak, acertos e
+   descartes do cache em RAM e envios a GPU ocorreram -- para diagnosticar
+   quedas de desempenho sem adivinhar a causa. */
+#define X360_HDTEX_STATS 0
+static uint32_t x360_st_pak, x360_st_ramhit, x360_st_evict, x360_st_up, x360_st_upkb, x360_st_frames;
+/* tempo gasto (microssegundos) lendo do disco, descomprimindo e enviando a GPU,
+   e acertos da leitura antecipada do tex.pak */
+static uint32_t x360_st_disk_us, x360_st_dec_us, x360_st_up_us, x360_st_rahit, x360_st_reads;
+static LARGE_INTEGER x360_st_freq;
+/* tempo de cada quadro: o maior do periodo e quantos passaram do orcamento
+   de 60 FPS (16,7 ms) e de 30 FPS (33,3 ms) */
+static uint32_t x360_st_fmax_us, x360_st_f17, x360_st_f34;
+static LARGE_INTEGER x360_st_last_frame;
+static uint32_t x360_us_since(const LARGE_INTEGER *t0) {
+    LARGE_INTEGER t1;
+    QueryPerformanceCounter(&t1);
+    if (!x360_st_freq.QuadPart) QueryPerformanceFrequency(&x360_st_freq);
+    return (uint32_t)((t1.QuadPart - t0->QuadPart) * 1000000 / x360_st_freq.QuadPart);
+}
+
+#define X360_HDRAM_SLOTS   4096   /* era 1024: o grupo de pre-carregamento dos menus tem ~1800 texturas
+                                        pequenas, e com 1024 o cache descartava as primeiras (as de
+                                        maior prioridade) antes de usar os 40 MB. O limite de bytes
+                                        continua o mesmo. */
+#define X360_HDRAM_BUDGET  (40u << 20)   /* 40 MB: a memoria do 360 e
+                                             unificada, entao este cache
+                                             disputa espaco com a VRAM. */
+
+struct X360HDRamEntry {
+    uint32_t hash, w, h, bytes, last_used;
+    uint8_t *data;
+    uint8_t fmt;   /* 0 = RGBA32, 1 = DXT1, 2 = DXT5 (dados comprimidos) */
+};
+static struct X360HDRamEntry x360_hdram[X360_HDRAM_SLOTS];
+static uint32_t x360_hdram_bytes, x360_hdram_clock;
+
+/* Busca direta em todas as posicoes. A versao anterior usava enderecamento
+   aberto e parava na primeira posicao vazia; como o descarte zerava posicoes,
+   entradas guardadas depois de um "buraco" ficavam inalcancaveis -- ocupavam
+   memoria e posicao para sempre, e o cache travava cheio. 1024 comparacoes so
+   quando uma textura HD e de fato usada: custo desprezivel. */
+static int x360_hdram_find(uint32_t hash) {
+    for (unsigned i = 0; i < X360_HDRAM_SLOTS; ++i)
+        if (x360_hdram[i].data && x360_hdram[i].hash == hash) return (int)i;
+    return -1;
+}
+
+/* Descarta a entrada usada ha mais tempo. Devolve a posicao liberada ou -1. */
+static int x360_hdram_evict_one(void) {
+    int victim = -1;
+    uint32_t oldest = 0xFFFFFFFFu;
+    for (unsigned i = 0; i < X360_HDRAM_SLOTS; ++i)
+        if (x360_hdram[i].data && x360_hdram[i].last_used < oldest) {
+            oldest = x360_hdram[i].last_used; victim = (int)i;
+        }
+    if (victim < 0) return -1;
+    free(x360_hdram[victim].data);
+    x360_hdram_bytes -= x360_hdram[victim].bytes;
+    memset(&x360_hdram[victim], 0, sizeof(x360_hdram[victim]));
+    ++x360_st_evict;
+    return victim;
+}
+
+static void x360_hdram_store_fmt(uint32_t hash, uint32_t w, uint32_t h, const uint8_t *src,
+                                 uint32_t bytes, uint8_t fmt) {
+    if (bytes > X360_HDRAM_BUDGET) return;
+    /* libera por BYTES... */
+    while (x360_hdram_bytes + bytes > X360_HDRAM_BUDGET)
+        if (x360_hdram_evict_one() < 0) break;
+    /* ...e por POSICOES: antes a tabela enchia de texturas pequenas (karts)
+       sem nunca descartar, e nada novo era guardado. */
+    int slot = -1;
+    for (unsigned i = 0; i < X360_HDRAM_SLOTS; ++i)
+        if (!x360_hdram[i].data) { slot = (int)i; break; }
+    if (slot < 0) slot = x360_hdram_evict_one();
+    if (slot < 0) return;
+    uint8_t *buf = (uint8_t *)malloc(bytes);
+    if (!buf) return;
+    memcpy(buf, src, bytes);
+    x360_hdram[slot].hash = hash;
+    x360_hdram[slot].w = w;
+    x360_hdram[slot].h = h;
+    x360_hdram[slot].bytes = bytes;
+    x360_hdram[slot].data = buf;
+    x360_hdram[slot].fmt = fmt;
+    x360_hdram[slot].last_used = ++x360_hdram_clock;
+    x360_hdram_bytes += bytes;
+}
+
+static void x360_hdram_store(uint32_t hash, uint32_t w, uint32_t h, const uint8_t *src, uint32_t bytes) {
+    x360_hdram_store_fmt(hash, w, h, src, bytes, 0);
+}
+
+/* ---- Decodificador DXT1/DXT5 (BC1/BC3) -----------------------------------
+   O tex.pak pode guardar texturas comprimidas em DXT: 4 a 8 vezes menos
+   bytes para ler do disco e para manter no cache em RAM. Aqui elas sao
+   descomprimidas para RGBA32 antes do envio a GPU (o renderer continua
+   recebendo RGBA, sem mudancas). Leitura byte a byte: independe da ordem de
+   bytes da CPU (o Xenon e big-endian; o formato DXT e little-endian). */
+static uint8_t x360_dxt_raw[2048 * 2048];   /* maior caso: DXT5 2048x2048 */
+
+static void x360_rgb565(uint32_t c, uint8_t *o) {
+    uint32_t r = (c >> 11) & 31, g = (c >> 5) & 63, b = c & 31;
+    o[0] = (uint8_t)((r << 3) | (r >> 2));
+    o[1] = (uint8_t)((g << 2) | (g >> 4));
+    o[2] = (uint8_t)((b << 3) | (b >> 2));
+}
+
+static uint32_t x360_dxt_size(uint32_t w, uint32_t h, uint32_t fmt) {
+    if (fmt == 0) return w * h * 4;
+    if ((w & 3) || (h & 3)) return 0;
+    return (w / 4) * (h / 4) * (fmt == 2 ? 16u : 8u);
+}
+
+static void x360_dxt_decode(const uint8_t *src, uint32_t w, uint32_t h, uint32_t fmt, uint8_t *dst) {
+    const uint32_t bw = w / 4, bh = h / 4, step = (fmt == 2) ? 16u : 8u;
+    for (uint32_t by = 0; by < bh; ++by) {
+        for (uint32_t bx = 0; bx < bw; ++bx) {
+            const uint8_t *blk = src + (by * bw + bx) * step;
+            uint8_t alpha[16];
+            if (fmt == 2) {
+                uint32_t a0 = blk[0], a1 = blk[1], pal[8];
+                pal[0] = a0; pal[1] = a1;
+                if (a0 > a1) {
+                    for (uint32_t k = 1; k <= 6; ++k)
+                        pal[k + 1] = ((7 - k) * a0 + k * a1) / 7;
+                } else {
+                    for (uint32_t k = 1; k <= 4; ++k)
+                        pal[k + 1] = ((5 - k) * a0 + k * a1) / 5;
+                    pal[6] = 0; pal[7] = 255;
+                }
+                unsigned long long bits = 0;
+                for (int k = 5; k >= 0; --k) bits = (bits << 8) | blk[2 + k];
+                for (uint32_t i = 0; i < 16; ++i)
+                    alpha[i] = (uint8_t)pal[(bits >> (3 * i)) & 7];
+                blk += 8;
+            }
+            const uint32_t c0 = blk[0] | (blk[1] << 8), c1 = blk[2] | (blk[3] << 8);
+            const uint32_t idx = blk[4] | (blk[5] << 8) | (blk[6] << 16) | ((uint32_t)blk[7] << 24);
+            uint8_t col[4][4];
+            x360_rgb565(c0, col[0]); x360_rgb565(c1, col[1]);
+            const bool quatro = (fmt == 2) || (c0 > c1);
+            for (int ch = 0; ch < 3; ++ch) {
+                if (quatro) {
+                    col[2][ch] = (uint8_t)((2 * col[0][ch] + col[1][ch]) / 3);
+                    col[3][ch] = (uint8_t)((col[0][ch] + 2 * col[1][ch]) / 3);
+                } else {
+                    col[2][ch] = (uint8_t)((col[0][ch] + col[1][ch]) / 2);
+                    col[3][ch] = 0;
+                }
+            }
+            col[0][3] = col[1][3] = col[2][3] = 255;
+            col[3][3] = quatro ? 255 : 0;
+            for (uint32_t i = 0; i < 16; ++i) {
+                const uint32_t k = (idx >> (2 * i)) & 3;
+                uint8_t *p = dst + (((by * 4 + (i >> 2)) * w) + bx * 4 + (i & 3)) * 4;
+                p[0] = col[k][0]; p[1] = col[k][1]; p[2] = col[k][2];
+                p[3] = (fmt == 2) ? alpha[i] : col[k][3];
+            }
+        }
+    }
+}
+
+/* ---- tex.pak: um unico arquivo com todas as texturas HD ----------------
+   Abrir milhares de arquivos individuais e o que causava os engasgos de
+   "cache frio": cada CreateFileA tem latencia propria, e no inicio de cada
+   tela dezenas de sprites novos aparecem de uma vez. Com o pak, o arquivo e
+   aberto UMA vez e cada textura vira um seek+read. Sem o pak, o codigo cai
+   de volta nos .tex soltos em game:\tex\XX\. */
+#define X360_PAK_MAGIC 0x4844504Bu   /* "HDPK" */
+
+struct X360PakEntry { uint32_t hash, off, size, w, h, fmt, preload; };
+
+/* Leitura antecipada: cada leitura do disco tem um custo fixo de latencia,
+   quase igual para 8 KB ou 256 KB. As estatisticas mostraram 150-240 leituras
+   por segundo na primeira passagem pelos menus -- e o DXT, que reduziu os
+   BYTES, nao mudou as travadas. Como os pedacos de uma mesma imagem ficam
+   lado a lado no tex.pak, lemos um trecho maior de uma vez e servimos os
+   pedidos seguintes da memoria. 0 desliga. */
+#define X360_PAK_READAHEAD_KB 64   /* medido: melhor resultado em pendrive (0, 64 e 256 testados) */
+#if X360_PAK_READAHEAD_KB
+static uint8_t x360_ra_buf[X360_PAK_READAHEAD_KB * 1024];
+static uint32_t x360_ra_off, x360_ra_len;
+#endif
+static uint32_t x360_pak_last_fmt, x360_pak_last_size;
+static HANDLE x360_pak_file = INVALID_HANDLE_VALUE;
+static struct X360PakEntry *x360_pak_index;
+static uint32_t x360_pak_count;
+static bool x360_pak_tried;
+/* Tabela de busca (enderecamento aberto) sobre o indice: a busca linear
+   percorria ate milhares de entradas a cada textura nova, o que pesava
+   justamente quando varios sprites entram em cena de uma vez. */
+static int32_t *x360_pak_lut;      /* indice no array, ou -1 */
+static uint32_t x360_pak_lut_mask;
+
+static uint32_t x360_be32(const uint8_t *p) {
+    return ((uint32_t)p[0] << 24) | ((uint32_t)p[1] << 16) | ((uint32_t)p[2] << 8) | p[3];
+}
+
+static void x360_pak_open(void) {
+    if (x360_pak_tried) return;
+    x360_pak_tried = true;
+    HANDLE f = CreateFileA("game:\\tex.pak", GENERIC_READ, FILE_SHARE_READ, NULL,
+                            OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+    if (f == INVALID_HANDLE_VALUE) return;
+    uint8_t head[12];
+    DWORD got = 0;
+    if (!ReadFile(f, head, 12, &got, NULL) || got != 12 ||
+        x360_be32(head) != X360_PAK_MAGIC) { CloseHandle(f); return; }
+    uint32_t count = x360_be32(head + 8);
+    if (!count || count > 65536) { CloseHandle(f); return; }
+    /* versao 1: 20 bytes por entrada (so RGBA32); versao 2: 24 bytes, com o
+       formato de cada textura (RGBA32/DXT1/DXT5). */
+    const uint32_t versao = x360_be32(head + 4);
+    const uint32_t esz = (versao >= 2) ? 24u : 20u;
+    uint32_t bytes = count * esz;
+    uint8_t *raw = (uint8_t *)malloc(bytes);
+    if (!raw) { CloseHandle(f); return; }
+    if (!ReadFile(f, raw, bytes, &got, NULL) || got != bytes) {
+        free(raw); CloseHandle(f); return;
+    }
+    x360_pak_index = (struct X360PakEntry *)malloc(count * sizeof(struct X360PakEntry));
+    if (!x360_pak_index) { free(raw); CloseHandle(f); return; }
+    for (uint32_t i = 0; i < count; ++i) {
+        const uint8_t *e = raw + i * esz;
+        x360_pak_index[i].hash = x360_be32(e);
+        x360_pak_index[i].off  = x360_be32(e + 4);
+        x360_pak_index[i].size = x360_be32(e + 8);
+        x360_pak_index[i].w    = x360_be32(e + 12);
+        x360_pak_index[i].h    = x360_be32(e + 16);
+        {
+            /* campo final: formato nos bits baixos; bit 31 = grupo de
+               pre-carregamento dos menus (marcado pelo PACK_TEXTURES.py) */
+            const uint32_t campo = (esz >= 24) ? x360_be32(e + 20) : 0;
+            x360_pak_index[i].fmt     = campo & 0xFF;
+            x360_pak_index[i].preload = campo >> 31;
+        }
+    }
+    free(raw);
+    x360_pak_count = count;
+    x360_pak_file = f;
+
+    /* Tabela com o dobro da capacidade (arredondado para potencia de 2),
+       para manter as colisoes baixas. */
+    uint32_t cap = 64;
+    while (cap < count * 2) cap <<= 1;
+    x360_pak_lut = (int32_t *)malloc(cap * sizeof(int32_t));
+    if (x360_pak_lut) {
+        x360_pak_lut_mask = cap - 1;
+        for (uint32_t i = 0; i < cap; ++i) x360_pak_lut[i] = -1;
+        for (uint32_t i = 0; i < count; ++i) {
+            uint32_t k = x360_pak_index[i].hash & x360_pak_lut_mask;
+            while (x360_pak_lut[k] >= 0) k = (k + 1) & x360_pak_lut_mask;
+            x360_pak_lut[k] = (int32_t)i;
+        }
+    }
+}
+
+static bool x360_pak_fetch(uint32_t off, uint32_t size, uint8_t *dest) {
+    LARGE_INTEGER t0;
+    QueryPerformanceCounter(&t0);
+    DWORD got = 0;
+    bool ok = false;
+#if X360_PAK_READAHEAD_KB
+    if (size <= sizeof(x360_ra_buf)) {
+        if (x360_ra_len && off >= x360_ra_off && off + size <= x360_ra_off + x360_ra_len) {
+            memcpy(dest, x360_ra_buf + (off - x360_ra_off), size);
+            ++x360_st_rahit;
+            return true;   /* da memoria: nao conta tempo de disco */
+        }
+        if (SetFilePointer(x360_pak_file, (LONG)off, NULL, FILE_BEGIN) != INVALID_SET_FILE_POINTER &&
+            ReadFile(x360_pak_file, x360_ra_buf, sizeof(x360_ra_buf), &got, NULL) && got >= size) {
+            x360_ra_off = off;
+            x360_ra_len = got;
+            memcpy(dest, x360_ra_buf, size);
+            ok = true;
+        } else {
+            x360_ra_len = 0;
+        }
+        ++x360_st_reads;
+        x360_st_disk_us += x360_us_since(&t0);
+        return ok;
+    }
+#endif
+    if (SetFilePointer(x360_pak_file, (LONG)off, NULL, FILE_BEGIN) != INVALID_SET_FILE_POINTER &&
+        ReadFile(x360_pak_file, dest, size, &got, NULL) && got == size)
+        ok = true;
+    ++x360_st_reads;
+    x360_st_disk_us += x360_us_since(&t0);
+    return ok;
+}
+
+static const struct X360PakEntry *x360_pak_find(uint32_t hash) {
+    x360_pak_open();
+    if (x360_pak_file == INVALID_HANDLE_VALUE) return NULL;
+    const struct X360PakEntry *e = NULL;
+    if (x360_pak_lut) {
+        uint32_t k = hash & x360_pak_lut_mask;
+        for (uint32_t p = 0; p <= x360_pak_lut_mask; ++p) {
+            int32_t at = x360_pak_lut[k];
+            if (at < 0) break;
+            if (x360_pak_index[at].hash == hash) { e = &x360_pak_index[at]; break; }
+            k = (k + 1) & x360_pak_lut_mask;
+        }
+    } else {
+        for (uint32_t i = 0; i < x360_pak_count; ++i)
+            if (x360_pak_index[i].hash == hash) { e = &x360_pak_index[i]; break; }
+    }
+    return e;
+}
+
+static bool x360_pak_read(uint32_t hash, uint32_t *w, uint32_t *h) {
+    x360_pak_open();
+    if (x360_pak_file == INVALID_HANDLE_VALUE) return false;
+    const struct X360PakEntry *e = x360_pak_find(hash);
+    if (e) {
+        if (!e->w || !e->h || e->w > 2048 || e->h > 2048 || e->fmt > 2) return false;
+        if (!e->size || e->size != x360_dxt_size(e->w, e->h, e->fmt)) return false;
+        /* RGBA vai direto para x360_hd_buf; DXT e lido comprimido e
+           descomprimido para x360_hd_buf (os dados comprimidos ficam em
+           x360_dxt_raw para o cache em RAM). */
+        uint8_t *dest = (e->fmt == 0) ? x360_hd_buf : x360_dxt_raw;
+        if (e->size > ((e->fmt == 0) ? sizeof(x360_hd_buf) : sizeof(x360_dxt_raw)))
+            return false;
+        if (!x360_pak_fetch(e->off, e->size, dest))
+            return false;
+        if (e->fmt != 0) {
+            LARGE_INTEGER td;
+            QueryPerformanceCounter(&td);
+            x360_dxt_decode(x360_dxt_raw, e->w, e->h, e->fmt, x360_hd_buf);
+            x360_st_dec_us += x360_us_since(&td);
+        }
+        x360_pak_last_fmt = e->fmt;
+        x360_pak_last_size = e->size;
+        *w = e->w; *h = e->h;
+        return true;
+    }
+    return false;
+}
+
+/* ---- Carregamento em segundo plano ----------------------------------------
+   Uma textura HD que ainda nao esta no cache em RAM era lida do disco no meio
+   do quadro, e o jogo esperava. Em eventos que mostram varias texturas novas
+   de uma vez (batida num adversario, troca de volta) isso aparecia como
+   travadinha -- principalmente no HD interno, onde cada leitura fora de
+   sequencia move a cabeca de leitura.
+   Agora uma thread separada faz as leituras. Na primeira vez, a textura
+   aparece na versao original por alguns quadros e a HD entra quando chega.
+   Regras de seguranca: a thread de leitura SO le o disco (com seu proprio
+   acesso ao arquivo) e entrega os dados numa fila; o cache em RAM, as tabelas
+   e a GPU continuam sendo usados SOMENTE pela thread do jogo.
+   0 desliga (volta a ler na hora, como antes). */
+/* 0 = leitura na hora (comportamento aprovado nos testes).
+   1 = EXPERIMENTAL: so a PRIMEIRA leitura de cada textura e feita em segundo
+       plano; uma textura que ja apareceu em HD e foi descartada do cache e
+       relida na hora (como em 0), para nunca voltar a versao original.
+       A versao anterior deste modo lia TUDO em segundo plano e, com o cache
+       cheio nas corridas, as texturas ficavam alternando entre HD e original. */
+#define X360_HD_ASYNC 0
+#define X360_ASYNC_Q 512
+
+struct X360AsyncReq  { uint32_t hash, off, size, w, h, fmt; };
+struct X360AsyncDone { uint32_t hash, w, h, fmt, size; uint8_t *data; };
+static struct X360AsyncReq  x360_aq[X360_ASYNC_Q];
+static struct X360AsyncDone x360_ad[X360_ASYNC_Q];
+static unsigned x360_aq_head, x360_aq_tail, x360_ad_head, x360_ad_tail;
+static CRITICAL_SECTION x360_async_cs;
+static HANDLE x360_async_evt, x360_async_file = INVALID_HANDLE_VALUE;
+static bool x360_async_ready, x360_async_tried;
+
+static DWORD WINAPI x360_async_main(LPVOID unused) {
+    (void)unused;
+    for (;;) {
+        WaitForSingleObject(x360_async_evt, INFINITE);
+        for (;;) {
+            struct X360AsyncReq r;
+            bool tem = false;
+            EnterCriticalSection(&x360_async_cs);
+            if (x360_aq_head != x360_aq_tail) {
+                r = x360_aq[x360_aq_tail % X360_ASYNC_Q];
+                ++x360_aq_tail;
+                tem = true;
+            }
+            LeaveCriticalSection(&x360_async_cs);
+            if (!tem) break;
+            uint8_t *buf = (uint8_t *)malloc(r.size);
+            DWORD got = 0;
+            if (!buf ||
+                SetFilePointer(x360_async_file, (LONG)r.off, NULL, FILE_BEGIN) == INVALID_SET_FILE_POINTER ||
+                !ReadFile(x360_async_file, buf, r.size, &got, NULL) || got != r.size) {
+                free(buf);
+                buf = NULL;            /* entregue como falha: vira MISS */
+            }
+            EnterCriticalSection(&x360_async_cs);
+            {
+                struct X360AsyncDone d = { r.hash, r.w, r.h, r.fmt, r.size, buf };
+                x360_ad[x360_ad_head % X360_ASYNC_Q] = d;
+                ++x360_ad_head;        /* a fila de prontas nunca transborda: tem o
+                                          mesmo tamanho da de pedidos e e esvaziada
+                                          todo quadro */
+            }
+            LeaveCriticalSection(&x360_async_cs);
+        }
+    }
+    return 0;
+}
+
+static void x360_async_init(void) {
+    if (x360_async_tried) return;
+    x360_async_tried = true;
+#if X360_HD_ASYNC
+    if (x360_pak_file == INVALID_HANDLE_VALUE) return;
+    x360_async_file = CreateFileA("game:\\tex.pak", GENERIC_READ, FILE_SHARE_READ, NULL,
+                                  OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+    if (x360_async_file == INVALID_HANDLE_VALUE) return;
+    InitializeCriticalSection(&x360_async_cs);
+    x360_async_evt = CreateEvent(NULL, FALSE, FALSE, NULL);
+    if (!x360_async_evt) return;
+    HANDLE th = CreateThread(NULL, 64 * 1024, x360_async_main, NULL, 0, NULL);
+    if (!th) return;
+    CloseHandle(th);
+    x360_async_ready = true;
+#endif
+}
+
+/* Pede a textura a thread de leitura. Devolve false se a fila estiver cheia
+   (o pedido sera repetido numa proxima importacao). */
+static bool x360_async_request(const struct X360PakEntry *e) {
+    bool ok = false;
+    EnterCriticalSection(&x360_async_cs);
+    if (x360_aq_head - x360_aq_tail < X360_ASYNC_Q &&
+        x360_ad_head - x360_ad_tail + (x360_aq_head - x360_aq_tail) < X360_ASYNC_Q) {
+        struct X360AsyncReq r = { e->hash, e->off, e->size, e->w, e->h, e->fmt };
+        x360_aq[x360_aq_head % X360_ASYNC_Q] = r;
+        ++x360_aq_head;
+        ok = true;
+    }
+    LeaveCriticalSection(&x360_async_cs);
+    if (ok) SetEvent(x360_async_evt);
+    return ok;
+}
+
+/* Chamada pela thread do jogo no inicio de cada quadro: passa as texturas
+   que chegaram para o cache em RAM. */
+static void x360_async_drain(void) {
+    if (!x360_async_ready) return;
+    for (;;) {
+        struct X360AsyncDone d;
+        bool tem = false;
+        EnterCriticalSection(&x360_async_cs);
+        if (x360_ad_head != x360_ad_tail) {
+            d = x360_ad[x360_ad_tail % X360_ASYNC_Q];
+            ++x360_ad_tail;
+            tem = true;
+        }
+        LeaveCriticalSection(&x360_async_cs);
+        if (!tem) break;
+        if (d.data) {
+            x360_hdram_store_fmt(d.hash, d.w, d.h, d.data, d.size, (uint8_t)d.fmt);
+            free(d.data);
+            ++x360_st_pak;
+            x360_hdtex_remember(d.hash, X360_HDTEX_ST_HIT);
+        } else {
+            x360_hdtex_remember(d.hash, X360_HDTEX_ST_MISS);
+        }
+    }
+}
+
+/* ---- Pre-carregamento dos menus -------------------------------------------
+   A primeira entrada na selecao de modo travava lendo do disco, na hora, os
+   blocos HD do menu. O tex.pak traz agora um grupo de texturas de menu,
+   contiguo no inicio do arquivo e marcado no indice. Fora das corridas, o
+   jogo le esse grupo aos poucos para o cache em RAM, com um limite de tempo
+   por quadro -- normalmente enquanto a tela inicial esta parada. Nas corridas
+   nada muda (o pre-carregamento nem roda, e o cache funciona como antes).
+   0 desliga. */
+#define X360_PRELOAD_MS_POR_QUADRO 5   /* era 3: medido com folga na tela inicial */
+static uint32_t x360_pre_pos;
+static bool x360_pre_done;
+/* estatisticas do pre-carregamento: lidas no periodo, total acumulado */
+static uint32_t x360_st_pre, x360_pre_total, x360_pre_kb, x360_pre_ja;
+
+/* Leitura do grupo INTEIRO de uma vez, no primeiro quadro (ainda no boot).
+   O grupo esta contiguo no tex.pak, entao e uma unica leitura sequencial de
+   ~20 MB -- o caso mais rapido para qualquer disco (cerca de 1 s no pendrive),
+   paga uma vez so, antes da tela inicial. Assim o menu fica pronto desde a
+   primeira entrada, sem precisar esperar na tela inicial. Se algo impedir
+   (grupo nao contiguo, falta de memoria, erro de leitura), o modo gradual
+   abaixo assume normalmente. 0 desliga. */
+#define X360_PRELOAD_NO_BOOT 1
+static bool x360_pre_boot_tried;
+
+static void x360_preload_boot(void) {
+    x360_pre_boot_tried = true;
+#if X360_PRELOAD_NO_BOOT
+    uint32_t n = 0;
+    while (n < x360_pak_count && x360_pak_index[n].preload) ++n;
+    if (!n) return;
+    const uint32_t ini = x360_pak_index[0].off;
+    uint32_t fim = ini;
+    for (uint32_t i = 0; i < n; ++i) {
+        if (x360_pak_index[i].off != fim) return;     /* nao contiguo: modo gradual */
+        fim += x360_pak_index[i].size;
+    }
+    const uint32_t total = fim - ini;
+    if (!total || total > (64u << 20)) return;
+    uint8_t *buf = (uint8_t *)malloc(total);
+    if (!buf) return;
+    LARGE_INTEGER t0;
+    QueryPerformanceCounter(&t0);
+    DWORD got = 0;
+    if (SetFilePointer(x360_pak_file, (LONG)ini, NULL, FILE_BEGIN) == INVALID_SET_FILE_POINTER ||
+        !ReadFile(x360_pak_file, buf, total, &got, NULL) || got != total) {
+        free(buf);
+        return;
+    }
+    x360_st_disk_us += x360_us_since(&t0);
+    ++x360_st_reads;
+    for (uint32_t i = 0; i < n; ++i) {
+        const struct X360PakEntry *e = &x360_pak_index[i];
+        if (!e->w || !e->h || e->w > 2048 || e->h > 2048 || e->fmt > 2) continue;
+        if (!e->size || e->size != x360_dxt_size(e->w, e->h, e->fmt)) continue;
+        if (x360_hdram_find(e->hash) >= 0) { ++x360_pre_ja; continue; }
+        x360_hdram_store_fmt(e->hash, e->w, e->h, buf + (e->off - ini), e->size, (uint8_t)e->fmt);
+        x360_hdtex_remember(e->hash, X360_HDTEX_ST_HIT);
+        ++x360_st_pre; ++x360_pre_total; x360_pre_kb += e->size >> 10;
+    }
+    free(buf);
+    x360_pre_pos = n;
+    x360_pre_done = true;
+#endif
+}
+
+static void x360_preload_step(void) {
+#if X360_PRELOAD_MS_POR_QUADRO
+    /* Saiu de uma corrida (inclusive das demos automaticas da tela inicial):
+       a corrida encheu o cache e pode ter descartado os menus. Recomeca o
+       grupo; o que ainda estiver na memoria e pulado. */
+    static int estado_anterior = -1;
+    if (estado_anterior == 4 && gGamestate != 4) {
+        x360_pre_pos = 0;
+        x360_pre_done = false;
+    }
+    estado_anterior = gGamestate;
+    if (x360_pre_done || gGamestate == 4 /* RACING */) return;
+    x360_pak_open();
+    if (x360_pak_file == INVALID_HANDLE_VALUE || !x360_pak_index) { x360_pre_done = true; return; }
+    if (!x360_pre_boot_tried) {                 /* primeiro quadro: tudo de uma vez */
+        x360_preload_boot();
+        if (x360_pre_done) return;
+    }
+    LARGE_INTEGER t0;
+    QueryPerformanceCounter(&t0);
+    while (x360_pre_pos < x360_pak_count) {
+        const struct X360PakEntry *e = &x360_pak_index[x360_pre_pos];
+        if (!e->preload) { x360_pre_done = true; return; }   /* fim do grupo */
+        ++x360_pre_pos;
+        if (x360_hdram_find(e->hash) >= 0) { ++x360_pre_ja; continue; }
+        if (!e->w || !e->h || e->w > 2048 || e->h > 2048 || e->fmt > 2) continue;
+        if (!e->size || e->size != x360_dxt_size(e->w, e->h, e->fmt)) continue;
+        uint8_t *dest = (e->fmt == 0) ? x360_hd_buf : x360_dxt_raw;
+        if (e->size > ((e->fmt == 0) ? sizeof(x360_hd_buf) : sizeof(x360_dxt_raw))) continue;
+        if (!x360_pak_fetch(e->off, e->size, dest)) continue;
+        x360_hdram_store_fmt(e->hash, e->w, e->h, dest, e->size, (uint8_t)e->fmt);
+        x360_hdtex_remember(e->hash, X360_HDTEX_ST_HIT);
+        ++x360_st_pre; ++x360_pre_total; x360_pre_kb += e->size >> 10;
+        if (x360_us_since(&t0) >= X360_PRELOAD_MS_POR_QUADRO * 1000u) return;
+    }
+    x360_pre_done = true;
+#endif
+}
+
+static bool x360_try_load_hd_texture(uint32_t hash) {
+    if (x360_hdtex_lookup(hash) == X360_HDTEX_ST_MISS) return false;
+
+    /* Caminho rapido: ja esta em RAM, nao toca no disco. */
+    int slot = x360_hdram_find(hash);
+    if (slot >= 0) {
+        x360_hdram[slot].last_used = ++x360_hdram_clock;
+        ++x360_st_ramhit; ++x360_st_up;
+        x360_st_upkb += (x360_hdram[slot].w * x360_hdram[slot].h * 4) >> 10;
+        LARGE_INTEGER tu;
+        if (x360_hdram[slot].fmt != 0) {
+            QueryPerformanceCounter(&tu);
+            x360_dxt_decode(x360_hdram[slot].data, x360_hdram[slot].w, x360_hdram[slot].h,
+                            x360_hdram[slot].fmt, x360_hd_buf);
+            x360_st_dec_us += x360_us_since(&tu);
+            QueryPerformanceCounter(&tu);
+            gfx_rapi->upload_texture(x360_hd_buf, x360_hdram[slot].w, x360_hdram[slot].h);
+        } else {
+            QueryPerformanceCounter(&tu);
+            gfx_rapi->upload_texture(x360_hdram[slot].data, x360_hdram[slot].w, x360_hdram[slot].h);
+        }
+        x360_st_up_us += x360_us_since(&tu);
+        return true;
+    }
+
+#if X360_HD_ASYNC
+    /* Ja pedida e ainda nao chegou: usa a original por enquanto. */
+    if (x360_hdtex_lookup(hash) == X360_HDTEX_ST_PENDING) return false;
+    {
+        const struct X360PakEntry *pe = x360_pak_find(hash);
+        x360_async_init();
+        /* Ja foi carregada antes (e descartada do cache): rele na hora, para
+           nao voltar a versao original no meio do jogo. */
+        if (x360_async_ready && x360_hdtex_lookup(hash) != X360_HDTEX_ST_HIT) {
+            if (!pe) {                         /* nao esta no pak: sem HD */
+                x360_hdtex_remember(hash, X360_HDTEX_ST_MISS);
+                return false;
+            }
+            if (pe->w && pe->h && pe->w <= 2048 && pe->h <= 2048 && pe->fmt <= 2 &&
+                pe->size && pe->size == x360_dxt_size(pe->w, pe->h, pe->fmt) &&
+                x360_async_request(pe))
+                x360_hdtex_remember(hash, X360_HDTEX_ST_PENDING);
+            return false;                      /* original agora; HD num proximo quadro */
+        }
+    }
+#endif
+
+    /* Caminho preferencial: tex.pak (arquivo unico, ja aberto). */
+    {
+        uint32_t pw = 0, ph = 0;
+        if (x360_pak_read(hash, &pw, &ph)) {
+            ++x360_st_pak; ++x360_st_up; x360_st_upkb += (pw * ph * 4) >> 10;
+            if (x360_pak_last_fmt != 0)   /* guarda o COMPRIMIDO: cabe muito mais */
+                x360_hdram_store_fmt(hash, pw, ph, x360_dxt_raw, x360_pak_last_size,
+                                     (uint8_t)x360_pak_last_fmt);
+            else
+                x360_hdram_store(hash, pw, ph, x360_hd_buf, pw * ph * 4);
+            LARGE_INTEGER tu;
+            QueryPerformanceCounter(&tu);
+            gfx_rapi->upload_texture(x360_hd_buf, pw, ph);
+            x360_st_up_us += x360_us_since(&tu);
+            x360_hdtex_remember(hash, X360_HDTEX_ST_HIT);
+            return true;
+        }
+    }
+
+    /* Com o tex.pak aberto, uma textura que nao esta nele simplesmente nao tem
+       versao HD: nao tentamos o .tex avulso no disco. Antes, a primeira vez de
+       cada textura sem HD custava uma tentativa de abrir arquivo -- e eventos
+       que mostram muitas texturas novas de uma vez (batida num adversario, o
+       Lakitu na troca de volta) geravam dezenas dessas consultas no mesmo
+       quadro, visiveis como travadinha (principalmente no HD interno). Os .tex
+       avulsos continuam funcionando para quem nao usa o tex.pak. */
+    if (x360_pak_file != INVALID_HANDLE_VALUE) {
+        x360_hdtex_remember(hash, X360_HDTEX_ST_MISS);
+        return false;
+    }
+
+    char path[64];
+    /* Subpasta pelos 2 primeiros digitos do hash: o FATX do Xbox 360 nao
+       aceita mais de 4096 entradas por pasta, e o elenco completo passa
+       disso. Com 256 subpastas sobram ~20 arquivos em cada. */
+    _snprintf(path, sizeof(path) - 1, "game:\\tex\\%02x\\%08x.tex",
+              (unsigned)((hash >> 24) & 0xFF), hash);
+    path[sizeof(path) - 1] = 0;
+
+    HANDLE f = CreateFileA(path, GENERIC_READ, FILE_SHARE_READ, NULL,
+                            OPEN_EXISTING, FILE_FLAG_SEQUENTIAL_SCAN, NULL);
+    if (f == INVALID_HANDLE_VALUE) {
+        x360_hdtex_remember(hash, X360_HDTEX_ST_MISS);
+        return false;
+    }
+
+    struct X360HDTexHeader hdr;
+    DWORD got = 0;
+    bool ok = ReadFile(f, &hdr, sizeof(hdr), &got, NULL) && got == sizeof(hdr)
+              && hdr.magic == X360_HDTEX_MAGIC
+              && hdr.width > 0 && hdr.height > 0
+              && hdr.width <= 2048 && hdr.height <= 2048;
+
+    uint32_t need = 0;
+    if (ok) {
+        need = hdr.width * hdr.height * 4;
+        DWORD readBytes = 0;
+        ok = ReadFile(f, x360_hd_buf, need, &readBytes, NULL) && readBytes == need;
+    }
+    CloseHandle(f);
+
+    if (!ok) {
+        x360_hdtex_remember(hash, X360_HDTEX_ST_MISS);
+        return false;
+    }
+
+    x360_hdram_store(hash, hdr.width, hdr.height, x360_hd_buf, need);
+    gfx_rapi->upload_texture(x360_hd_buf, hdr.width, hdr.height);
+    x360_hdtex_remember(hash, X360_HDTEX_ST_HIT);
+    return true;
+}
+/* ===== HD TEXTURE REPLACEMENT: upload (fim) ============================ */
+
 static void gfx_flush(void) {
     if (buf_vbo_len > 0) {
         int num = buf_vbo_num_tris;
@@ -478,7 +1259,8 @@ static bool gfx_texture_cache_lookup(int tile, struct TextureHashmapNode **n, co
         ? x360_texture_hash(rdp.palette, rdp.palette_bytes) : 0;
 
     size_t hash = (uintptr_t)orig_addr;
-    hash = (hash >> 5) & 0x3ff;
+    /* mascara acompanha o tamanho do hashmap (4096 entradas). */
+    hash = (hash >> 5) & 0x7ff;
     struct TextureHashmapNode **node = &gfx_texture_cache.hashmap[hash];
     while (*node != NULL && *node - gfx_texture_cache.pool < (int)gfx_texture_cache.pool_pos) {
         if ((*node)->texture_addr == orig_addr && (*node)->fmt == fmt && (*node)->siz == siz
@@ -492,11 +1274,21 @@ static bool gfx_texture_cache_lookup(int tile, struct TextureHashmapNode **n, co
                  (*node)->tlut_mode == (rdp.other_mode_h & (3U << G_MDSFT_TEXTLUT))))) {
             gfx_rapi->select_texture(tile, (*node)->texture_id);
             *n = *node;
-            const bool hit = gfx_loaded_texture(tile)->rows == 0
+            bool hit = gfx_loaded_texture(tile)->rows == 0
                 && (*node)->source_size == gfx_loaded_texture(tile)->size_bytes
                 && (*node)->line_bytes == gfx_texture_tile(tile)->line_size_bytes
                 && (*node)->content_hash == content
                 && (fmt != G_IM_FMT_CI || (*node)->palette_hash == palette_content);
+            /* Carregamento em segundo plano: a versao HD deste no chegou ->
+               forca reimportacao para envia-la a GPU. Se falhou, desiste. */
+            if ((*node)->x360_hd_pending) {
+                const uint8_t pst = x360_hdtex_lookup((*node)->x360_hd_pending);
+                if (pst == X360_HDTEX_ST_MISS)
+                    (*node)->x360_hd_pending = 0;
+                else if (pst != X360_HDTEX_ST_PENDING &&
+                         x360_hdram_find((*node)->x360_hd_pending) >= 0)
+                    hit = false;
+            }
             const bool changed = (*node)->content_hash != content
                 || (fmt == G_IM_FMT_CI && (*node)->palette_hash != palette_content);
 
@@ -571,6 +1363,8 @@ static bool gfx_texture_cache_lookup(int tile, struct TextureHashmapNode **n, co
     (*node)->tlut_mode = rdp.other_mode_h & (3U << G_MDSFT_TEXTLUT);
     (*node)->content_hash = content;
     (*node)->palette_hash = palette_content;
+    (*node)->x360_hd_loaded = 0;  /* no novo: a GPU ainda nao tem textura HD dele */
+    (*node)->x360_hd_pending = 0;
     x360_trace_texture(tile, 0, content, false);
     *n = *node;
     return false;
@@ -1144,6 +1938,236 @@ static void import_texture(int tile) {
     node->width = pitch * 8 / (4u << siz);
     node->height = (*gfx_loaded_texture(tile)).size_bytes / pitch;
     if (!node->height) node->height = 1;
+
+    /* HD texture replacement: hash do conteudo ORIGINAL do texel data.
+       node->width/height NAO sao tocados aqui. */
+    {
+        uint32_t hd_hash = x360_texture_hash(source, source_size);
+        uint32_t hd_logical_hash = 0;
+        /* Texturas CI com paleta completa (256 cores): hash de pixels + paleta.
+           Animacoes por troca de paleta (os neons da Rainbow Road) usam os
+           MESMOS pixels em todos os quadros; so a paleta muda. Com o hash so
+           dos pixels, todos os quadros tinham o mesmo hash -- no tex.pak so
+           cabia um, e no jogo a imagem HD ficava parada. Este hash e procurado
+           ANTES do hash so de pixels; se nao existir no tex.pak, o
+           comportamento e exatamente o de antes (karts etc. nao mudam).
+           Equivale a FNV-1a sobre (pixels || paleta), como no extrator. */
+        uint32_t hd_pal_hash = 0;
+        if (gfx_texture_tile(tile)->fmt == G_IM_FMT_CI && rdp.palette && rdp.palette_bytes == 512) {
+            const uint8_t *pal = (const uint8_t *)rdp.palette;
+            uint32_t ph = hd_hash;
+            for (uint32_t i = 0; i < 512; ++i) ph = (ph ^ pal[i]) * 16777619U;
+            hd_pal_hash = ph;
+        }
+        uint32_t hd_logical_rows = 0;
+        /* G_LOADTILE usa lrt inclusivo. Em algumas texturas do menu (nomes,
+           titulos etc.) isso faz o renderer capturar uma linha extra: o
+           conteudo usado pelo extrator/PAK corresponde a N linhas, enquanto
+           source_size contem N+1. Nao alteramos a carga real; apenas
+           calculamos um segundo hash sem a linha extra como fallback. */
+        if (rows > 1 && (*gfx_loaded_texture(tile)).row_bytes &&
+            source_size == (*gfx_loaded_texture(tile)).row_bytes * rows) {
+            const uint32_t requested_rows =
+                (rdp.tiles[(*gfx_loaded_texture(tile)).load_tile & 7].lrt >=
+                 rdp.tiles[(*gfx_loaded_texture(tile)).load_tile & 7].ult)
+                    ? ((rdp.tiles[(*gfx_loaded_texture(tile)).load_tile & 7].lrt -
+                        rdp.tiles[(*gfx_loaded_texture(tile)).load_tile & 7].ult) >> 2)
+                    : 0;
+            if (requested_rows > 0 && requested_rows < rows) {
+                hd_logical_rows = requested_rows;
+                hd_logical_hash = x360_texture_hash(
+                    source, (*gfx_loaded_texture(tile)).row_bytes * hd_logical_rows);
+            }
+        }
+        /* NAO sobrescrever node->content_hash aqui: e o campo que
+           gfx_texture_cache_lookup usa para reconhecer a textura. Para cargas
+           em blocos (LOADTILE, ex: retratos do menu) ele deve ficar 0; com o
+           hash aqui, nenhum bloco era reconhecido de novo, o cache enchia e
+           era esvaziado sem parar no meio do quadro, causando blocos trocados
+           e piscadas. */
+        /* Cargas em blocos (LOADTILE, ex: retratos do menu) nunca contam como
+           "ja carregadas" no cache do port, entao sao reimportadas a CADA
+           quadro. Com a textura original (~4 KB) isso passa despercebido; com
+           a HD (~67 KB por bloco) eram ~2100 envios por segundo a GPU (~140
+           MB/s), cada um criando uma textura nova -- o que travava a selecao
+           de personagens depois de uma corrida, com a memoria de video cheia.
+           Se a GPU ja tem exatamente esta textura HD neste no, nao reenvia. */
+        /* Tambem aceita o hash logico (sem a linha extra do G_LOADTILE
+           inclusivo): faixas encontradas por ele seriam reenviadas a GPU a
+           cada quadro se so o hash completo -- que muda com o "lixo" depois
+           da imagem -- fosse comparado. */
+        if (node->x360_hd_loaded != 0 &&
+            (node->x360_hd_loaded == hd_hash ||
+             (hd_pal_hash != 0 && node->x360_hd_loaded == hd_pal_hash) ||
+             (hd_logical_hash != 0 && node->x360_hd_loaded == hd_logical_hash))) {
+            return;
+        }
+        bool hd_found = false;
+        uint32_t hd_used_hash = hd_hash;
+        if (hd_pal_hash) {
+            hd_found = x360_try_load_hd_texture(hd_pal_hash);
+            if (hd_found) hd_used_hash = hd_pal_hash;
+        }
+        if (!hd_found) hd_found = x360_try_load_hd_texture(hd_hash);
+        if (!hd_found && hd_logical_hash) {
+            hd_found = x360_try_load_hd_texture(hd_logical_hash);
+            if (hd_found) hd_used_hash = hd_logical_hash;
+        }
+
+        /* TKMK00 texture_ok e carregada em dois G_LOADTILEs horizontais.
+           O tex.pak guarda o OK completo sob DFF91B13, enquanto cada
+           G_LOADTILE produz um hash somente da metade.
+
+           Nao carregamos a imagem inteira para cada metade: isso quebraria
+           a amostragem porque node->width/height continuam representando
+           o bloco N64. Quando os hashes das duas metades nao existem no PAK,
+           usamos DFF91B13 como fonte e recortamos a metade correspondente.
+           O trace mostrou os blocos N64 em x=0 e x=15; o tamanho do recorte
+           acompanha a escala da arte HD (2x, 4x, 8x etc.). */
+        if (!hd_found && (hd_hash == 0x35d069ffu || hd_hash == 0x154196f3u)) {
+            const uint32_t ok_full_hash = 0xdff91b13u;
+            int ok_slot = x360_hdram_find(ok_full_hash);
+            const uint8_t *ok_pixels = NULL;
+            uint32_t ok_w = 0, ok_h = 0;
+
+            if (ok_slot >= 0) {
+                x360_hdram[ok_slot].last_used = ++x360_hdram_clock;
+                ok_pixels = x360_hdram[ok_slot].fmt ? NULL : x360_hdram[ok_slot].data;
+                ok_w = x360_hdram[ok_slot].w;
+                ok_h = x360_hdram[ok_slot].h;
+            } else {
+                uint32_t pw = 0, ph = 0;
+                if (x360_pak_read(ok_full_hash, &pw, &ph)) {
+                    x360_hdram_store(ok_full_hash, pw, ph, x360_hd_buf, pw * ph * 4);
+                    ok_slot = x360_hdram_find(ok_full_hash);
+                    if (ok_slot >= 0) {
+                        x360_hdram[ok_slot].last_used = ++x360_hdram_clock;
+                        ok_pixels = x360_hdram[ok_slot].fmt ? NULL : x360_hdram[ok_slot].data;
+                        ok_w = x360_hdram[ok_slot].w;
+                        ok_h = x360_hdram[ok_slot].h;
+                    }
+                }
+            }
+
+            /* O PNG do OK pode estar em 2x (62x38), 4x (124x76) ou
+               8x (248x152). A geometria original continua sendo 31x19
+               e os dois G_LOADTILEs continuam sendo as janelas x=0..15
+               e x=15..31. Calculamos o recorte pela escala da arte HD,
+               aceitando explicitamente as tres resolucoes usadas pelo
+               projeto sem alterar os outros caminhos de textura. */
+            if (ok_pixels &&
+                ((ok_w == 62u && ok_h == 38u) ||
+                 (ok_w == 124u && ok_h == 76u) ||
+                 (ok_w == 248u && ok_h == 152u))) {
+                const uint32_t ok_scale = ok_w / 31u;
+                const uint32_t crop_x = (hd_hash == 0x35d069ffu) ? 0u : (15u * ok_scale);
+                const uint32_t crop_w = 16u * ok_scale;
+                const uint32_t crop_h = 19u * ok_scale;
+                const uint32_t crop_bytes = crop_w * crop_h * 4u;
+                uint8_t *ok_crop;
+
+                /* 62x38 cabe no buffer pequeno usado pelas cargas N64.
+                   Resolucao maior (ex.: 248x152) nao cabe nos 8192 bytes,
+                   entao usamos o buffer HD grande. O OK completo ja foi
+                   copiado para x360_hdram quando veio do PAK, portanto
+                   x360_hd_buf pode ser reutilizado como destino do recorte. */
+                if (crop_bytes <= sizeof(tile_data))
+                    ok_crop = tile_data;
+                else if (crop_bytes <= sizeof(x360_hd_buf))
+                    ok_crop = x360_hd_buf;
+                else
+                    ok_crop = NULL;
+
+                if (ok_crop) {
+                    for (uint32_t y = 0; y < crop_h; ++y) {
+                        memcpy(ok_crop + y * crop_w * 4,
+                               ok_pixels + (y * ok_w + crop_x) * 4,
+                               crop_w * 4);
+                    }
+
+                    gfx_rapi->upload_texture(ok_crop, crop_w, crop_h);
+                    hd_found = true;
+                    hd_used_hash = hd_hash;
+                }
+            }
+        }
+
+        node->x360_hd_loaded = hd_found ? hd_used_hash : 0;
+        node->x360_hd_pending = 0;
+        if (!hd_found) {
+            if (x360_hdtex_lookup(hd_hash) == X360_HDTEX_ST_PENDING)
+                node->x360_hd_pending = hd_hash;
+            else if (hd_logical_hash &&
+                     x360_hdtex_lookup(hd_logical_hash) == X360_HDTEX_ST_PENDING)
+                node->x360_hd_pending = hd_logical_hash;
+        }
+
+        /* Trace de diagnostico (desligado). Para reativar, troque o 0 por 1
+           abaixo: grava em game:\hdtex-trace.log o hash calculado em runtime
+           de cada textura indexada de 2048 bytes (as metades dos sprites de
+           kart), para cruzar com os manifests via CROSS_CHECK.py/SCAN_HALVES.py.
+           Mantido desligado porque escreve em disco durante o jogo. */
+#define X360_HDTEX_TRACE 0
+/* Alvo do trace: 0 = sprites CI8 de 2048 bytes (metades de kart)
+                  1 = faixas RGBA16 (imagens grandes de menu)
+                  2 = qualquer textura CI (ex: sprites do Lakitu) */
+#define X360_HDTEX_TRACE_MENU 1
+#if X360_HDTEX_TRACE
+#if X360_HDTEX_TRACE_MENU == 1
+        if (fmt == G_IM_FMT_RGBA && siz == G_IM_SIZ_16b) {
+#elif X360_HDTEX_TRACE_MENU == 2
+        if (fmt == G_IM_FMT_CI) {
+#else
+        if (fmt == G_IM_FMT_CI && source_size == 2048) {
+#endif
+            static uint32_t kt_seen[4000];
+            static unsigned kt_n;
+            bool kt_dup = false;
+            for (unsigned i = 0; i < kt_n; ++i)
+                if (kt_seen[i] == hd_hash) { kt_dup = true; break; }
+            if (!kt_dup && kt_n < 4000) {
+                kt_seen[kt_n++] = hd_hash;
+                char msg[220];
+                /* Primeiros 12 bytes da origem: permite identificar EXATAMENTE
+                   qual regiao da imagem o jogo esta hasheando, comparando com
+                   o que o extrator ve no PC (ver KART_DEBUG.py). */
+                _snprintf(msg, sizeof(msg) - 1,
+                    "MK64: TKMK_TILE_TRACE fmt=%u siz=%u w=%u h=%u srcsz=%u hash=%08x found=%u m=%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X pitch=%u lx=%u ly=%u tw=%u\n",
+                    (unsigned)fmt, (unsigned)siz, node->width, node->height, (unsigned)source_size,
+                    hd_hash, hd_found ? 1u : 0u,
+                    /* amostra do MEIO do bloco: o inicio do sprite e
+                       transparente (zeros) e nao distingue nada. */
+                    source[source_size/2 + 0], source[source_size/2 + 1],
+                    source[source_size/2 + 2], source[source_size/2 + 3],
+                    source[source_size/2 + 4], source[source_size/2 + 5],
+                    source[source_size/2 + 6], source[source_size/2 + 7],
+                    source[source_size/2 + 8], source[source_size/2 + 9],
+                    source[source_size/2 + 10], source[source_size/2 + 11],
+                    /* geometria real do carregamento: largura da imagem-fonte
+                       (pitch em bytes), canto do bloco e largura declarada */
+                    (unsigned)(*gfx_loaded_texture(tile)).source_pitch,
+                    (unsigned)(rdp.tiles[(*gfx_loaded_texture(tile)).load_tile & 7].uls >> 2),
+                    (unsigned)(rdp.tiles[(*gfx_loaded_texture(tile)).load_tile & 7].ult >> 2),
+                    (unsigned)rdp.texture_to_load.width);
+                msg[sizeof(msg) - 1] = 0;
+                HANDLE tf = CreateFileA("game:\\hdtex-trace.log", GENERIC_WRITE,
+                                         FILE_SHARE_READ, NULL, OPEN_ALWAYS,
+                                         FILE_ATTRIBUTE_NORMAL | FILE_FLAG_WRITE_THROUGH, NULL);
+                if (tf != INVALID_HANDLE_VALUE) {
+                    SetFilePointer(tf, 0, NULL, FILE_END);
+                    DWORD wr = 0;
+                    WriteFile(tf, msg, (DWORD)strlen(msg), &wr, NULL);
+                    CloseHandle(tf);
+                }
+            }
+        }
+
+#endif
+
+        if (hd_found) {
+            return;
+        }
+    }
 
     if (fmt == G_IM_FMT_RGBA) {
         if (siz == G_IM_SIZ_16b) {
@@ -2540,6 +3564,260 @@ static void gfx_dp_texture_rectangle(int32_t ulx, int32_t uly, int32_t lrx, int3
     rdp.render_tile = saved_render_tile;
 }
 
+/* ===== HD FULL-IMAGE DRAW (bypassa particionamento TMEM) ================
+   Para imagens 2D de menu grandes demais para uma carga so de TMEM (ex:
+   retratos de selecao de personagem, botoes grandes tipo "press start"):
+   o jogo original as particiona em varias faixas pequenas, cada uma
+   passando por import_texture() separadamente -- so ali nunca existe "a
+   imagem inteira" de uma vez, so pedacos, o que impede uma troca HD por
+   hash de conteudo (cada pedaco tem hash diferente e o numero de pedacos
+   e dificil de replicar exatamente).
+   Esta funcao e chamada ANTES desse particionamento comecar (a partir de
+   render_menu_textures em menu_items.c, que ainda tem o ponteiro pra
+   imagem INTEIRA e a dimensao real declarada). Se existir HD para o hash
+   da imagem completa, desenha ela de uma vez via gfx_dp_texture_rectangle
+   (o mesmo caminho interno usado por todo retangulo texturizado 2D deste
+   port), num tamanho de textura livre (nao precisa caber em 4KB) -- e
+   devolve 1 para o chamador pular o caminho original particionado.
+   Se nao existir HD, devolve 0 sem nenhum efeito colateral (a chamada e
+   so um hash + tentativa de leitura de arquivo, barata). */
+
+/* Cache de texturas HD de menu ja carregadas: hash -> texture_id na GPU.
+   Sem isto a funcao reabria o arquivo do disco e reenviava a textura para a
+   GPU a CADA QUADRO de CADA imagem de menu -- causa direta dos engasgos nos
+   menus de selecao. */
+#define X360_HDMENU_MAX 512
+static uint32_t x360_hdmenu_hash[X360_HDMENU_MAX];
+static uint32_t x360_hdmenu_texid[X360_HDMENU_MAX];
+static uint32_t x360_hdmenu_w[X360_HDMENU_MAX];
+static uint32_t x360_hdmenu_h[X360_HDMENU_MAX];
+static unsigned x360_hdmenu_count;
+static struct TextureHashmapNode x360_hd_menu_node;
+
+static int x360_hdmenu_find(uint32_t hash) {
+    for (unsigned i = 0; i < x360_hdmenu_count; ++i)
+        if (x360_hdmenu_hash[i] == hash) return (int)i;
+    return -1;
+}
+
+/* TKMK00 tile-mode bridge: the original menu code loads these images in
+   TMEM bands. Keep the proven menu renderer untouched for TKMK00 so the
+   normal texture pipeline can resolve each band from tex.pak by its original hash. */
+static bool x360_is_tkmk00_full_hash(uint32_t hash) {
+    switch (hash) {
+        case 0x55a88dcau:
+        case 0x151886fbu:
+        case 0x59a45e1bu:
+        case 0x916164e7u:
+        case 0xcd2d2e87u:
+        case 0x830c0246u:
+        case 0x3e97679au:
+        case 0x5e434358u:
+        case 0x111abc49u:
+        case 0xf4a27dedu:
+        case 0x9fcdea9du:
+        case 0x7104183au:
+        case 0x3762a661u:
+        case 0x41d314b4u:
+        case 0xa51bf048u:
+        case 0x307a3c33u:
+        case 0x7e4e34f7u:
+        case 0x2b187347u:
+        case 0xa74f0fc1u:
+        case 0x6dc8dfd1u:
+        case 0x13f49498u:
+        case 0xe0806470u:
+        case 0x5217cf79u:
+        case 0xf88adb50u:
+        case 0xd1a7e1cdu:
+        case 0xdca32287u:
+        case 0xf1db2348u:
+        case 0x37014dc3u:
+        case 0x5fa1fa92u:
+        case 0x9b2de0e5u:
+        case 0xc9c80027u:
+        case 0x88635819u:
+        case 0x7fd56f8eu:
+        case 0xb1ac6d62u:
+        case 0xc08c182eu:
+        case 0x5544cbbau:
+        case 0x79fcbc0fu:
+        case 0xd1eda2e8u:
+        case 0x9b105ea5u:
+        case 0xe700a09du:
+        case 0xb9cc6440u:
+        case 0xa9a455efu:
+        case 0x6d9b6735u:
+        case 0xe011eed4u:
+        case 0xa5b3f189u:
+        case 0x9d556ae0u:
+        case 0x8eb95a8cu:
+        case 0xbc096deau:
+        case 0x87b03a70u:
+        case 0xf4fffd39u:
+        case 0xb2d74335u:
+        case 0xe40a7d4au:
+        case 0x5317a1a8u:
+        case 0x02453e44u:
+        case 0xecaffb70u:
+        case 0xdff91b13u:
+        case 0xa5e96f2cu:
+        case 0x6e5b02e9u:
+        case 0x67f0069du:
+        case 0x8991dad6u:
+        case 0xaf1ef0cbu:
+        case 0xb329eb0bu:
+        case 0x9c2106c8u:
+            return true;
+        default:
+            return false;
+    }
+}
+
+extern "C" int x360_try_draw_hd_menu_quad(const uint8_t *fullImageSource, uint32_t texDeclaredW,
+                                           uint32_t texDeclaredH, int32_t dstX, int32_t dstY,
+                                           int32_t dstW, int32_t dstH) {
+    if (!fullImageSource || !texDeclaredW || !texDeclaredH || dstW <= 0 || dstH <= 0) return 0;
+
+    /* RGBA16 e o formato fixo usado por render_menu_textures. */
+    uint32_t source_size = texDeclaredW * texDeclaredH * 2;
+    uint32_t hash = x360_texture_hash(fullImageSource, source_size);
+
+    /* TKMK00 is deliberately left to the original func_80095E10() TMEM
+       path. Its individual tile hashes are supplied by tex.pak. */
+    if (x360_is_tkmk00_full_hash(hash)) return 0;
+
+    int slot = x360_hdmenu_find(hash);
+    if (slot < 0) {
+        /* Ja sabemos que nao existe HD para este hash: nada de tocar no disco. */
+        if (x360_hdtex_lookup(hash) == X360_HDTEX_ST_MISS) return 0;
+        if (x360_hdmenu_count >= X360_HDMENU_MAX) return 0;
+
+        char path[64];
+        /* Subpasta pelos 2 primeiros digitos do hash: o FATX do Xbox 360 nao
+       aceita mais de 4096 entradas por pasta, e o elenco completo passa
+       disso. Com 256 subpastas sobram ~20 arquivos em cada. */
+    _snprintf(path, sizeof(path) - 1, "game:\\tex\\%02x\\%08x.tex",
+              (unsigned)((hash >> 24) & 0xFF), hash);
+        path[sizeof(path) - 1] = 0;
+        HANDLE f = CreateFileA(path, GENERIC_READ, FILE_SHARE_READ, NULL,
+                                OPEN_EXISTING, FILE_FLAG_SEQUENTIAL_SCAN, NULL);
+        if (f == INVALID_HANDLE_VALUE) {
+            x360_hdtex_remember(hash, X360_HDTEX_ST_MISS);
+            return 0;
+        }
+        struct X360HDTexHeader hdr;
+        DWORD got = 0;
+        bool ok = ReadFile(f, &hdr, sizeof(hdr), &got, NULL) && got == sizeof(hdr)
+                  && hdr.magic == X360_HDTEX_MAGIC
+                  && hdr.width > 0 && hdr.height > 0
+                  && hdr.width <= 2048 && hdr.height <= 2048;
+        if (ok) {
+            uint32_t need = hdr.width * hdr.height * 4;
+            DWORD readBytes = 0;
+            ok = ReadFile(f, x360_hd_buf, need, &readBytes, NULL) && readBytes == need;
+        }
+        CloseHandle(f);
+        if (!ok) {
+            x360_hdtex_remember(hash, X360_HDTEX_ST_MISS);
+            return 0;
+        }
+
+        /* Carrega uma unica vez para a GPU e guarda o id. */
+        uint32_t tid = gfx_rapi->new_texture();
+        gfx_rapi->select_texture(0, tid);
+        gfx_rapi->upload_texture(x360_hd_buf, hdr.width, hdr.height);
+        gfx_rapi->set_sampler_parameters(0, true, G_TX_CLAMP, G_TX_CLAMP);
+        slot = (int)x360_hdmenu_count++;
+        x360_hdmenu_hash[slot] = hash;
+        x360_hdmenu_texid[slot] = tid;
+        x360_hdmenu_w[slot] = hdr.width;
+        x360_hdmenu_h[slot] = hdr.height;
+        x360_hdtex_remember(hash, X360_HDTEX_ST_HIT);
+    } else {
+        gfx_rapi->select_texture(0, x360_hdmenu_texid[slot]);
+        gfx_rapi->set_sampler_parameters(0, true, G_TX_CLAMP, G_TX_CLAMP);
+    }
+
+    /* width/height do node ficam com a dimensao DECLARADA original: e o que a
+       normalizacao de UV (u/width, v/height) espera para mapear a imagem
+       inteira no retangulo de destino, independente da resolucao do arquivo HD. */
+    x360_hd_menu_node.fmt = G_IM_FMT_RGBA;
+    x360_hd_menu_node.siz = G_IM_SIZ_16b;
+    x360_hd_menu_node.texture_unit = 0;
+    x360_hd_menu_node.width = texDeclaredW;
+    x360_hd_menu_node.height = texDeclaredH;
+    x360_hd_menu_node.cms = G_TX_CLAMP;
+    x360_hd_menu_node.cmt = G_TX_CLAMP;
+    x360_hd_menu_node.linear_filter = true;
+    x360_hd_menu_node.texture_id = x360_hdmenu_texid[slot];
+    rendering_state.textures[0] = &x360_hd_menu_node;
+    rendering_state.sampler[0].valid = true;
+    rendering_state.sampler[0].linear = true;
+    rendering_state.sampler[0].cms = G_TX_CLAMP;
+    rendering_state.sampler[0].cmt = G_TX_CLAMP;
+    /* Nao marcar como "mudou": isso faria o pipeline chamar import_texture(0)
+       e sobrescrever a textura HD com a original. */
+    rdp.textures_changed[0] = false;
+
+    /* O tile do RDP e de onde a normalizacao de UV le uls/ult/shifts -- sem
+       zerar aqui, herdaria o offset do desenho anterior. */
+    {
+        struct X360TextureTile *t = &rdp.tiles[0];
+        t->fmt = G_IM_FMT_RGBA;
+        t->siz = G_IM_SIZ_16b;
+        t->cms = G_TX_CLAMP;
+        t->cmt = G_TX_CLAMP;
+        t->palette = 0;
+        t->masks = 0; t->maskt = 0;
+        t->shifts = 0; t->shiftt = 0;
+        t->uls = 0; t->ult = 0;
+        t->lrs = (uint16_t)((texDeclaredW - 1) << 2);
+        t->lrt = (uint16_t)((texDeclaredH - 1) << 2);
+        t->tmem = 0;
+        t->line_size_bytes = texDeclaredW * 2;
+    }
+
+    int16_t dsdx = (int16_t)((texDeclaredW << 10) / (uint32_t)dstW);
+    int16_t dtdy = (int16_t)((texDeclaredH << 10) / (uint32_t)dstH);
+
+    /* Desenhamos de forma sincrona, antes dos gSPDisplayList que o codigo
+       original emite para configurar o estado -- entao configuramos tudo
+       explicitamente aqui, senao o desenho sai invisivel (combiner/alpha
+       zerados, ou descartado pelo teste de profundidade do 3D anterior). */
+    uint64_t saved_combine = rdp.combine_mode;
+    uint32_t saved_other_h = rdp.other_mode_h;
+    uint32_t saved_other_l = rdp.other_mode_l;
+    struct RGBA saved_env = rdp.env_color;
+    struct RGBA saved_prim = rdp.prim_color;
+
+    gfx_dp_set_combine_mode(color_comb(0, 0, 0, G_CCMUX_TEXEL0),
+                             alpha_comb(0, 0, 0, G_ACMUX_TEXEL0));
+    rdp.env_color.r = rdp.env_color.g = rdp.env_color.b = rdp.env_color.a = 255;
+    rdp.prim_color.r = rdp.prim_color.g = rdp.prim_color.b = rdp.prim_color.a = 255;
+    rdp.other_mode_h = (rdp.other_mode_h & ~(3U << G_MDSFT_CYCLETYPE)) | G_CYC_1CYCLE;
+    rdp.other_mode_h = (rdp.other_mode_h & ~(3U << G_MDSFT_TEXTFILT)) | G_TF_BILERP;
+    /* 2D transparente, sem teste/escrita de profundidade. */
+    rdp.other_mode_l = G_RM_XLU_SURF | G_RM_XLU_SURF2;
+
+    gfx_dp_texture_rectangle(dstX << 2, dstY << 2, (dstX + dstW) << 2, (dstY + dstH) << 2,
+                              0, 0, 0, dsdx, dtdy, false);
+    gfx_flush();
+
+    rdp.combine_mode = saved_combine;
+    rdp.other_mode_h = saved_other_h;
+    rdp.other_mode_l = saved_other_l;
+    rdp.env_color = saved_env;
+    rdp.prim_color = saved_prim;
+
+    /* Invalida o binding: o node HD e temporario, fora do pool do cache. */
+    rendering_state.textures[0] = NULL;
+    rendering_state.sampler[0].valid = false;
+    rdp.textures_changed[0] = rdp.textures_changed[1] = true;
+    return 1;
+}
+/* ===== HD FULL-IMAGE DRAW (fim) ========================================== */
+
 static void gfx_dp_fill_rectangle(int32_t ulx, int32_t uly, int32_t lrx, int32_t lry) {
     if (rdp.color_image_address == rdp.z_buf_address) {
         // Don't clear Z buffer here since we already did it with glClear
@@ -3416,6 +4694,8 @@ struct GfxRenderingAPI *gfx_get_current_rendering_api(void) {
 }
 
 void gfx_start_frame(void) {
+    x360_async_drain();
+    x360_preload_step();
     /* B17G13 RACE-TIMER-CORRELATION: sparse timeline keyed to the exact on-screen race timer.
      * At most four lines per GAME second. */
     {
@@ -3521,6 +4801,52 @@ void gfx_run(Gfx *commands) {
 }
 
 void gfx_end_frame(void) {
+#if X360_HDTEX_STATS
+    {
+        LARGE_INTEGER agora;
+        QueryPerformanceCounter(&agora);
+        if (!x360_st_freq.QuadPart) QueryPerformanceFrequency(&x360_st_freq);
+        if (x360_st_last_frame.QuadPart) {
+            uint32_t us = (uint32_t)((agora.QuadPart - x360_st_last_frame.QuadPart) * 1000000
+                                     / x360_st_freq.QuadPart);
+            if (us > x360_st_fmax_us) x360_st_fmax_us = us;
+            if (us > 16700) ++x360_st_f17;
+            if (us > 33300) ++x360_st_f34;
+        }
+        x360_st_last_frame = agora;
+    }
+    if (++x360_st_frames >= 60) {
+        char line[512];   /* era 200: a linha cresceu com os campos novos e, ao
+                             nao caber, _snprintf devolvia -1 e nada era gravado */
+        int n = _snprintf(line, sizeof(line) - 1,
+            "pak=%u reads=%u rahit=%u ramhit=%u evict=%u uploads=%u uploadKB=%u ramMB=%u "
+            "diskMS=%u decMS=%u uploadMS=%u frameMaxMS=%u acima17ms=%u acima33ms=%u "
+            "estado=%d pre=%u preTotal=%u preMB=%u preJa=%u preFim=%u grupo=%u/%u\r\n",
+            x360_st_pak, x360_st_reads, x360_st_rahit, x360_st_ramhit, x360_st_evict,
+            x360_st_up, x360_st_upkb, (unsigned)(x360_hdram_bytes >> 20),
+            x360_st_disk_us / 1000, x360_st_dec_us / 1000, x360_st_up_us / 1000,
+            x360_st_fmax_us / 1000, x360_st_f17, x360_st_f34,
+            gGamestate, x360_st_pre, x360_pre_total, x360_pre_kb >> 10, x360_pre_ja,
+            x360_pre_done ? 1u : 0u, x360_pre_pos, x360_pak_count);
+        HANDLE f = CreateFileA("game:\\hdtex-stats.log", GENERIC_WRITE, FILE_SHARE_READ,
+                               NULL, OPEN_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
+        if (f != INVALID_HANDLE_VALUE) {
+            DWORD w = 0;
+            SetFilePointer(f, 0, NULL, FILE_END);
+            if (n < 0) {   /* nao coube: grava o que couber, terminado em quebra */
+                n = (int)sizeof(line) - 3;
+                line[n] = '\r'; line[n + 1] = '\n'; n += 2;
+            }
+            if (n > 0) WriteFile(f, line, (DWORD)n, &w, NULL);
+            CloseHandle(f);
+        }
+        x360_st_pak = x360_st_ramhit = x360_st_evict = x360_st_up = x360_st_upkb = 0;
+        x360_st_reads = x360_st_rahit = x360_st_disk_us = x360_st_dec_us = x360_st_up_us = 0;
+        x360_st_fmax_us = x360_st_f17 = x360_st_f34 = 0;
+        x360_st_pre = 0;
+        x360_st_frames = 0;
+    }
+#endif
     if (!dropped_frame) {
         gfx_rapi->finish_render();
         gfx_wapi->swap_buffers_end();

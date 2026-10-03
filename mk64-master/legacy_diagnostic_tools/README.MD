@@ -1,0 +1,1 @@
+This folder contains files and scripts that were previously used for debugging, diagnostics, troubleshooting, and outdated tools that have become obsolete after newer implementations. They are no longer necessary, but they will remain here as a precaution, but effectively only work in the root master folder.

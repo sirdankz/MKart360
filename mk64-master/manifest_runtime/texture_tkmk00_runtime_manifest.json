@@ -1,0 +1,4898 @@
+[
+  {
+    "symbol": "texture_player_select",
+    "png": "generated/texture_tkmk00/texture_player_select.png",
+    "width": 220,
+    "height": 32,
+    "tile_width": 256,
+    "tile_height": 4,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 220,
+        "y1": 4,
+        "hash": "4ee2a39b",
+        "logical_hash": "4ee2a39b",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 4,
+        "x1": 220,
+        "y1": 8,
+        "hash": "f7856c01",
+        "logical_hash": "f7856c01",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 8,
+        "x1": 220,
+        "y1": 12,
+        "hash": "c4360a90",
+        "logical_hash": "c4360a90",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 12,
+        "x1": 220,
+        "y1": 16,
+        "hash": "3a4b3fd2",
+        "logical_hash": "3a4b3fd2",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 16,
+        "x1": 220,
+        "y1": 20,
+        "hash": "d50705ca",
+        "logical_hash": "d50705ca",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 20,
+        "x1": 220,
+        "y1": 24,
+        "hash": "631f037f",
+        "logical_hash": "631f037f",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 24,
+        "x1": 220,
+        "y1": 28,
+        "hash": "b6005355",
+        "logical_hash": "b6005355",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 28,
+        "x1": 220,
+        "y1": 32,
+        "hash": "d6259fff",
+        "logical_hash": "f552c2e3",
+        "hash_source": "trace"
+      }
+    ]
+  },
+  {
+    "symbol": "texture_option",
+    "png": "generated/texture_tkmk00/texture_option.png",
+    "width": 130,
+    "height": 32,
+    "tile_width": 256,
+    "tile_height": 4,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 130,
+        "y1": 4,
+        "hash": "ce6f36c1",
+        "logical_hash": "ce6f36c1",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 4,
+        "x1": 130,
+        "y1": 8,
+        "hash": "4c380469",
+        "logical_hash": "4c380469",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 8,
+        "x1": 130,
+        "y1": 12,
+        "hash": "df18a87a",
+        "logical_hash": "df18a87a",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 12,
+        "x1": 130,
+        "y1": 16,
+        "hash": "3a4aa4aa",
+        "logical_hash": "3a4aa4aa",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 16,
+        "x1": 130,
+        "y1": 20,
+        "hash": "34e69c5e",
+        "logical_hash": "34e69c5e",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 20,
+        "x1": 130,
+        "y1": 24,
+        "hash": "68f24a1f",
+        "logical_hash": "68f24a1f",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 24,
+        "x1": 130,
+        "y1": 28,
+        "hash": "86064f54",
+        "logical_hash": "86064f54",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 28,
+        "x1": 130,
+        "y1": 32,
+        "hash": "49d04ced",
+        "logical_hash": "f9234e2d",
+        "hash_source": "trace"
+      }
+    ]
+  },
+  {
+    "symbol": "texture_name_dk",
+    "png": "generated/texture_tkmk00/texture_name_dk.png",
+    "width": 64,
+    "height": 12,
+    "tile_width": 64,
+    "tile_height": 16,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 64,
+        "y1": 12,
+        "hash": "f1d0a4e9",
+        "logical_hash": "59a45e1b",
+        "hash_source": "trace"
+      }
+    ]
+  },
+  {
+    "symbol": "texture_name_toad",
+    "png": "generated/texture_tkmk00/texture_name_toad.png",
+    "width": 64,
+    "height": 12,
+    "tile_width": 64,
+    "tile_height": 16,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 64,
+        "y1": 12,
+        "hash": "ae85bd9f",
+        "logical_hash": "916164e7",
+        "hash_source": "trace"
+      }
+    ]
+  },
+  {
+    "symbol": "texture_name_bowser",
+    "png": "generated/texture_tkmk00/texture_name_bowser.png",
+    "width": 64,
+    "height": 12,
+    "tile_width": 64,
+    "tile_height": 16,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 64,
+        "y1": 12,
+        "hash": "c37efd6d",
+        "logical_hash": "cd2d2e87",
+        "hash_source": "trace"
+      }
+    ]
+  },
+  {
+    "symbol": "texture_name_luigi",
+    "png": "generated/texture_tkmk00/texture_name_luigi.png",
+    "width": 64,
+    "height": 12,
+    "tile_width": 64,
+    "tile_height": 16,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 64,
+        "y1": 12,
+        "hash": "979f597b",
+        "logical_hash": "830c0246",
+        "hash_source": "trace"
+      }
+    ]
+  },
+  {
+    "symbol": "texture_name_mario",
+    "png": "generated/texture_tkmk00/texture_name_mario.png",
+    "width": 64,
+    "height": 12,
+    "tile_width": 64,
+    "tile_height": 16,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 64,
+        "y1": 12,
+        "hash": "b16f0190",
+        "logical_hash": "3e97679a",
+        "hash_source": "trace"
+      }
+    ]
+  },
+  {
+    "symbol": "texture_name_peach",
+    "png": "generated/texture_tkmk00/texture_name_peach.png",
+    "width": 64,
+    "height": 12,
+    "tile_width": 64,
+    "tile_height": 16,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 64,
+        "y1": 12,
+        "hash": "fd0b45b6",
+        "logical_hash": "5e434358",
+        "hash_source": "trace"
+      }
+    ]
+  },
+  {
+    "symbol": "texture_name_wario",
+    "png": "generated/texture_tkmk00/texture_name_wario.png",
+    "width": 64,
+    "height": 12,
+    "tile_width": 64,
+    "tile_height": 16,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 64,
+        "y1": 12,
+        "hash": "dd231ea5",
+        "logical_hash": "111abc49",
+        "hash_source": "trace"
+      }
+    ]
+  },
+  {
+    "symbol": "texture_name_yoshi",
+    "png": "generated/texture_tkmk00/texture_name_yoshi.png",
+    "width": 64,
+    "height": 12,
+    "tile_width": 64,
+    "tile_height": 16,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 64,
+        "y1": 12,
+        "hash": "3274b0c7",
+        "logical_hash": "f4a27ded",
+        "hash_source": "trace"
+      }
+    ]
+  },
+  {
+    "symbol": "gTextureTitleMarioRaceway",
+    "png": "generated/texture_tkmk00/gTextureTitleMarioRaceway.png",
+    "width": 140,
+    "height": 18,
+    "tile_width": 256,
+    "tile_height": 4,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 140,
+        "y1": 4,
+        "hash": "b485f827",
+        "logical_hash": "b485f827",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 4,
+        "x1": 140,
+        "y1": 8,
+        "hash": "c150e40b",
+        "logical_hash": "c150e40b",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 8,
+        "x1": 140,
+        "y1": 12,
+        "hash": "d015bafd",
+        "logical_hash": "d015bafd",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 12,
+        "x1": 140,
+        "y1": 16,
+        "hash": "0e9d8ff7",
+        "logical_hash": "0e9d8ff7",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 16,
+        "x1": 140,
+        "y1": 18,
+        "hash": "8734132c",
+        "logical_hash": "8d720e4d",
+        "hash_source": "trace"
+      }
+    ]
+  },
+  {
+    "symbol": "gTextureTitleChocoMountain",
+    "png": "generated/texture_tkmk00/gTextureTitleChocoMountain.png",
+    "width": 140,
+    "height": 18,
+    "tile_width": 256,
+    "tile_height": 4,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 140,
+        "y1": 4,
+        "hash": "95c4808a",
+        "logical_hash": "95c4808a",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 4,
+        "x1": 140,
+        "y1": 8,
+        "hash": "421b1864",
+        "logical_hash": "421b1864",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 8,
+        "x1": 140,
+        "y1": 12,
+        "hash": "99a53065",
+        "logical_hash": "99a53065",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 12,
+        "x1": 140,
+        "y1": 16,
+        "hash": "cb8dad68",
+        "logical_hash": "cb8dad68",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 16,
+        "x1": 140,
+        "y1": 18,
+        "hash": "3160d799",
+        "logical_hash": "8d720e4d",
+        "hash_source": "trace"
+      }
+    ]
+  },
+  {
+    "symbol": "gTextureTitleBowsersCastle",
+    "png": "generated/texture_tkmk00/gTextureTitleBowsersCastle.png",
+    "width": 140,
+    "height": 18,
+    "tile_width": 256,
+    "tile_height": 4,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 140,
+        "y1": 4,
+        "hash": "c802220d",
+        "logical_hash": "c802220d",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 4,
+        "x1": 140,
+        "y1": 8,
+        "hash": "8754ef82",
+        "logical_hash": "8754ef82",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 8,
+        "x1": 140,
+        "y1": 12,
+        "hash": "463a1f63",
+        "logical_hash": "463a1f63",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 12,
+        "x1": 140,
+        "y1": 16,
+        "hash": "bf885fde",
+        "logical_hash": "bf885fde",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 16,
+        "x1": 140,
+        "y1": 18,
+        "hash": "71a2f4fe",
+        "logical_hash": "8d720e4d",
+        "hash_source": "trace"
+      }
+    ]
+  },
+  {
+    "symbol": "gTextureTitleBansheeBoardwalk",
+    "png": "generated/texture_tkmk00/gTextureTitleBansheeBoardwalk.png",
+    "width": 140,
+    "height": 18,
+    "tile_width": 256,
+    "tile_height": 4,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 140,
+        "y1": 4,
+        "hash": "f8f8d5dc",
+        "logical_hash": "f8f8d5dc",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 4,
+        "x1": 140,
+        "y1": 8,
+        "hash": "2b321a04",
+        "logical_hash": "2b321a04",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 8,
+        "x1": 140,
+        "y1": 12,
+        "hash": "850cccae",
+        "logical_hash": "850cccae",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 12,
+        "x1": 140,
+        "y1": 16,
+        "hash": "d7448c3d",
+        "logical_hash": "d7448c3d",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 16,
+        "x1": 140,
+        "y1": 18,
+        "hash": "50c30015",
+        "logical_hash": "a74b1b35",
+        "hash_source": "trace"
+      }
+    ]
+  },
+  {
+    "symbol": "gTextureTitleYoshiValley",
+    "png": "generated/texture_tkmk00/gTextureTitleYoshiValley.png",
+    "width": 140,
+    "height": 18,
+    "tile_width": 256,
+    "tile_height": 4,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 140,
+        "y1": 4,
+        "hash": "6c3d2487",
+        "logical_hash": "6c3d2487",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 4,
+        "x1": 140,
+        "y1": 8,
+        "hash": "a132d62a",
+        "logical_hash": "a132d62a",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 8,
+        "x1": 140,
+        "y1": 12,
+        "hash": "3aedaf35",
+        "logical_hash": "3aedaf35",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 12,
+        "x1": 140,
+        "y1": 16,
+        "hash": "082a0665",
+        "logical_hash": "082a0665",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 16,
+        "x1": 140,
+        "y1": 18,
+        "hash": "8d720e4d",
+        "logical_hash": "8d720e4d",
+        "hash_source": "computed"
+      }
+    ]
+  },
+  {
+    "symbol": "gTextureTitleFrappeSnowland",
+    "png": "generated/texture_tkmk00/gTextureTitleFrappeSnowland.png",
+    "width": 140,
+    "height": 18,
+    "tile_width": 256,
+    "tile_height": 4,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 140,
+        "y1": 4,
+        "hash": "24dbeed3",
+        "logical_hash": "24dbeed3",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 4,
+        "x1": 140,
+        "y1": 8,
+        "hash": "b8799274",
+        "logical_hash": "b8799274",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 8,
+        "x1": 140,
+        "y1": 12,
+        "hash": "3698b29b",
+        "logical_hash": "3698b29b",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 12,
+        "x1": 140,
+        "y1": 16,
+        "hash": "406d54fc",
+        "logical_hash": "406d54fc",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 16,
+        "x1": 140,
+        "y1": 18,
+        "hash": "1ca65239",
+        "logical_hash": "8d720e4d",
+        "hash_source": "trace"
+      }
+    ]
+  },
+  {
+    "symbol": "gTextureTitleKoopaTroopaBeach",
+    "png": "generated/texture_tkmk00/gTextureTitleKoopaTroopaBeach.png",
+    "width": 140,
+    "height": 18,
+    "tile_width": 256,
+    "tile_height": 4,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 140,
+        "y1": 4,
+        "hash": "723ee8c5",
+        "logical_hash": "723ee8c5",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 4,
+        "x1": 140,
+        "y1": 8,
+        "hash": "cb92e9e6",
+        "logical_hash": "cb92e9e6",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 8,
+        "x1": 140,
+        "y1": 12,
+        "hash": "e095b652",
+        "logical_hash": "e095b652",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 12,
+        "x1": 140,
+        "y1": 16,
+        "hash": "b05bd2f9",
+        "logical_hash": "b05bd2f9",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 16,
+        "x1": 140,
+        "y1": 18,
+        "hash": "8d720e4d",
+        "logical_hash": "8d720e4d",
+        "hash_source": "computed"
+      }
+    ]
+  },
+  {
+    "symbol": "gTextureTitleRoyalRaceway",
+    "png": "generated/texture_tkmk00/gTextureTitleRoyalRaceway.png",
+    "width": 140,
+    "height": 18,
+    "tile_width": 256,
+    "tile_height": 4,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 140,
+        "y1": 4,
+        "hash": "984fab92",
+        "logical_hash": "984fab92",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 4,
+        "x1": 140,
+        "y1": 8,
+        "hash": "906ae16c",
+        "logical_hash": "906ae16c",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 8,
+        "x1": 140,
+        "y1": 12,
+        "hash": "ea13eafd",
+        "logical_hash": "ea13eafd",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 12,
+        "x1": 140,
+        "y1": 16,
+        "hash": "8ad6688f",
+        "logical_hash": "8ad6688f",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 16,
+        "x1": 140,
+        "y1": 18,
+        "hash": "1e2a763f",
+        "logical_hash": "8d720e4d",
+        "hash_source": "trace"
+      }
+    ]
+  },
+  {
+    "symbol": "gTextureTitleLuigiRaceway",
+    "png": "generated/texture_tkmk00/gTextureTitleLuigiRaceway.png",
+    "width": 140,
+    "height": 18,
+    "tile_width": 256,
+    "tile_height": 4,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 140,
+        "y1": 4,
+        "hash": "4d290bf6",
+        "logical_hash": "4d290bf6",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 4,
+        "x1": 140,
+        "y1": 8,
+        "hash": "9c290717",
+        "logical_hash": "9c290717",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 8,
+        "x1": 140,
+        "y1": 12,
+        "hash": "4ca0383e",
+        "logical_hash": "4ca0383e",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 12,
+        "x1": 140,
+        "y1": 16,
+        "hash": "a51d5d2c",
+        "logical_hash": "a51d5d2c",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 16,
+        "x1": 140,
+        "y1": 18,
+        "hash": "328193a7",
+        "logical_hash": "8d720e4d",
+        "hash_source": "trace"
+      }
+    ]
+  },
+  {
+    "symbol": "gTextureTitleMooMooFarm",
+    "png": "generated/texture_tkmk00/gTextureTitleMooMooFarm.png",
+    "width": 140,
+    "height": 18,
+    "tile_width": 256,
+    "tile_height": 4,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 140,
+        "y1": 4,
+        "hash": "ec598766",
+        "logical_hash": "ec598766",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 4,
+        "x1": 140,
+        "y1": 8,
+        "hash": "27337a9d",
+        "logical_hash": "27337a9d",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 8,
+        "x1": 140,
+        "y1": 12,
+        "hash": "918adb3e",
+        "logical_hash": "918adb3e",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 12,
+        "x1": 140,
+        "y1": 16,
+        "hash": "b2068d1d",
+        "logical_hash": "b2068d1d",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 16,
+        "x1": 140,
+        "y1": 18,
+        "hash": "810472c3",
+        "logical_hash": "8d720e4d",
+        "hash_source": "trace"
+      }
+    ]
+  },
+  {
+    "symbol": "gTextureTitleToadsTurnpike",
+    "png": "generated/texture_tkmk00/gTextureTitleToadsTurnpike.png",
+    "width": 140,
+    "height": 18,
+    "tile_width": 256,
+    "tile_height": 4,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 140,
+        "y1": 4,
+        "hash": "ce6359b5",
+        "logical_hash": "ce6359b5",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 4,
+        "x1": 140,
+        "y1": 8,
+        "hash": "f337749b",
+        "logical_hash": "f337749b",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 8,
+        "x1": 140,
+        "y1": 12,
+        "hash": "c8cf5032",
+        "logical_hash": "c8cf5032",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 12,
+        "x1": 140,
+        "y1": 16,
+        "hash": "a55f9a31",
+        "logical_hash": "a55f9a31",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 16,
+        "x1": 140,
+        "y1": 18,
+        "hash": "42c17ec8",
+        "logical_hash": "8d720e4d",
+        "hash_source": "trace"
+      }
+    ]
+  },
+  {
+    "symbol": "gTextureTitleKalimariDesert",
+    "png": "generated/texture_tkmk00/gTextureTitleKalimariDesert.png",
+    "width": 140,
+    "height": 18,
+    "tile_width": 256,
+    "tile_height": 4,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 140,
+        "y1": 4,
+        "hash": "e8e3eecc",
+        "logical_hash": "e8e3eecc",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 4,
+        "x1": 140,
+        "y1": 8,
+        "hash": "41e900a7",
+        "logical_hash": "41e900a7",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 8,
+        "x1": 140,
+        "y1": 12,
+        "hash": "848e5f41",
+        "logical_hash": "848e5f41",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 12,
+        "x1": 140,
+        "y1": 16,
+        "hash": "9bedd0ec",
+        "logical_hash": "9bedd0ec",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 16,
+        "x1": 140,
+        "y1": 18,
+        "hash": "96df66aa",
+        "logical_hash": "8d720e4d",
+        "hash_source": "trace"
+      }
+    ]
+  },
+  {
+    "symbol": "gTextureTitleSherbetLand",
+    "png": "generated/texture_tkmk00/gTextureTitleSherbetLand.png",
+    "width": 140,
+    "height": 18,
+    "tile_width": 256,
+    "tile_height": 4,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 140,
+        "y1": 4,
+        "hash": "f992a0ec",
+        "logical_hash": "f992a0ec",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 4,
+        "x1": 140,
+        "y1": 8,
+        "hash": "9af8681e",
+        "logical_hash": "9af8681e",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 8,
+        "x1": 140,
+        "y1": 12,
+        "hash": "00aa0d21",
+        "logical_hash": "00aa0d21",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 12,
+        "x1": 140,
+        "y1": 16,
+        "hash": "ded9a8ca",
+        "logical_hash": "ded9a8ca",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 16,
+        "x1": 140,
+        "y1": 18,
+        "hash": "4dab9429",
+        "logical_hash": "8d720e4d",
+        "hash_source": "trace"
+      }
+    ]
+  },
+  {
+    "symbol": "gTextureTitleRainbowRoad",
+    "png": "generated/texture_tkmk00/gTextureTitleRainbowRoad.png",
+    "width": 140,
+    "height": 18,
+    "tile_width": 256,
+    "tile_height": 4,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 140,
+        "y1": 4,
+        "hash": "8f14364b",
+        "logical_hash": "8f14364b",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 4,
+        "x1": 140,
+        "y1": 8,
+        "hash": "8ea1e45c",
+        "logical_hash": "8ea1e45c",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 8,
+        "x1": 140,
+        "y1": 12,
+        "hash": "bdd27d06",
+        "logical_hash": "bdd27d06",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 12,
+        "x1": 140,
+        "y1": 16,
+        "hash": "e8e68dfd",
+        "logical_hash": "e8e68dfd",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 16,
+        "x1": 140,
+        "y1": 18,
+        "hash": "8d720e4d",
+        "logical_hash": "8d720e4d",
+        "hash_source": "computed"
+      }
+    ]
+  },
+  {
+    "symbol": "gTextureTitleWarioStadium",
+    "png": "generated/texture_tkmk00/gTextureTitleWarioStadium.png",
+    "width": 140,
+    "height": 18,
+    "tile_width": 256,
+    "tile_height": 4,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 140,
+        "y1": 4,
+        "hash": "49c1d555",
+        "logical_hash": "49c1d555",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 4,
+        "x1": 140,
+        "y1": 8,
+        "hash": "9f283288",
+        "logical_hash": "9f283288",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 8,
+        "x1": 140,
+        "y1": 12,
+        "hash": "a7c86eab",
+        "logical_hash": "a7c86eab",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 12,
+        "x1": 140,
+        "y1": 16,
+        "hash": "e73d17cd",
+        "logical_hash": "e73d17cd",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 16,
+        "x1": 140,
+        "y1": 18,
+        "hash": "aa70a5b2",
+        "logical_hash": "8d720e4d",
+        "hash_source": "trace"
+      }
+    ]
+  },
+  {
+    "symbol": "gTextureTitleBlockFort",
+    "png": "generated/texture_tkmk00/gTextureTitleBlockFort.png",
+    "width": 140,
+    "height": 18,
+    "tile_width": 256,
+    "tile_height": 4,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 140,
+        "y1": 4,
+        "hash": "b6574677",
+        "logical_hash": "b6574677",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 4,
+        "x1": 140,
+        "y1": 8,
+        "hash": "924d0b84",
+        "logical_hash": "924d0b84",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 8,
+        "x1": 140,
+        "y1": 12,
+        "hash": "68055209",
+        "logical_hash": "68055209",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 12,
+        "x1": 140,
+        "y1": 16,
+        "hash": "99b59598",
+        "logical_hash": "99b59598",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 16,
+        "x1": 140,
+        "y1": 18,
+        "hash": "8d720e4d",
+        "logical_hash": "8d720e4d",
+        "hash_source": "computed"
+      }
+    ]
+  },
+  {
+    "symbol": "gTextureTitleSkyscraper",
+    "png": "generated/texture_tkmk00/gTextureTitleSkyscraper.png",
+    "width": 140,
+    "height": 18,
+    "tile_width": 256,
+    "tile_height": 4,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 140,
+        "y1": 4,
+        "hash": "7f321098",
+        "logical_hash": "7f321098",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 4,
+        "x1": 140,
+        "y1": 8,
+        "hash": "0e7e72ed",
+        "logical_hash": "0e7e72ed",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 8,
+        "x1": 140,
+        "y1": 12,
+        "hash": "36b698f8",
+        "logical_hash": "36b698f8",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 12,
+        "x1": 140,
+        "y1": 16,
+        "hash": "0c678cd8",
+        "logical_hash": "0c678cd8",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 16,
+        "x1": 140,
+        "y1": 18,
+        "hash": "8d720e4d",
+        "logical_hash": "8d720e4d",
+        "hash_source": "computed"
+      }
+    ]
+  },
+  {
+    "symbol": "gTextureTitleDoubleDeck",
+    "png": "generated/texture_tkmk00/gTextureTitleDoubleDeck.png",
+    "width": 140,
+    "height": 18,
+    "tile_width": 256,
+    "tile_height": 4,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 140,
+        "y1": 4,
+        "hash": "6982f303",
+        "logical_hash": "6982f303",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 4,
+        "x1": 140,
+        "y1": 8,
+        "hash": "868f832b",
+        "logical_hash": "868f832b",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 8,
+        "x1": 140,
+        "y1": 12,
+        "hash": "1fe344da",
+        "logical_hash": "1fe344da",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 12,
+        "x1": 140,
+        "y1": 16,
+        "hash": "b5f1aafa",
+        "logical_hash": "b5f1aafa",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 16,
+        "x1": 140,
+        "y1": 18,
+        "hash": "8d720e4d",
+        "logical_hash": "8d720e4d",
+        "hash_source": "computed"
+      }
+    ]
+  },
+  {
+    "symbol": "gTextureTitleDKsJungleParkway",
+    "png": "generated/texture_tkmk00/gTextureTitleDKsJungleParkway.png",
+    "width": 140,
+    "height": 18,
+    "tile_width": 256,
+    "tile_height": 4,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 140,
+        "y1": 4,
+        "hash": "d383da7f",
+        "logical_hash": "d383da7f",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 4,
+        "x1": 140,
+        "y1": 8,
+        "hash": "1a0f8b85",
+        "logical_hash": "1a0f8b85",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 8,
+        "x1": 140,
+        "y1": 12,
+        "hash": "ed118f87",
+        "logical_hash": "ed118f87",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 12,
+        "x1": 140,
+        "y1": 16,
+        "hash": "41d44f66",
+        "logical_hash": "41d44f66",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 16,
+        "x1": 140,
+        "y1": 18,
+        "hash": "197f3cb0",
+        "logical_hash": "8d720e4d",
+        "hash_source": "trace"
+      }
+    ]
+  },
+  {
+    "symbol": "gTextureTitleBigDonut",
+    "png": "generated/texture_tkmk00/gTextureTitleBigDonut.png",
+    "width": 140,
+    "height": 18,
+    "tile_width": 256,
+    "tile_height": 4,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 140,
+        "y1": 4,
+        "hash": "677db700",
+        "logical_hash": "677db700",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 4,
+        "x1": 140,
+        "y1": 8,
+        "hash": "85f9c153",
+        "logical_hash": "85f9c153",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 8,
+        "x1": 140,
+        "y1": 12,
+        "hash": "07b18ef7",
+        "logical_hash": "07b18ef7",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 12,
+        "x1": 140,
+        "y1": 16,
+        "hash": "27955f57",
+        "logical_hash": "27955f57",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 16,
+        "x1": 140,
+        "y1": 18,
+        "hash": "8d720e4d",
+        "logical_hash": "8d720e4d",
+        "hash_source": "computed"
+      }
+    ]
+  },
+  {
+    "symbol": "gTextureMapSelect",
+    "png": "generated/texture_tkmk00/gTextureMapSelect.png",
+    "width": 190,
+    "height": 32,
+    "tile_width": 256,
+    "tile_height": 4,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 190,
+        "y1": 4,
+        "hash": "a791e2a4",
+        "logical_hash": "a791e2a4",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 4,
+        "x1": 190,
+        "y1": 8,
+        "hash": "fc54929c",
+        "logical_hash": "fc54929c",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 8,
+        "x1": 190,
+        "y1": 12,
+        "hash": "14cef378",
+        "logical_hash": "14cef378",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 12,
+        "x1": 190,
+        "y1": 16,
+        "hash": "ae44f133",
+        "logical_hash": "ae44f133",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 16,
+        "x1": 190,
+        "y1": 20,
+        "hash": "db8f1256",
+        "logical_hash": "db8f1256",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 20,
+        "x1": 190,
+        "y1": 24,
+        "hash": "865771cb",
+        "logical_hash": "865771cb",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 24,
+        "x1": 190,
+        "y1": 28,
+        "hash": "45918a40",
+        "logical_hash": "45918a40",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 28,
+        "x1": 190,
+        "y1": 32,
+        "hash": "52cc8445",
+        "logical_hash": "8b2d768e",
+        "hash_source": "trace"
+      }
+    ]
+  },
+  {
+    "symbol": "gTextureMenuFlowerCup",
+    "png": "generated/texture_tkmk00/gTextureMenuFlowerCup.png",
+    "width": 65,
+    "height": 40,
+    "tile_width": 128,
+    "tile_height": 8,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 65,
+        "y1": 8,
+        "hash": "e6a1aab3",
+        "logical_hash": "e6a1aab3",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 8,
+        "x1": 65,
+        "y1": 16,
+        "hash": "48558246",
+        "logical_hash": "48558246",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 16,
+        "x1": 65,
+        "y1": 24,
+        "hash": "432a9163",
+        "logical_hash": "432a9163",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 24,
+        "x1": 65,
+        "y1": 32,
+        "hash": "dd9857de",
+        "logical_hash": "dd9857de",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 32,
+        "x1": 65,
+        "y1": 40,
+        "hash": "67bab2ba",
+        "logical_hash": "cf1863a5",
+        "hash_source": "trace"
+      }
+    ]
+  },
+  {
+    "symbol": "gTextureMenuMushroomCup",
+    "png": "generated/texture_tkmk00/gTextureMenuMushroomCup.png",
+    "width": 65,
+    "height": 40,
+    "tile_width": 128,
+    "tile_height": 8,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 65,
+        "y1": 8,
+        "hash": "3cc825ee",
+        "logical_hash": "3cc825ee",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 8,
+        "x1": 65,
+        "y1": 16,
+        "hash": "5b5abdb9",
+        "logical_hash": "5b5abdb9",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 16,
+        "x1": 65,
+        "y1": 24,
+        "hash": "fb9dcd62",
+        "logical_hash": "fb9dcd62",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 24,
+        "x1": 65,
+        "y1": 32,
+        "hash": "75df2cf4",
+        "logical_hash": "75df2cf4",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 32,
+        "x1": 65,
+        "y1": 40,
+        "hash": "3cfc7d9f",
+        "logical_hash": "bf97891f",
+        "hash_source": "trace"
+      }
+    ]
+  },
+  {
+    "symbol": "gTextureMenuStarCup",
+    "png": "generated/texture_tkmk00/gTextureMenuStarCup.png",
+    "width": 65,
+    "height": 40,
+    "tile_width": 128,
+    "tile_height": 8,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 65,
+        "y1": 8,
+        "hash": "cbfad9e7",
+        "logical_hash": "cbfad9e7",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 8,
+        "x1": 65,
+        "y1": 16,
+        "hash": "d9b7dd24",
+        "logical_hash": "d9b7dd24",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 16,
+        "x1": 65,
+        "y1": 24,
+        "hash": "4cdc8408",
+        "logical_hash": "4cdc8408",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 24,
+        "x1": 65,
+        "y1": 32,
+        "hash": "af557dd2",
+        "logical_hash": "af557dd2",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 32,
+        "x1": 65,
+        "y1": 40,
+        "hash": "fc9b7527",
+        "logical_hash": "c692bd14",
+        "hash_source": "trace"
+      }
+    ]
+  },
+  {
+    "symbol": "gTextureMenuSpecialCup",
+    "png": "generated/texture_tkmk00/gTextureMenuSpecialCup.png",
+    "width": 65,
+    "height": 40,
+    "tile_width": 128,
+    "tile_height": 8,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 65,
+        "y1": 8,
+        "hash": "e4d13c37",
+        "logical_hash": "e4d13c37",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 8,
+        "x1": 65,
+        "y1": 16,
+        "hash": "8daaad56",
+        "logical_hash": "8daaad56",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 16,
+        "x1": 65,
+        "y1": 24,
+        "hash": "b61719e2",
+        "logical_hash": "b61719e2",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 24,
+        "x1": 65,
+        "y1": 32,
+        "hash": "a9fbf1be",
+        "logical_hash": "a9fbf1be",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 32,
+        "x1": 65,
+        "y1": 40,
+        "hash": "f1e31d4c",
+        "logical_hash": "e8af5c3d",
+        "hash_source": "trace"
+      }
+    ]
+  },
+  {
+    "symbol": "texture_game_select",
+    "png": "generated/texture_tkmk00/texture_game_select.png",
+    "width": 200,
+    "height": 32,
+    "tile_width": 256,
+    "tile_height": 4,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 200,
+        "y1": 4,
+        "hash": "6811f62e",
+        "logical_hash": "6811f62e",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 4,
+        "x1": 200,
+        "y1": 8,
+        "hash": "c37ef032",
+        "logical_hash": "c37ef032",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 8,
+        "x1": 200,
+        "y1": 12,
+        "hash": "e37a7399",
+        "logical_hash": "e37a7399",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 12,
+        "x1": 200,
+        "y1": 16,
+        "hash": "6c8f2420",
+        "logical_hash": "6c8f2420",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 16,
+        "x1": 200,
+        "y1": 20,
+        "hash": "1c3116ac",
+        "logical_hash": "1c3116ac",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 20,
+        "x1": 200,
+        "y1": 24,
+        "hash": "235c6f9d",
+        "logical_hash": "235c6f9d",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 24,
+        "x1": 200,
+        "y1": 28,
+        "hash": "a78e46ca",
+        "logical_hash": "a78e46ca",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 28,
+        "x1": 200,
+        "y1": 32,
+        "hash": "73414465",
+        "logical_hash": "e287cdab",
+        "hash_source": "trace"
+      }
+    ]
+  },
+  {
+    "symbol": "texture_menu_1p_game",
+    "png": "generated/texture_tkmk00/texture_menu_1p_game.png",
+    "width": 64,
+    "height": 54,
+    "tile_width": 64,
+    "tile_height": 16,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 64,
+        "y1": 16,
+        "hash": "4be38a92",
+        "logical_hash": "4be38a92",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 16,
+        "x1": 64,
+        "y1": 32,
+        "hash": "e9a46e31",
+        "logical_hash": "e9a46e31",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 32,
+        "x1": 64,
+        "y1": 48,
+        "hash": "3cbb36f7",
+        "logical_hash": "3cbb36f7",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 48,
+        "x1": 64,
+        "y1": 54,
+        "hash": "13db5a19",
+        "logical_hash": "da972701",
+        "hash_source": "trace"
+      }
+    ]
+  },
+  {
+    "symbol": "texture_menu_2p_game",
+    "png": "generated/texture_tkmk00/texture_menu_2p_game.png",
+    "width": 64,
+    "height": 54,
+    "tile_width": 64,
+    "tile_height": 16,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 64,
+        "y1": 16,
+        "hash": "79a296d5",
+        "logical_hash": "79a296d5",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 16,
+        "x1": 64,
+        "y1": 32,
+        "hash": "9d7e0073",
+        "logical_hash": "9d7e0073",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 32,
+        "x1": 64,
+        "y1": 48,
+        "hash": "a2c040a8",
+        "logical_hash": "a2c040a8",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 48,
+        "x1": 64,
+        "y1": 54,
+        "hash": "47216590",
+        "logical_hash": "e3750d84",
+        "hash_source": "trace"
+      }
+    ]
+  },
+  {
+    "symbol": "texture_menu_3p_game",
+    "png": "generated/texture_tkmk00/texture_menu_3p_game.png",
+    "width": 64,
+    "height": 54,
+    "tile_width": 64,
+    "tile_height": 16,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 64,
+        "y1": 16,
+        "hash": "9efeec0e",
+        "logical_hash": "9efeec0e",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 16,
+        "x1": 64,
+        "y1": 32,
+        "hash": "d6493e6f",
+        "logical_hash": "d6493e6f",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 32,
+        "x1": 64,
+        "y1": 48,
+        "hash": "cf813927",
+        "logical_hash": "cf813927",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 48,
+        "x1": 64,
+        "y1": 54,
+        "hash": "1f392a46",
+        "logical_hash": "b04828fe",
+        "hash_source": "trace"
+      }
+    ]
+  },
+  {
+    "symbol": "texture_menu_4p_game",
+    "png": "generated/texture_tkmk00/texture_menu_4p_game.png",
+    "width": 64,
+    "height": 54,
+    "tile_width": 64,
+    "tile_height": 16,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 64,
+        "y1": 16,
+        "hash": "4f3b6863",
+        "logical_hash": "4f3b6863",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 16,
+        "x1": 64,
+        "y1": 32,
+        "hash": "9884229f",
+        "logical_hash": "9884229f",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 32,
+        "x1": 64,
+        "y1": 48,
+        "hash": "5ee3e932",
+        "logical_hash": "5ee3e932",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 48,
+        "x1": 64,
+        "y1": 54,
+        "hash": "1606130b",
+        "logical_hash": "7b7c0e7b",
+        "hash_source": "trace"
+      }
+    ]
+  },
+  {
+    "symbol": "texture_mode_battle",
+    "png": "generated/texture_tkmk00/texture_mode_battle.png",
+    "width": 64,
+    "height": 18,
+    "tile_width": 64,
+    "tile_height": 16,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 64,
+        "y1": 16,
+        "hash": "042d231d",
+        "logical_hash": "042d231d",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 16,
+        "x1": 64,
+        "y1": 18,
+        "hash": "5f4f5d53",
+        "logical_hash": "d4d7cd76",
+        "hash_source": "trace"
+      }
+    ]
+  },
+  {
+    "symbol": "texture_mode_time_trials",
+    "png": "generated/texture_tkmk00/texture_mode_time_trials.png",
+    "width": 64,
+    "height": 18,
+    "tile_width": 64,
+    "tile_height": 16,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 64,
+        "y1": 16,
+        "hash": "8c39959e",
+        "logical_hash": "8c39959e",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 16,
+        "x1": 64,
+        "y1": 18,
+        "hash": "abd7af22",
+        "logical_hash": "f69e0d33",
+        "hash_source": "trace"
+      }
+    ]
+  },
+  {
+    "symbol": "texture_mode_mario_gp",
+    "png": "generated/texture_tkmk00/texture_mode_mario_gp.png",
+    "width": 64,
+    "height": 18,
+    "tile_width": 64,
+    "tile_height": 16,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 64,
+        "y1": 16,
+        "hash": "20b36a42",
+        "logical_hash": "20b36a42",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 16,
+        "x1": 64,
+        "y1": 18,
+        "hash": "07572e5b",
+        "logical_hash": "353d5f91",
+        "hash_source": "trace"
+      }
+    ]
+  },
+  {
+    "symbol": "texture_mode_vs",
+    "png": "generated/texture_tkmk00/texture_mode_vs.png",
+    "width": 64,
+    "height": 18,
+    "tile_width": 64,
+    "tile_height": 16,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 64,
+        "y1": 16,
+        "hash": "8e09eadd",
+        "logical_hash": "8e09eadd",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 16,
+        "x1": 64,
+        "y1": 18,
+        "hash": "66b8b444",
+        "logical_hash": "af1f1d36",
+        "hash_source": "trace"
+      }
+    ]
+  },
+  {
+    "symbol": "texture_l_option",
+    "png": "generated/texture_tkmk00/texture_l_option.png",
+    "width": 58,
+    "height": 19,
+    "tile_width": 64,
+    "tile_height": 16,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 30,
+        "y1": 19,
+        "hash": "8ee3bd32",
+        "logical_hash": "8ee3bd32",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 29,
+        "y0": 0,
+        "x1": 58,
+        "y1": 19,
+        "hash": "6e92dfd5",
+        "logical_hash": "6e92dfd5",
+        "hash_source": "trace"
+      }
+    ]
+  },
+  {
+    "symbol": "texture_r_data",
+    "png": "generated/texture_tkmk00/texture_r_data.png",
+    "width": 58,
+    "height": 19,
+    "tile_width": 64,
+    "tile_height": 16,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 30,
+        "y1": 19,
+        "hash": "77d53faf",
+        "logical_hash": "77d53faf",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 29,
+        "y0": 0,
+        "x1": 58,
+        "y1": 19,
+        "hash": "e0abc29d",
+        "logical_hash": "e0abc29d",
+        "hash_source": "trace"
+      }
+    ]
+  },
+  {
+    "symbol": "texture_50cc",
+    "png": "generated/texture_tkmk00/texture_50cc.png",
+    "width": 64,
+    "height": 18,
+    "tile_width": 64,
+    "tile_height": 16,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 64,
+        "y1": 16,
+        "hash": "574cc1af",
+        "logical_hash": "574cc1af",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 16,
+        "x1": 64,
+        "y1": 18,
+        "hash": "c82faebf",
+        "logical_hash": "33d9ebf5",
+        "hash_source": "trace"
+      }
+    ]
+  },
+  {
+    "symbol": "texture_100cc",
+    "png": "generated/texture_tkmk00/texture_100cc.png",
+    "width": 64,
+    "height": 18,
+    "tile_width": 64,
+    "tile_height": 16,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 64,
+        "y1": 16,
+        "hash": "e88ff219",
+        "logical_hash": "e88ff219",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 16,
+        "x1": 64,
+        "y1": 18,
+        "hash": "efbea08e",
+        "logical_hash": "33d9ebf5",
+        "hash_source": "trace"
+      }
+    ]
+  },
+  {
+    "symbol": "texture_150cc",
+    "png": "generated/texture_tkmk00/texture_150cc.png",
+    "width": 64,
+    "height": 18,
+    "tile_width": 64,
+    "tile_height": 16,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 64,
+        "y1": 16,
+        "hash": "b9fbf7e3",
+        "logical_hash": "b9fbf7e3",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 16,
+        "x1": 64,
+        "y1": 18,
+        "hash": "39ebee9f",
+        "logical_hash": "33d9ebf5",
+        "hash_source": "trace"
+      }
+    ]
+  },
+  {
+    "symbol": "texture_extra",
+    "png": "generated/texture_tkmk00/texture_extra.png",
+    "width": 64,
+    "height": 18,
+    "tile_width": 64,
+    "tile_height": 16,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 64,
+        "y1": 16,
+        "hash": "c4bbab0a",
+        "logical_hash": "c4bbab0a",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 16,
+        "x1": 64,
+        "y1": 18,
+        "hash": "33d9ebf5",
+        "logical_hash": "33d9ebf5",
+        "hash_source": "computed"
+      }
+    ]
+  },
+  {
+    "symbol": "gTextureMenuWithoutItem",
+    "png": "generated/texture_tkmk00/gTextureMenuWithoutItem.png",
+    "width": 64,
+    "height": 18,
+    "tile_width": 64,
+    "tile_height": 16,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 64,
+        "y1": 16,
+        "hash": "1fbd01e6",
+        "logical_hash": "1fbd01e6",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 16,
+        "x1": 64,
+        "y1": 18,
+        "hash": "d9e0df35",
+        "logical_hash": "d9e0df35",
+        "hash_source": "computed"
+      }
+    ]
+  },
+  {
+    "symbol": "gTextureMenuWithItem",
+    "png": "generated/texture_tkmk00/gTextureMenuWithItem.png",
+    "width": 64,
+    "height": 18,
+    "tile_width": 64,
+    "tile_height": 16,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 64,
+        "y1": 16,
+        "hash": "8f5b25f9",
+        "logical_hash": "8f5b25f9",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 16,
+        "x1": 64,
+        "y1": 18,
+        "hash": "f33e6fcd",
+        "logical_hash": "f33e6fcd",
+        "hash_source": "computed"
+      }
+    ]
+  },
+  {
+    "symbol": "texture_begin",
+    "png": "generated/texture_tkmk00/texture_begin.png",
+    "width": 64,
+    "height": 18,
+    "tile_width": 64,
+    "tile_height": 16,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 64,
+        "y1": 16,
+        "hash": "2041e2ab",
+        "logical_hash": "2041e2ab",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 16,
+        "x1": 64,
+        "y1": 18,
+        "hash": "33d9ebf5",
+        "logical_hash": "33d9ebf5",
+        "hash_source": "computed"
+      }
+    ]
+  },
+  {
+    "symbol": "texture_menu_ghost",
+    "png": "generated/texture_tkmk00/texture_menu_ghost.png",
+    "width": 64,
+    "height": 18,
+    "tile_width": 64,
+    "tile_height": 16,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 64,
+        "y1": 16,
+        "hash": "f4ff2ad7",
+        "logical_hash": "f4ff2ad7",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 16,
+        "x1": 64,
+        "y1": 18,
+        "hash": "33d9ebf5",
+        "logical_hash": "33d9ebf5",
+        "hash_source": "computed"
+      }
+    ]
+  },
+  {
+    "symbol": "texture_data",
+    "png": "generated/texture_tkmk00/texture_data.png",
+    "width": 64,
+    "height": 18,
+    "tile_width": 64,
+    "tile_height": 16,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 64,
+        "y1": 16,
+        "hash": "8da9b8e3",
+        "logical_hash": "8da9b8e3",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 16,
+        "x1": 64,
+        "y1": 18,
+        "hash": "33d9ebf5",
+        "logical_hash": "33d9ebf5",
+        "hash_source": "computed"
+      }
+    ]
+  },
+  {
+    "symbol": "texture_ok",
+    "png": "generated/texture_tkmk00/texture_ok.png",
+    "width": 31,
+    "height": 19,
+    "tile_width": 32,
+    "tile_height": 32,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 31,
+        "y1": 19,
+        "hash": "dff91b13",
+        "logical_hash": "dff91b13",
+        "hash_source": "computed"
+      }
+    ]
+  },
+  {
+    "symbol": "background_blue_sky",
+    "png": "generated/texture_tkmk00/background_blue_sky.png",
+    "width": 320,
+    "height": 240,
+    "tile_width": 512,
+    "tile_height": 2,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 320,
+        "y1": 2,
+        "hash": "6329c941",
+        "logical_hash": "6329c941",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 2,
+        "x1": 320,
+        "y1": 4,
+        "hash": "5e3c6b65",
+        "logical_hash": "5e3c6b65",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 4,
+        "x1": 320,
+        "y1": 6,
+        "hash": "064f5ed2",
+        "logical_hash": "064f5ed2",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 6,
+        "x1": 320,
+        "y1": 8,
+        "hash": "e68845b5",
+        "logical_hash": "e68845b5",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 8,
+        "x1": 320,
+        "y1": 10,
+        "hash": "53eef6fc",
+        "logical_hash": "53eef6fc",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 10,
+        "x1": 320,
+        "y1": 12,
+        "hash": "98797053",
+        "logical_hash": "98797053",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 12,
+        "x1": 320,
+        "y1": 14,
+        "hash": "35fbc76b",
+        "logical_hash": "35fbc76b",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 14,
+        "x1": 320,
+        "y1": 16,
+        "hash": "1a3c1e1b",
+        "logical_hash": "1a3c1e1b",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 16,
+        "x1": 320,
+        "y1": 18,
+        "hash": "59fc6a69",
+        "logical_hash": "59fc6a69",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 18,
+        "x1": 320,
+        "y1": 20,
+        "hash": "829c8e11",
+        "logical_hash": "829c8e11",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 20,
+        "x1": 320,
+        "y1": 22,
+        "hash": "e3be0c45",
+        "logical_hash": "e3be0c45",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 22,
+        "x1": 320,
+        "y1": 24,
+        "hash": "58f1a592",
+        "logical_hash": "58f1a592",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 24,
+        "x1": 320,
+        "y1": 26,
+        "hash": "6a1a2c93",
+        "logical_hash": "6a1a2c93",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 26,
+        "x1": 320,
+        "y1": 28,
+        "hash": "2e7915b8",
+        "logical_hash": "2e7915b8",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 28,
+        "x1": 320,
+        "y1": 30,
+        "hash": "879a67e7",
+        "logical_hash": "879a67e7",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 30,
+        "x1": 320,
+        "y1": 32,
+        "hash": "6d90c60c",
+        "logical_hash": "6d90c60c",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 32,
+        "x1": 320,
+        "y1": 34,
+        "hash": "7d35c905",
+        "logical_hash": "7d35c905",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 34,
+        "x1": 320,
+        "y1": 36,
+        "hash": "6875a9b3",
+        "logical_hash": "6875a9b3",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 36,
+        "x1": 320,
+        "y1": 38,
+        "hash": "3f4170d8",
+        "logical_hash": "3f4170d8",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 38,
+        "x1": 320,
+        "y1": 40,
+        "hash": "b9aad019",
+        "logical_hash": "b9aad019",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 40,
+        "x1": 320,
+        "y1": 42,
+        "hash": "dd5d197e",
+        "logical_hash": "dd5d197e",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 42,
+        "x1": 320,
+        "y1": 44,
+        "hash": "34c19b69",
+        "logical_hash": "34c19b69",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 44,
+        "x1": 320,
+        "y1": 46,
+        "hash": "55fc2f1d",
+        "logical_hash": "55fc2f1d",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 46,
+        "x1": 320,
+        "y1": 48,
+        "hash": "c90c7f2b",
+        "logical_hash": "c90c7f2b",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 48,
+        "x1": 320,
+        "y1": 50,
+        "hash": "a50abf9a",
+        "logical_hash": "a50abf9a",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 50,
+        "x1": 320,
+        "y1": 52,
+        "hash": "dfd5911d",
+        "logical_hash": "dfd5911d",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 52,
+        "x1": 320,
+        "y1": 54,
+        "hash": "643d0901",
+        "logical_hash": "643d0901",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 54,
+        "x1": 320,
+        "y1": 56,
+        "hash": "0b2c7ae0",
+        "logical_hash": "0b2c7ae0",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 56,
+        "x1": 320,
+        "y1": 58,
+        "hash": "e4a11ac1",
+        "logical_hash": "e4a11ac1",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 58,
+        "x1": 320,
+        "y1": 60,
+        "hash": "5df86eaa",
+        "logical_hash": "5df86eaa",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 60,
+        "x1": 320,
+        "y1": 62,
+        "hash": "b169817e",
+        "logical_hash": "b169817e",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 62,
+        "x1": 320,
+        "y1": 64,
+        "hash": "32aa86da",
+        "logical_hash": "32aa86da",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 64,
+        "x1": 320,
+        "y1": 66,
+        "hash": "4cf487d3",
+        "logical_hash": "4cf487d3",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 66,
+        "x1": 320,
+        "y1": 68,
+        "hash": "5a32ee70",
+        "logical_hash": "5a32ee70",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 68,
+        "x1": 320,
+        "y1": 70,
+        "hash": "6abe6200",
+        "logical_hash": "6abe6200",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 70,
+        "x1": 320,
+        "y1": 72,
+        "hash": "59397098",
+        "logical_hash": "59397098",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 72,
+        "x1": 320,
+        "y1": 74,
+        "hash": "cbe60d48",
+        "logical_hash": "cbe60d48",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 74,
+        "x1": 320,
+        "y1": 76,
+        "hash": "cd5f1ec5",
+        "logical_hash": "cd5f1ec5",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 76,
+        "x1": 320,
+        "y1": 78,
+        "hash": "bec075ca",
+        "logical_hash": "bec075ca",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 78,
+        "x1": 320,
+        "y1": 80,
+        "hash": "7875c94a",
+        "logical_hash": "7875c94a",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 80,
+        "x1": 320,
+        "y1": 82,
+        "hash": "798db5d4",
+        "logical_hash": "798db5d4",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 82,
+        "x1": 320,
+        "y1": 84,
+        "hash": "f64c5253",
+        "logical_hash": "f64c5253",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 84,
+        "x1": 320,
+        "y1": 86,
+        "hash": "e35250cc",
+        "logical_hash": "e35250cc",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 86,
+        "x1": 320,
+        "y1": 88,
+        "hash": "26fb2fa9",
+        "logical_hash": "26fb2fa9",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 88,
+        "x1": 320,
+        "y1": 90,
+        "hash": "960701f6",
+        "logical_hash": "960701f6",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 90,
+        "x1": 320,
+        "y1": 92,
+        "hash": "898aaa54",
+        "logical_hash": "898aaa54",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 92,
+        "x1": 320,
+        "y1": 94,
+        "hash": "982db928",
+        "logical_hash": "982db928",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 94,
+        "x1": 320,
+        "y1": 96,
+        "hash": "9e66efb1",
+        "logical_hash": "9e66efb1",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 96,
+        "x1": 320,
+        "y1": 98,
+        "hash": "bf8cf172",
+        "logical_hash": "bf8cf172",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 98,
+        "x1": 320,
+        "y1": 100,
+        "hash": "14ada41d",
+        "logical_hash": "14ada41d",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 100,
+        "x1": 320,
+        "y1": 102,
+        "hash": "56538e65",
+        "logical_hash": "56538e65",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 102,
+        "x1": 320,
+        "y1": 104,
+        "hash": "057594c8",
+        "logical_hash": "057594c8",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 104,
+        "x1": 320,
+        "y1": 106,
+        "hash": "7f4b72f4",
+        "logical_hash": "7f4b72f4",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 106,
+        "x1": 320,
+        "y1": 108,
+        "hash": "e1892b2b",
+        "logical_hash": "e1892b2b",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 108,
+        "x1": 320,
+        "y1": 110,
+        "hash": "77cf2a66",
+        "logical_hash": "77cf2a66",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 110,
+        "x1": 320,
+        "y1": 112,
+        "hash": "910b2a0c",
+        "logical_hash": "910b2a0c",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 112,
+        "x1": 320,
+        "y1": 114,
+        "hash": "679abfb1",
+        "logical_hash": "679abfb1",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 114,
+        "x1": 320,
+        "y1": 116,
+        "hash": "18776c55",
+        "logical_hash": "18776c55",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 116,
+        "x1": 320,
+        "y1": 118,
+        "hash": "8bbe7e46",
+        "logical_hash": "8bbe7e46",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 118,
+        "x1": 320,
+        "y1": 120,
+        "hash": "ae1488b1",
+        "logical_hash": "ae1488b1",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 120,
+        "x1": 320,
+        "y1": 122,
+        "hash": "fe6091a6",
+        "logical_hash": "fe6091a6",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 122,
+        "x1": 320,
+        "y1": 124,
+        "hash": "c44e81e0",
+        "logical_hash": "c44e81e0",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 124,
+        "x1": 320,
+        "y1": 126,
+        "hash": "3a9c98ee",
+        "logical_hash": "3a9c98ee",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 126,
+        "x1": 320,
+        "y1": 128,
+        "hash": "ccfb3c6b",
+        "logical_hash": "ccfb3c6b",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 128,
+        "x1": 320,
+        "y1": 130,
+        "hash": "10c86b94",
+        "logical_hash": "10c86b94",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 130,
+        "x1": 320,
+        "y1": 132,
+        "hash": "99aecfda",
+        "logical_hash": "99aecfda",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 132,
+        "x1": 320,
+        "y1": 134,
+        "hash": "ec9711ad",
+        "logical_hash": "ec9711ad",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 134,
+        "x1": 320,
+        "y1": 136,
+        "hash": "d377e06c",
+        "logical_hash": "d377e06c",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 136,
+        "x1": 320,
+        "y1": 138,
+        "hash": "c3882e29",
+        "logical_hash": "c3882e29",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 138,
+        "x1": 320,
+        "y1": 140,
+        "hash": "fdf43067",
+        "logical_hash": "fdf43067",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 140,
+        "x1": 320,
+        "y1": 142,
+        "hash": "495b7205",
+        "logical_hash": "495b7205",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 142,
+        "x1": 320,
+        "y1": 144,
+        "hash": "da78d7c6",
+        "logical_hash": "da78d7c6",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 144,
+        "x1": 320,
+        "y1": 146,
+        "hash": "d734691d",
+        "logical_hash": "d734691d",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 146,
+        "x1": 320,
+        "y1": 148,
+        "hash": "45635c3b",
+        "logical_hash": "45635c3b",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 148,
+        "x1": 320,
+        "y1": 150,
+        "hash": "f2790b5d",
+        "logical_hash": "f2790b5d",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 150,
+        "x1": 320,
+        "y1": 152,
+        "hash": "dcd83de8",
+        "logical_hash": "dcd83de8",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 152,
+        "x1": 320,
+        "y1": 154,
+        "hash": "9730687b",
+        "logical_hash": "9730687b",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 154,
+        "x1": 320,
+        "y1": 156,
+        "hash": "71d209be",
+        "logical_hash": "71d209be",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 156,
+        "x1": 320,
+        "y1": 158,
+        "hash": "b2c42ebb",
+        "logical_hash": "b2c42ebb",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 158,
+        "x1": 320,
+        "y1": 160,
+        "hash": "c148807e",
+        "logical_hash": "c148807e",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 160,
+        "x1": 320,
+        "y1": 162,
+        "hash": "93c3627c",
+        "logical_hash": "93c3627c",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 162,
+        "x1": 320,
+        "y1": 164,
+        "hash": "02172ccb",
+        "logical_hash": "02172ccb",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 164,
+        "x1": 320,
+        "y1": 166,
+        "hash": "9996e92f",
+        "logical_hash": "9996e92f",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 166,
+        "x1": 320,
+        "y1": 168,
+        "hash": "693a8cee",
+        "logical_hash": "693a8cee",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 168,
+        "x1": 320,
+        "y1": 170,
+        "hash": "208bb413",
+        "logical_hash": "208bb413",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 170,
+        "x1": 320,
+        "y1": 172,
+        "hash": "01667747",
+        "logical_hash": "01667747",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 172,
+        "x1": 320,
+        "y1": 174,
+        "hash": "eff2740a",
+        "logical_hash": "eff2740a",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 174,
+        "x1": 320,
+        "y1": 176,
+        "hash": "f2ff3012",
+        "logical_hash": "f2ff3012",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 176,
+        "x1": 320,
+        "y1": 178,
+        "hash": "4c37ffdf",
+        "logical_hash": "4c37ffdf",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 178,
+        "x1": 320,
+        "y1": 180,
+        "hash": "a3189685",
+        "logical_hash": "a3189685",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 180,
+        "x1": 320,
+        "y1": 182,
+        "hash": "8dfafde3",
+        "logical_hash": "8dfafde3",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 182,
+        "x1": 320,
+        "y1": 184,
+        "hash": "a9290315",
+        "logical_hash": "a9290315",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 184,
+        "x1": 320,
+        "y1": 186,
+        "hash": "9c85fc8c",
+        "logical_hash": "9c85fc8c",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 186,
+        "x1": 320,
+        "y1": 188,
+        "hash": "c1a936c5",
+        "logical_hash": "c1a936c5",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 188,
+        "x1": 320,
+        "y1": 190,
+        "hash": "da3ed2c0",
+        "logical_hash": "da3ed2c0",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 190,
+        "x1": 320,
+        "y1": 192,
+        "hash": "f713aeff",
+        "logical_hash": "f713aeff",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 192,
+        "x1": 320,
+        "y1": 194,
+        "hash": "4e6b3fd3",
+        "logical_hash": "4e6b3fd3",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 194,
+        "x1": 320,
+        "y1": 196,
+        "hash": "8c4d2967",
+        "logical_hash": "8c4d2967",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 196,
+        "x1": 320,
+        "y1": 198,
+        "hash": "89e64518",
+        "logical_hash": "89e64518",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 198,
+        "x1": 320,
+        "y1": 200,
+        "hash": "a1ecd7ff",
+        "logical_hash": "a1ecd7ff",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 200,
+        "x1": 320,
+        "y1": 202,
+        "hash": "ae292f8b",
+        "logical_hash": "ae292f8b",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 202,
+        "x1": 320,
+        "y1": 204,
+        "hash": "b974dd4c",
+        "logical_hash": "b974dd4c",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 204,
+        "x1": 320,
+        "y1": 206,
+        "hash": "b3c8e9da",
+        "logical_hash": "b3c8e9da",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 206,
+        "x1": 320,
+        "y1": 208,
+        "hash": "7403fa2c",
+        "logical_hash": "7403fa2c",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 208,
+        "x1": 320,
+        "y1": 210,
+        "hash": "9030f96c",
+        "logical_hash": "9030f96c",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 210,
+        "x1": 320,
+        "y1": 212,
+        "hash": "b230030b",
+        "logical_hash": "b230030b",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 212,
+        "x1": 320,
+        "y1": 214,
+        "hash": "d99f0e63",
+        "logical_hash": "d99f0e63",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 214,
+        "x1": 320,
+        "y1": 216,
+        "hash": "9010bf93",
+        "logical_hash": "9010bf93",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 216,
+        "x1": 320,
+        "y1": 218,
+        "hash": "2b08619c",
+        "logical_hash": "2b08619c",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 218,
+        "x1": 320,
+        "y1": 220,
+        "hash": "e4e3b033",
+        "logical_hash": "e4e3b033",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 220,
+        "x1": 320,
+        "y1": 222,
+        "hash": "04f36e3b",
+        "logical_hash": "04f36e3b",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 222,
+        "x1": 320,
+        "y1": 224,
+        "hash": "5f07abd6",
+        "logical_hash": "5f07abd6",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 224,
+        "x1": 320,
+        "y1": 226,
+        "hash": "f41675f2",
+        "logical_hash": "f41675f2",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 226,
+        "x1": 320,
+        "y1": 228,
+        "hash": "8ae42c8d",
+        "logical_hash": "8ae42c8d",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 228,
+        "x1": 320,
+        "y1": 230,
+        "hash": "4ac93d35",
+        "logical_hash": "4ac93d35",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 230,
+        "x1": 320,
+        "y1": 232,
+        "hash": "a677a5f0",
+        "logical_hash": "a677a5f0",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 232,
+        "x1": 320,
+        "y1": 234,
+        "hash": "7dfd3b71",
+        "logical_hash": "7dfd3b71",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 234,
+        "x1": 320,
+        "y1": 236,
+        "hash": "5fc6ade2",
+        "logical_hash": "5fc6ade2",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 236,
+        "x1": 320,
+        "y1": 238,
+        "hash": "94dabb09",
+        "logical_hash": "94dabb09",
+        "hash_source": "trace"
+      },
+      {
+        "x0": 0,
+        "y0": 238,
+        "x1": 320,
+        "y1": 240,
+        "hash": "81bbf564",
+        "logical_hash": "b139c024",
+        "hash_source": "trace"
+      }
+    ]
+  },
+  {
+    "symbol": "background_sunset",
+    "png": "generated/texture_tkmk00/background_sunset.png",
+    "width": 320,
+    "height": 240,
+    "tile_width": 512,
+    "tile_height": 2,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 320,
+        "y1": 2,
+        "hash": "9ed72ffe",
+        "logical_hash": "9ed72ffe",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 2,
+        "x1": 320,
+        "y1": 4,
+        "hash": "9a43025e",
+        "logical_hash": "9a43025e",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 4,
+        "x1": 320,
+        "y1": 6,
+        "hash": "dbabe772",
+        "logical_hash": "dbabe772",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 6,
+        "x1": 320,
+        "y1": 8,
+        "hash": "e8959d96",
+        "logical_hash": "e8959d96",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 8,
+        "x1": 320,
+        "y1": 10,
+        "hash": "2c0c48e7",
+        "logical_hash": "2c0c48e7",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 10,
+        "x1": 320,
+        "y1": 12,
+        "hash": "a0682d22",
+        "logical_hash": "a0682d22",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 12,
+        "x1": 320,
+        "y1": 14,
+        "hash": "df09637d",
+        "logical_hash": "df09637d",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 14,
+        "x1": 320,
+        "y1": 16,
+        "hash": "4301c617",
+        "logical_hash": "4301c617",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 16,
+        "x1": 320,
+        "y1": 18,
+        "hash": "512f06a9",
+        "logical_hash": "512f06a9",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 18,
+        "x1": 320,
+        "y1": 20,
+        "hash": "3b152239",
+        "logical_hash": "3b152239",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 20,
+        "x1": 320,
+        "y1": 22,
+        "hash": "3cf85c99",
+        "logical_hash": "3cf85c99",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 22,
+        "x1": 320,
+        "y1": 24,
+        "hash": "b5d1d1a2",
+        "logical_hash": "b5d1d1a2",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 24,
+        "x1": 320,
+        "y1": 26,
+        "hash": "47367db0",
+        "logical_hash": "47367db0",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 26,
+        "x1": 320,
+        "y1": 28,
+        "hash": "a4a9a722",
+        "logical_hash": "a4a9a722",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 28,
+        "x1": 320,
+        "y1": 30,
+        "hash": "930c290d",
+        "logical_hash": "930c290d",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 30,
+        "x1": 320,
+        "y1": 32,
+        "hash": "e8e90bd4",
+        "logical_hash": "e8e90bd4",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 32,
+        "x1": 320,
+        "y1": 34,
+        "hash": "7feafe46",
+        "logical_hash": "7feafe46",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 34,
+        "x1": 320,
+        "y1": 36,
+        "hash": "a07d20ef",
+        "logical_hash": "a07d20ef",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 36,
+        "x1": 320,
+        "y1": 38,
+        "hash": "89694cb1",
+        "logical_hash": "89694cb1",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 38,
+        "x1": 320,
+        "y1": 40,
+        "hash": "1c27e72c",
+        "logical_hash": "1c27e72c",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 40,
+        "x1": 320,
+        "y1": 42,
+        "hash": "bac2a3c7",
+        "logical_hash": "bac2a3c7",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 42,
+        "x1": 320,
+        "y1": 44,
+        "hash": "0df2d5cc",
+        "logical_hash": "0df2d5cc",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 44,
+        "x1": 320,
+        "y1": 46,
+        "hash": "90dccf40",
+        "logical_hash": "90dccf40",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 46,
+        "x1": 320,
+        "y1": 48,
+        "hash": "e1728ddd",
+        "logical_hash": "e1728ddd",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 48,
+        "x1": 320,
+        "y1": 50,
+        "hash": "a9066782",
+        "logical_hash": "a9066782",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 50,
+        "x1": 320,
+        "y1": 52,
+        "hash": "24232eff",
+        "logical_hash": "24232eff",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 52,
+        "x1": 320,
+        "y1": 54,
+        "hash": "327de9a7",
+        "logical_hash": "327de9a7",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 54,
+        "x1": 320,
+        "y1": 56,
+        "hash": "58126a5b",
+        "logical_hash": "58126a5b",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 56,
+        "x1": 320,
+        "y1": 58,
+        "hash": "90f44598",
+        "logical_hash": "90f44598",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 58,
+        "x1": 320,
+        "y1": 60,
+        "hash": "3e5d289e",
+        "logical_hash": "3e5d289e",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 60,
+        "x1": 320,
+        "y1": 62,
+        "hash": "70daf064",
+        "logical_hash": "70daf064",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 62,
+        "x1": 320,
+        "y1": 64,
+        "hash": "ce63fcfc",
+        "logical_hash": "ce63fcfc",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 64,
+        "x1": 320,
+        "y1": 66,
+        "hash": "af62907d",
+        "logical_hash": "af62907d",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 66,
+        "x1": 320,
+        "y1": 68,
+        "hash": "9dbb0557",
+        "logical_hash": "9dbb0557",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 68,
+        "x1": 320,
+        "y1": 70,
+        "hash": "58b116ac",
+        "logical_hash": "58b116ac",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 70,
+        "x1": 320,
+        "y1": 72,
+        "hash": "3eb36b10",
+        "logical_hash": "3eb36b10",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 72,
+        "x1": 320,
+        "y1": 74,
+        "hash": "02d57578",
+        "logical_hash": "02d57578",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 74,
+        "x1": 320,
+        "y1": 76,
+        "hash": "02583778",
+        "logical_hash": "02583778",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 76,
+        "x1": 320,
+        "y1": 78,
+        "hash": "b24bb5e6",
+        "logical_hash": "b24bb5e6",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 78,
+        "x1": 320,
+        "y1": 80,
+        "hash": "ca3f5b0c",
+        "logical_hash": "ca3f5b0c",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 80,
+        "x1": 320,
+        "y1": 82,
+        "hash": "6dfd585b",
+        "logical_hash": "6dfd585b",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 82,
+        "x1": 320,
+        "y1": 84,
+        "hash": "ea765283",
+        "logical_hash": "ea765283",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 84,
+        "x1": 320,
+        "y1": 86,
+        "hash": "ffe1f02e",
+        "logical_hash": "ffe1f02e",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 86,
+        "x1": 320,
+        "y1": 88,
+        "hash": "441e0934",
+        "logical_hash": "441e0934",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 88,
+        "x1": 320,
+        "y1": 90,
+        "hash": "e03c55c2",
+        "logical_hash": "e03c55c2",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 90,
+        "x1": 320,
+        "y1": 92,
+        "hash": "da0187f3",
+        "logical_hash": "da0187f3",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 92,
+        "x1": 320,
+        "y1": 94,
+        "hash": "3742c561",
+        "logical_hash": "3742c561",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 94,
+        "x1": 320,
+        "y1": 96,
+        "hash": "abc1a154",
+        "logical_hash": "abc1a154",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 96,
+        "x1": 320,
+        "y1": 98,
+        "hash": "bc8b29c1",
+        "logical_hash": "bc8b29c1",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 98,
+        "x1": 320,
+        "y1": 100,
+        "hash": "7b4fb43b",
+        "logical_hash": "7b4fb43b",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 100,
+        "x1": 320,
+        "y1": 102,
+        "hash": "2b94f267",
+        "logical_hash": "2b94f267",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 102,
+        "x1": 320,
+        "y1": 104,
+        "hash": "ebe6087d",
+        "logical_hash": "ebe6087d",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 104,
+        "x1": 320,
+        "y1": 106,
+        "hash": "b9ea19ec",
+        "logical_hash": "b9ea19ec",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 106,
+        "x1": 320,
+        "y1": 108,
+        "hash": "0ba1ffbc",
+        "logical_hash": "0ba1ffbc",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 108,
+        "x1": 320,
+        "y1": 110,
+        "hash": "1c89a132",
+        "logical_hash": "1c89a132",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 110,
+        "x1": 320,
+        "y1": 112,
+        "hash": "1d9f27f1",
+        "logical_hash": "1d9f27f1",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 112,
+        "x1": 320,
+        "y1": 114,
+        "hash": "2c1f7e20",
+        "logical_hash": "2c1f7e20",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 114,
+        "x1": 320,
+        "y1": 116,
+        "hash": "abf1edee",
+        "logical_hash": "abf1edee",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 116,
+        "x1": 320,
+        "y1": 118,
+        "hash": "da4d14ad",
+        "logical_hash": "da4d14ad",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 118,
+        "x1": 320,
+        "y1": 120,
+        "hash": "2b8d20cb",
+        "logical_hash": "2b8d20cb",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 120,
+        "x1": 320,
+        "y1": 122,
+        "hash": "cb6097d8",
+        "logical_hash": "cb6097d8",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 122,
+        "x1": 320,
+        "y1": 124,
+        "hash": "22249de9",
+        "logical_hash": "22249de9",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 124,
+        "x1": 320,
+        "y1": 126,
+        "hash": "31c7e9a3",
+        "logical_hash": "31c7e9a3",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 126,
+        "x1": 320,
+        "y1": 128,
+        "hash": "efc5e2f3",
+        "logical_hash": "efc5e2f3",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 128,
+        "x1": 320,
+        "y1": 130,
+        "hash": "16743f90",
+        "logical_hash": "16743f90",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 130,
+        "x1": 320,
+        "y1": 132,
+        "hash": "31c5c769",
+        "logical_hash": "31c5c769",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 132,
+        "x1": 320,
+        "y1": 134,
+        "hash": "77054cd1",
+        "logical_hash": "77054cd1",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 134,
+        "x1": 320,
+        "y1": 136,
+        "hash": "7534f295",
+        "logical_hash": "7534f295",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 136,
+        "x1": 320,
+        "y1": 138,
+        "hash": "ad39070e",
+        "logical_hash": "ad39070e",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 138,
+        "x1": 320,
+        "y1": 140,
+        "hash": "4cba8ccf",
+        "logical_hash": "4cba8ccf",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 140,
+        "x1": 320,
+        "y1": 142,
+        "hash": "60176bac",
+        "logical_hash": "60176bac",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 142,
+        "x1": 320,
+        "y1": 144,
+        "hash": "08e951e1",
+        "logical_hash": "08e951e1",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 144,
+        "x1": 320,
+        "y1": 146,
+        "hash": "278c8ddd",
+        "logical_hash": "278c8ddd",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 146,
+        "x1": 320,
+        "y1": 148,
+        "hash": "f36d3373",
+        "logical_hash": "f36d3373",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 148,
+        "x1": 320,
+        "y1": 150,
+        "hash": "a8f5f5e3",
+        "logical_hash": "a8f5f5e3",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 150,
+        "x1": 320,
+        "y1": 152,
+        "hash": "13605cac",
+        "logical_hash": "13605cac",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 152,
+        "x1": 320,
+        "y1": 154,
+        "hash": "3f46266c",
+        "logical_hash": "3f46266c",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 154,
+        "x1": 320,
+        "y1": 156,
+        "hash": "03ba405b",
+        "logical_hash": "03ba405b",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 156,
+        "x1": 320,
+        "y1": 158,
+        "hash": "d9b1aa9e",
+        "logical_hash": "d9b1aa9e",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 158,
+        "x1": 320,
+        "y1": 160,
+        "hash": "b327bfe9",
+        "logical_hash": "b327bfe9",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 160,
+        "x1": 320,
+        "y1": 162,
+        "hash": "23671d23",
+        "logical_hash": "23671d23",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 162,
+        "x1": 320,
+        "y1": 164,
+        "hash": "bf25f2a5",
+        "logical_hash": "bf25f2a5",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 164,
+        "x1": 320,
+        "y1": 166,
+        "hash": "545b458b",
+        "logical_hash": "545b458b",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 166,
+        "x1": 320,
+        "y1": 168,
+        "hash": "fd927e25",
+        "logical_hash": "fd927e25",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 168,
+        "x1": 320,
+        "y1": 170,
+        "hash": "fc551f13",
+        "logical_hash": "fc551f13",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 170,
+        "x1": 320,
+        "y1": 172,
+        "hash": "fc8cc571",
+        "logical_hash": "fc8cc571",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 172,
+        "x1": 320,
+        "y1": 174,
+        "hash": "a7f600fd",
+        "logical_hash": "a7f600fd",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 174,
+        "x1": 320,
+        "y1": 176,
+        "hash": "0f195a5f",
+        "logical_hash": "0f195a5f",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 176,
+        "x1": 320,
+        "y1": 178,
+        "hash": "84dc3cc7",
+        "logical_hash": "84dc3cc7",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 178,
+        "x1": 320,
+        "y1": 180,
+        "hash": "8c1e2109",
+        "logical_hash": "8c1e2109",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 180,
+        "x1": 320,
+        "y1": 182,
+        "hash": "bac58387",
+        "logical_hash": "bac58387",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 182,
+        "x1": 320,
+        "y1": 184,
+        "hash": "cb46ae7c",
+        "logical_hash": "cb46ae7c",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 184,
+        "x1": 320,
+        "y1": 186,
+        "hash": "5a8bb70f",
+        "logical_hash": "5a8bb70f",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 186,
+        "x1": 320,
+        "y1": 188,
+        "hash": "a75e7674",
+        "logical_hash": "a75e7674",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 188,
+        "x1": 320,
+        "y1": 190,
+        "hash": "31e3572d",
+        "logical_hash": "31e3572d",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 190,
+        "x1": 320,
+        "y1": 192,
+        "hash": "6308f0ca",
+        "logical_hash": "6308f0ca",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 192,
+        "x1": 320,
+        "y1": 194,
+        "hash": "f2822f7d",
+        "logical_hash": "f2822f7d",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 194,
+        "x1": 320,
+        "y1": 196,
+        "hash": "bcd82126",
+        "logical_hash": "bcd82126",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 196,
+        "x1": 320,
+        "y1": 198,
+        "hash": "11c52deb",
+        "logical_hash": "11c52deb",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 198,
+        "x1": 320,
+        "y1": 200,
+        "hash": "29484452",
+        "logical_hash": "29484452",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 200,
+        "x1": 320,
+        "y1": 202,
+        "hash": "2a32f440",
+        "logical_hash": "2a32f440",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 202,
+        "x1": 320,
+        "y1": 204,
+        "hash": "686652fa",
+        "logical_hash": "686652fa",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 204,
+        "x1": 320,
+        "y1": 206,
+        "hash": "21d430fd",
+        "logical_hash": "21d430fd",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 206,
+        "x1": 320,
+        "y1": 208,
+        "hash": "735fa6bc",
+        "logical_hash": "735fa6bc",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 208,
+        "x1": 320,
+        "y1": 210,
+        "hash": "9e6f86b6",
+        "logical_hash": "9e6f86b6",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 210,
+        "x1": 320,
+        "y1": 212,
+        "hash": "53f086fb",
+        "logical_hash": "53f086fb",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 212,
+        "x1": 320,
+        "y1": 214,
+        "hash": "2b0ca647",
+        "logical_hash": "2b0ca647",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 214,
+        "x1": 320,
+        "y1": 216,
+        "hash": "f9b5fe3f",
+        "logical_hash": "f9b5fe3f",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 216,
+        "x1": 320,
+        "y1": 218,
+        "hash": "7e53a69f",
+        "logical_hash": "7e53a69f",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 218,
+        "x1": 320,
+        "y1": 220,
+        "hash": "d2ab9341",
+        "logical_hash": "d2ab9341",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 220,
+        "x1": 320,
+        "y1": 222,
+        "hash": "e1204380",
+        "logical_hash": "e1204380",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 222,
+        "x1": 320,
+        "y1": 224,
+        "hash": "edc314d4",
+        "logical_hash": "edc314d4",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 224,
+        "x1": 320,
+        "y1": 226,
+        "hash": "2014fe3d",
+        "logical_hash": "2014fe3d",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 226,
+        "x1": 320,
+        "y1": 228,
+        "hash": "4f43a165",
+        "logical_hash": "4f43a165",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 228,
+        "x1": 320,
+        "y1": 230,
+        "hash": "da57c2d9",
+        "logical_hash": "da57c2d9",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 230,
+        "x1": 320,
+        "y1": 232,
+        "hash": "2c191f5f",
+        "logical_hash": "2c191f5f",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 232,
+        "x1": 320,
+        "y1": 234,
+        "hash": "fa456c3d",
+        "logical_hash": "fa456c3d",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 234,
+        "x1": 320,
+        "y1": 236,
+        "hash": "3b95f381",
+        "logical_hash": "3b95f381",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 236,
+        "x1": 320,
+        "y1": 238,
+        "hash": "8e06886f",
+        "logical_hash": "8e06886f",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 238,
+        "x1": 320,
+        "y1": 240,
+        "hash": "82259e8b",
+        "logical_hash": "82259e8b",
+        "hash_source": "computed"
+      }
+    ]
+  },
+  {
+    "symbol": "gTextureGreenGoldStripe",
+    "png": "generated/texture_tkmk00/gTextureGreenGoldStripe.png",
+    "width": 256,
+    "height": 29,
+    "tile_width": 256,
+    "tile_height": 4,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 256,
+        "y1": 4,
+        "hash": "45648860",
+        "logical_hash": "45648860",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 4,
+        "x1": 256,
+        "y1": 8,
+        "hash": "0d6c60c2",
+        "logical_hash": "0d6c60c2",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 8,
+        "x1": 256,
+        "y1": 12,
+        "hash": "1a8bf497",
+        "logical_hash": "1a8bf497",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 12,
+        "x1": 256,
+        "y1": 16,
+        "hash": "eca1fea9",
+        "logical_hash": "eca1fea9",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 16,
+        "x1": 256,
+        "y1": 20,
+        "hash": "10193820",
+        "logical_hash": "10193820",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 20,
+        "x1": 256,
+        "y1": 24,
+        "hash": "a3cfd4a8",
+        "logical_hash": "a3cfd4a8",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 24,
+        "x1": 256,
+        "y1": 28,
+        "hash": "fbaa0abf",
+        "logical_hash": "fbaa0abf",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 28,
+        "x1": 256,
+        "y1": 29,
+        "hash": "5fcdf7d2",
+        "logical_hash": "5fcdf7d2",
+        "hash_source": "computed"
+      }
+    ]
+  },
+  {
+    "symbol": "gTextureGoldStripe",
+    "png": "generated/texture_tkmk00/gTextureGoldStripe.png",
+    "width": 256,
+    "height": 15,
+    "tile_width": 256,
+    "tile_height": 4,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 256,
+        "y1": 4,
+        "hash": "563affcd",
+        "logical_hash": "563affcd",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 4,
+        "x1": 256,
+        "y1": 8,
+        "hash": "e21ae317",
+        "logical_hash": "e21ae317",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 8,
+        "x1": 256,
+        "y1": 12,
+        "hash": "3cb62909",
+        "logical_hash": "3cb62909",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 12,
+        "x1": 256,
+        "y1": 15,
+        "hash": "3fcbd4f5",
+        "logical_hash": "3fcbd4f5",
+        "hash_source": "computed"
+      }
+    ]
+  },
+  {
+    "symbol": "gTextureWhiteStripe",
+    "png": "generated/texture_tkmk00/gTextureWhiteStripe.png",
+    "width": 256,
+    "height": 10,
+    "tile_width": 256,
+    "tile_height": 4,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 256,
+        "y1": 4,
+        "hash": "98a0514f",
+        "logical_hash": "98a0514f",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 4,
+        "x1": 256,
+        "y1": 8,
+        "hash": "2a23beef",
+        "logical_hash": "2a23beef",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 8,
+        "x1": 256,
+        "y1": 10,
+        "hash": "13fedc1b",
+        "logical_hash": "13fedc1b",
+        "hash_source": "computed"
+      }
+    ]
+  },
+  {
+    "symbol": "gTexturePinkBar",
+    "png": "generated/texture_tkmk00/gTexturePinkBar.png",
+    "width": 90,
+    "height": 16,
+    "tile_width": 128,
+    "tile_height": 8,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 90,
+        "y1": 8,
+        "hash": "1aac500a",
+        "logical_hash": "1aac500a",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 8,
+        "x1": 90,
+        "y1": 16,
+        "hash": "69108f71",
+        "logical_hash": "69108f71",
+        "hash_source": "computed"
+      }
+    ]
+  },
+  {
+    "symbol": "gTextureGoldBar",
+    "png": "generated/texture_tkmk00/gTextureGoldBar.png",
+    "width": 256,
+    "height": 40,
+    "tile_width": 256,
+    "tile_height": 4,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 256,
+        "y1": 4,
+        "hash": "3004e12c",
+        "logical_hash": "3004e12c",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 4,
+        "x1": 256,
+        "y1": 8,
+        "hash": "f348f5ab",
+        "logical_hash": "f348f5ab",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 8,
+        "x1": 256,
+        "y1": 12,
+        "hash": "3c02d335",
+        "logical_hash": "3c02d335",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 12,
+        "x1": 256,
+        "y1": 16,
+        "hash": "14053c51",
+        "logical_hash": "14053c51",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 16,
+        "x1": 256,
+        "y1": 20,
+        "hash": "abebafcc",
+        "logical_hash": "abebafcc",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 20,
+        "x1": 256,
+        "y1": 24,
+        "hash": "76f1ef1a",
+        "logical_hash": "76f1ef1a",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 24,
+        "x1": 256,
+        "y1": 28,
+        "hash": "b0172252",
+        "logical_hash": "b0172252",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 28,
+        "x1": 256,
+        "y1": 32,
+        "hash": "8604c8e4",
+        "logical_hash": "8604c8e4",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 32,
+        "x1": 256,
+        "y1": 36,
+        "hash": "7a2ba79c",
+        "logical_hash": "7a2ba79c",
+        "hash_source": "computed"
+      },
+      {
+        "x0": 0,
+        "y0": 36,
+        "x1": 256,
+        "y1": 40,
+        "hash": "5c393ffb",
+        "logical_hash": "5c393ffb",
+        "hash_source": "computed"
+      }
+    ]
+  }
+]

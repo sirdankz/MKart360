@@ -1,0 +1,5166 @@
+[
+ {
+  "symbol": "texture_player_select",
+  "png": "generated/texture_tkmk00/texture_player_select.png",
+  "width": 220,
+  "height": 32,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 220,
+    "y1": 5,
+    "hash": "4ee2a39b",
+    "logical_hash": "13102b1d"
+   },
+   {
+    "x0": 0,
+    "y0": 4,
+    "x1": 220,
+    "y1": 9,
+    "hash": "f7856c01",
+    "logical_hash": "b0e9fc38"
+   },
+   {
+    "x0": 0,
+    "y0": 8,
+    "x1": 220,
+    "y1": 13,
+    "hash": "c4360a90",
+    "logical_hash": "274674b1"
+   },
+   {
+    "x0": 0,
+    "y0": 12,
+    "x1": 220,
+    "y1": 17,
+    "hash": "3a4b3fd2",
+    "logical_hash": "4a8b3059"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 220,
+    "y1": 21,
+    "hash": "d50705ca",
+    "logical_hash": "d4f99d62"
+   },
+   {
+    "x0": 0,
+    "y0": 20,
+    "x1": 220,
+    "y1": 25,
+    "hash": "631f037f",
+    "logical_hash": "f44fe008"
+   },
+   {
+    "x0": 0,
+    "y0": 24,
+    "x1": 220,
+    "y1": 29,
+    "hash": "b6005355",
+    "logical_hash": "dc9b476b"
+   },
+   {
+    "x0": 0,
+    "y0": 28,
+    "x1": 220,
+    "y1": 33,
+    "logical_hash": "f552c2e3"
+   }
+  ]
+ },
+ {
+  "symbol": "texture_name_dk",
+  "png": "generated/texture_tkmk00/texture_name_dk.png",
+  "width": 64,
+  "height": 12,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 64,
+    "y1": 13,
+    "logical_hash": "59a45e1b"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 33,
+    "y1": 13,
+    "hash": "378e4930",
+    "logical_hash": "cbfc52eb"
+   },
+   {
+    "x0": 32,
+    "y0": 0,
+    "x1": 64,
+    "y1": 13,
+    "hash": "4313ed58",
+    "logical_hash": "ce978811"
+   }
+  ]
+ },
+ {
+  "symbol": "texture_name_toad",
+  "png": "generated/texture_tkmk00/texture_name_toad.png",
+  "width": 64,
+  "height": 12,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 64,
+    "y1": 13,
+    "logical_hash": "916164e7"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 33,
+    "y1": 13,
+    "hash": "94b74e99",
+    "logical_hash": "7ba5b24b"
+   },
+   {
+    "x0": 32,
+    "y0": 0,
+    "x1": 64,
+    "y1": 13,
+    "hash": "2762ecdd",
+    "logical_hash": "6fc445b6"
+   }
+  ]
+ },
+ {
+  "symbol": "texture_name_bowser",
+  "png": "generated/texture_tkmk00/texture_name_bowser.png",
+  "width": 64,
+  "height": 12,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 64,
+    "y1": 13,
+    "logical_hash": "cd2d2e87"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 33,
+    "y1": 13,
+    "hash": "c5adba3b",
+    "logical_hash": "69695d7f"
+   },
+   {
+    "x0": 32,
+    "y0": 0,
+    "x1": 64,
+    "y1": 13,
+    "hash": "c4dd1234",
+    "logical_hash": "1fe9e7bb"
+   }
+  ]
+ },
+ {
+  "symbol": "texture_name_luigi",
+  "png": "generated/texture_tkmk00/texture_name_luigi.png",
+  "width": 64,
+  "height": 12,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 64,
+    "y1": 13,
+    "logical_hash": "830c0246"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 33,
+    "y1": 13,
+    "hash": "ca41ef39",
+    "logical_hash": "637b6a2f"
+   },
+   {
+    "x0": 32,
+    "y0": 0,
+    "x1": 64,
+    "y1": 13,
+    "hash": "19e31ad3",
+    "logical_hash": "bb508f16"
+   }
+  ]
+ },
+ {
+  "symbol": "texture_name_mario",
+  "png": "generated/texture_tkmk00/texture_name_mario.png",
+  "width": 64,
+  "height": 12,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 64,
+    "y1": 13,
+    "logical_hash": "3e97679a"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 33,
+    "y1": 13,
+    "hash": "6a7f51ae",
+    "logical_hash": "e0abf876"
+   },
+   {
+    "x0": 32,
+    "y0": 0,
+    "x1": 64,
+    "y1": 13,
+    "hash": "98802df8",
+    "logical_hash": "dcc8bd24"
+   }
+  ]
+ },
+ {
+  "symbol": "texture_name_peach",
+  "png": "generated/texture_tkmk00/texture_name_peach.png",
+  "width": 64,
+  "height": 12,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 64,
+    "y1": 13,
+    "logical_hash": "5e434358"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 33,
+    "y1": 13,
+    "hash": "dfad760f",
+    "logical_hash": "af2cbfa6"
+   },
+   {
+    "x0": 32,
+    "y0": 0,
+    "x1": 64,
+    "y1": 13,
+    "hash": "e1fff775",
+    "logical_hash": "edbb7042"
+   }
+  ]
+ },
+ {
+  "symbol": "texture_name_wario",
+  "png": "generated/texture_tkmk00/texture_name_wario.png",
+  "width": 64,
+  "height": 12,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 64,
+    "y1": 13,
+    "logical_hash": "111abc49"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 33,
+    "y1": 13,
+    "hash": "29bdb394",
+    "logical_hash": "4aad807f"
+   },
+   {
+    "x0": 32,
+    "y0": 0,
+    "x1": 64,
+    "y1": 13,
+    "hash": "0c1c8e58",
+    "logical_hash": "ab3c8d72"
+   }
+  ]
+ },
+ {
+  "symbol": "texture_name_yoshi",
+  "png": "generated/texture_tkmk00/texture_name_yoshi.png",
+  "width": 64,
+  "height": 12,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 64,
+    "y1": 13,
+    "logical_hash": "f4a27ded"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 33,
+    "y1": 13,
+    "hash": "5e6fe4a6",
+    "logical_hash": "8d14b5bc"
+   },
+   {
+    "x0": 32,
+    "y0": 0,
+    "x1": 64,
+    "y1": 13,
+    "hash": "f582df64",
+    "logical_hash": "d8a8c454"
+   }
+  ]
+ },
+ {
+  "symbol": "texture_game_select",
+  "png": "generated/texture_tkmk00/texture_game_select.png",
+  "width": 200,
+  "height": 32,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 83,
+    "y1": 5,
+    "hash": "d0fe9395",
+    "logical_hash": "75b8dcd5"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 99,
+    "y1": 5,
+    "hash": "d8d90d55",
+    "logical_hash": "4aa497d5"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 115,
+    "y1": 5,
+    "hash": "0dd2e715",
+    "logical_hash": "f30e1e9a"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 131,
+    "y1": 5,
+    "hash": "2279e4f3",
+    "logical_hash": "1b0a719a"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 147,
+    "y1": 5,
+    "hash": "443641bf",
+    "logical_hash": "ea1cc49a"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 163,
+    "y1": 5,
+    "hash": "6f26679d",
+    "logical_hash": "1cd1e958"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 179,
+    "y1": 5,
+    "hash": "4eee1d8e",
+    "logical_hash": "de437fd4"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 195,
+    "y1": 5,
+    "hash": "f3d9563c",
+    "logical_hash": "bb76bd54"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 200,
+    "y1": 5,
+    "hash": "6811f62e",
+    "logical_hash": "92a5de05"
+   },
+   {
+    "x0": 0,
+    "y0": 4,
+    "x1": 3,
+    "y1": 9,
+    "hash": "42e8ef5d",
+    "logical_hash": "75ddf6bd"
+   },
+   {
+    "x0": 0,
+    "y0": 4,
+    "x1": 19,
+    "y1": 9,
+    "hash": "0f8fab4e",
+    "logical_hash": "483b84d1"
+   },
+   {
+    "x0": 0,
+    "y0": 4,
+    "x1": 35,
+    "y1": 9,
+    "hash": "05214bfc",
+    "logical_hash": "65cfdaaf"
+   },
+   {
+    "x0": 0,
+    "y0": 4,
+    "x1": 51,
+    "y1": 9,
+    "hash": "b757d4b3",
+    "logical_hash": "ae93309e"
+   },
+   {
+    "x0": 0,
+    "y0": 4,
+    "x1": 67,
+    "y1": 9,
+    "hash": "736919db",
+    "logical_hash": "1431222a"
+   },
+   {
+    "x0": 0,
+    "y0": 4,
+    "x1": 83,
+    "y1": 9,
+    "hash": "1a9d342c",
+    "logical_hash": "5d80b650"
+   },
+   {
+    "x0": 0,
+    "y0": 4,
+    "x1": 99,
+    "y1": 9,
+    "hash": "ff1ccaf0",
+    "logical_hash": "904cea03"
+   },
+   {
+    "x0": 0,
+    "y0": 4,
+    "x1": 115,
+    "y1": 9,
+    "hash": "1b1399b6",
+    "logical_hash": "684c91e3"
+   },
+   {
+    "x0": 0,
+    "y0": 4,
+    "x1": 131,
+    "y1": 9,
+    "hash": "a2a9b5bc",
+    "logical_hash": "568f2821"
+   },
+   {
+    "x0": 0,
+    "y0": 4,
+    "x1": 147,
+    "y1": 9,
+    "hash": "1ab48fc5",
+    "logical_hash": "e78ec17c"
+   },
+   {
+    "x0": 0,
+    "y0": 4,
+    "x1": 163,
+    "y1": 9,
+    "hash": "b530d228",
+    "logical_hash": "2bcf582d"
+   },
+   {
+    "x0": 0,
+    "y0": 4,
+    "x1": 179,
+    "y1": 9,
+    "hash": "1a0c7d42",
+    "logical_hash": "056e0461"
+   },
+   {
+    "x0": 0,
+    "y0": 4,
+    "x1": 195,
+    "y1": 9,
+    "hash": "614fd2df",
+    "logical_hash": "74cb9540"
+   },
+   {
+    "x0": 0,
+    "y0": 4,
+    "x1": 200,
+    "y1": 9,
+    "hash": "c37ef032",
+    "logical_hash": "565b28fd"
+   },
+   {
+    "x0": 0,
+    "y0": 8,
+    "x1": 3,
+    "y1": 13,
+    "hash": "6c277b20",
+    "logical_hash": "bfe4cb40"
+   },
+   {
+    "x0": 0,
+    "y0": 8,
+    "x1": 19,
+    "y1": 13,
+    "hash": "4976c72a",
+    "logical_hash": "cd38a5b9"
+   },
+   {
+    "x0": 0,
+    "y0": 8,
+    "x1": 35,
+    "y1": 13,
+    "hash": "72859057",
+    "logical_hash": "85a34fd9"
+   },
+   {
+    "x0": 0,
+    "y0": 8,
+    "x1": 51,
+    "y1": 13,
+    "hash": "71888855",
+    "logical_hash": "d7819a7a"
+   },
+   {
+    "x0": 0,
+    "y0": 8,
+    "x1": 67,
+    "y1": 13,
+    "hash": "3c3596c8",
+    "logical_hash": "217f2604"
+   },
+   {
+    "x0": 0,
+    "y0": 8,
+    "x1": 83,
+    "y1": 13,
+    "hash": "69d2c230",
+    "logical_hash": "65af362b"
+   },
+   {
+    "x0": 0,
+    "y0": 8,
+    "x1": 99,
+    "y1": 13,
+    "hash": "f41ce2a5",
+    "logical_hash": "3035fd89"
+   },
+   {
+    "x0": 0,
+    "y0": 8,
+    "x1": 115,
+    "y1": 13,
+    "hash": "2d6637d6",
+    "logical_hash": "02e2445d"
+   },
+   {
+    "x0": 0,
+    "y0": 8,
+    "x1": 131,
+    "y1": 13,
+    "hash": "636c56ca",
+    "logical_hash": "182ad314"
+   },
+   {
+    "x0": 0,
+    "y0": 8,
+    "x1": 147,
+    "y1": 13,
+    "hash": "e2e1057c",
+    "logical_hash": "c4bc7d38"
+   },
+   {
+    "x0": 0,
+    "y0": 8,
+    "x1": 163,
+    "y1": 13,
+    "hash": "a6c10e17",
+    "logical_hash": "944b91d2"
+   },
+   {
+    "x0": 0,
+    "y0": 8,
+    "x1": 179,
+    "y1": 13,
+    "hash": "9f0c73b9",
+    "logical_hash": "078c416c"
+   },
+   {
+    "x0": 0,
+    "y0": 8,
+    "x1": 195,
+    "y1": 13,
+    "hash": "42b2c4e7",
+    "logical_hash": "209e02a8"
+   },
+   {
+    "x0": 0,
+    "y0": 8,
+    "x1": 200,
+    "y1": 13,
+    "hash": "e37a7399",
+    "logical_hash": "4a7afa43"
+   },
+   {
+    "x0": 0,
+    "y0": 12,
+    "x1": 3,
+    "y1": 17,
+    "hash": "d5a8e745",
+    "logical_hash": "2e958c6e"
+   },
+   {
+    "x0": 0,
+    "y0": 12,
+    "x1": 19,
+    "y1": 17,
+    "hash": "97bc9fdb",
+    "logical_hash": "783e8544"
+   },
+   {
+    "x0": 0,
+    "y0": 12,
+    "x1": 35,
+    "y1": 17,
+    "hash": "e217e575",
+    "logical_hash": "bb67bbde"
+   },
+   {
+    "x0": 0,
+    "y0": 12,
+    "x1": 51,
+    "y1": 17,
+    "hash": "28e2596c",
+    "logical_hash": "f5d69d2b"
+   },
+   {
+    "x0": 0,
+    "y0": 12,
+    "x1": 67,
+    "y1": 17,
+    "hash": "5e2244c7",
+    "logical_hash": "45a15442"
+   },
+   {
+    "x0": 0,
+    "y0": 12,
+    "x1": 83,
+    "y1": 17,
+    "hash": "cba30aac",
+    "logical_hash": "e285eb9c"
+   },
+   {
+    "x0": 0,
+    "y0": 12,
+    "x1": 99,
+    "y1": 17,
+    "hash": "8a9ac7c1",
+    "logical_hash": "855a8d6c"
+   },
+   {
+    "x0": 0,
+    "y0": 12,
+    "x1": 115,
+    "y1": 17,
+    "hash": "8cbc153a",
+    "logical_hash": "d32646c3"
+   },
+   {
+    "x0": 0,
+    "y0": 12,
+    "x1": 131,
+    "y1": 17,
+    "hash": "08861d54",
+    "logical_hash": "d956d61e"
+   },
+   {
+    "x0": 0,
+    "y0": 12,
+    "x1": 147,
+    "y1": 17,
+    "hash": "2a710f10",
+    "logical_hash": "81915547"
+   },
+   {
+    "x0": 0,
+    "y0": 12,
+    "x1": 163,
+    "y1": 17,
+    "hash": "0ce66cff",
+    "logical_hash": "f20a5a2f"
+   },
+   {
+    "x0": 0,
+    "y0": 12,
+    "x1": 179,
+    "y1": 17,
+    "hash": "4a8f41a9",
+    "logical_hash": "dd1eaa65"
+   },
+   {
+    "x0": 0,
+    "y0": 12,
+    "x1": 195,
+    "y1": 17,
+    "hash": "87ee22fb",
+    "logical_hash": "011f2577"
+   },
+   {
+    "x0": 0,
+    "y0": 12,
+    "x1": 200,
+    "y1": 17,
+    "hash": "6c8f2420",
+    "logical_hash": "b7c122c5"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 3,
+    "y1": 21,
+    "hash": "d9c62fff",
+    "logical_hash": "87ae875f"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 19,
+    "y1": 21,
+    "hash": "528284a9",
+    "logical_hash": "43b60ebc"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 35,
+    "y1": 21,
+    "hash": "d9b4e5fb",
+    "logical_hash": "28be1cb1"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 51,
+    "y1": 21,
+    "hash": "4a60304a",
+    "logical_hash": "bfc5c720"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 67,
+    "y1": 21,
+    "hash": "d1b65f84",
+    "logical_hash": "ca582d78"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 83,
+    "y1": 21,
+    "hash": "67979aa4",
+    "logical_hash": "9bb78bc7"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 99,
+    "y1": 21,
+    "hash": "35e23cc5",
+    "logical_hash": "b0f156ba"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 115,
+    "y1": 21,
+    "hash": "f619155e",
+    "logical_hash": "b422a3ef"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 131,
+    "y1": 21,
+    "hash": "7812cf9e",
+    "logical_hash": "585fe97d"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 147,
+    "y1": 21,
+    "hash": "42d3055c",
+    "logical_hash": "ba3165cf"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 163,
+    "y1": 21,
+    "hash": "96519539",
+    "logical_hash": "99f8907c"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 179,
+    "y1": 21,
+    "hash": "37804dba",
+    "logical_hash": "94cdb536"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 195,
+    "y1": 21,
+    "hash": "cabe6538",
+    "logical_hash": "e804cd80"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 200,
+    "y1": 21,
+    "hash": "1c3116ac",
+    "logical_hash": "407997ee"
+   },
+   {
+    "x0": 0,
+    "y0": 20,
+    "x1": 3,
+    "y1": 25,
+    "hash": "6a983caa",
+    "logical_hash": "8a30554a"
+   },
+   {
+    "x0": 0,
+    "y0": 20,
+    "x1": 19,
+    "y1": 25,
+    "hash": "c7d60f89",
+    "logical_hash": "7eab49bd"
+   },
+   {
+    "x0": 0,
+    "y0": 20,
+    "x1": 35,
+    "y1": 25,
+    "hash": "e10c43a3",
+    "logical_hash": "8e4633a7"
+   },
+   {
+    "x0": 0,
+    "y0": 20,
+    "x1": 51,
+    "y1": 25,
+    "hash": "7b4699a4",
+    "logical_hash": "bead5057"
+   },
+   {
+    "x0": 0,
+    "y0": 20,
+    "x1": 67,
+    "y1": 25,
+    "hash": "a67f537c",
+    "logical_hash": "c98b049e"
+   },
+   {
+    "x0": 0,
+    "y0": 20,
+    "x1": 83,
+    "y1": 25,
+    "hash": "e2d54176",
+    "logical_hash": "76244d7f"
+   },
+   {
+    "x0": 0,
+    "y0": 20,
+    "x1": 99,
+    "y1": 25,
+    "hash": "554e3663",
+    "logical_hash": "d0b77acb"
+   },
+   {
+    "x0": 0,
+    "y0": 20,
+    "x1": 115,
+    "y1": 25,
+    "hash": "3b092eee",
+    "logical_hash": "12062fb1"
+   },
+   {
+    "x0": 0,
+    "y0": 20,
+    "x1": 131,
+    "y1": 25,
+    "hash": "c2826eae",
+    "logical_hash": "603adfbc"
+   },
+   {
+    "x0": 0,
+    "y0": 20,
+    "x1": 147,
+    "y1": 25,
+    "hash": "3045d3d5",
+    "logical_hash": "4b40fd6e"
+   },
+   {
+    "x0": 0,
+    "y0": 20,
+    "x1": 163,
+    "y1": 25,
+    "hash": "778ae692",
+    "logical_hash": "c2113dc4"
+   },
+   {
+    "x0": 0,
+    "y0": 20,
+    "x1": 179,
+    "y1": 25,
+    "hash": "db9a567d",
+    "logical_hash": "f2c09db7"
+   },
+   {
+    "x0": 0,
+    "y0": 20,
+    "x1": 195,
+    "y1": 25,
+    "hash": "65ab85af",
+    "logical_hash": "1b2eb317"
+   },
+   {
+    "x0": 0,
+    "y0": 20,
+    "x1": 200,
+    "y1": 25,
+    "hash": "235c6f9d",
+    "logical_hash": "11965c37"
+   },
+   {
+    "x0": 0,
+    "y0": 24,
+    "x1": 3,
+    "y1": 29,
+    "hash": "58c4bf5c",
+    "logical_hash": "d5daccb4"
+   },
+   {
+    "x0": 0,
+    "y0": 24,
+    "x1": 19,
+    "y1": 29,
+    "hash": "dcb9dd6b",
+    "logical_hash": "c89d1349"
+   },
+   {
+    "x0": 0,
+    "y0": 24,
+    "x1": 35,
+    "y1": 29,
+    "hash": "f3a29cf9",
+    "logical_hash": "aad45a12"
+   },
+   {
+    "x0": 0,
+    "y0": 24,
+    "x1": 51,
+    "y1": 29,
+    "hash": "7e6d57a3",
+    "logical_hash": "c3cf7687"
+   },
+   {
+    "x0": 0,
+    "y0": 24,
+    "x1": 67,
+    "y1": 29,
+    "hash": "e6e842a4",
+    "logical_hash": "81fbf005"
+   },
+   {
+    "x0": 0,
+    "y0": 24,
+    "x1": 83,
+    "y1": 29,
+    "hash": "07251412",
+    "logical_hash": "f5a28fe7"
+   },
+   {
+    "x0": 0,
+    "y0": 24,
+    "x1": 99,
+    "y1": 29,
+    "hash": "37a11ae6",
+    "logical_hash": "9d152bb8"
+   },
+   {
+    "x0": 0,
+    "y0": 24,
+    "x1": 115,
+    "y1": 29,
+    "hash": "567e9bc6",
+    "logical_hash": "03c567d8"
+   },
+   {
+    "x0": 0,
+    "y0": 24,
+    "x1": 131,
+    "y1": 29,
+    "hash": "562bdbd6",
+    "logical_hash": "a5329089"
+   },
+   {
+    "x0": 0,
+    "y0": 24,
+    "x1": 147,
+    "y1": 29,
+    "hash": "313995f5",
+    "logical_hash": "34b63e97"
+   },
+   {
+    "x0": 0,
+    "y0": 24,
+    "x1": 163,
+    "y1": 29,
+    "hash": "0c4f0c7b",
+    "logical_hash": "7bda5093"
+   },
+   {
+    "x0": 0,
+    "y0": 24,
+    "x1": 179,
+    "y1": 29,
+    "hash": "10bce6e4",
+    "logical_hash": "616a86b5"
+   },
+   {
+    "x0": 0,
+    "y0": 24,
+    "x1": 195,
+    "y1": 29,
+    "hash": "a6bd8253",
+    "logical_hash": "29c47e43"
+   },
+   {
+    "x0": 0,
+    "y0": 24,
+    "x1": 200,
+    "y1": 29,
+    "hash": "a78e46ca",
+    "logical_hash": "f2904713"
+   },
+   {
+    "x0": 0,
+    "y0": 28,
+    "x1": 3,
+    "y1": 33,
+    "hash": "6dca86c1",
+    "logical_hash": "c6c046ef"
+   },
+   {
+    "x0": 0,
+    "y0": 28,
+    "x1": 19,
+    "y1": 33,
+    "hash": "5e2da86e",
+    "logical_hash": "8802f6df"
+   },
+   {
+    "x0": 0,
+    "y0": 28,
+    "x1": 35,
+    "y1": 33,
+    "hash": "451ef449",
+    "logical_hash": "62a9c7b0"
+   },
+   {
+    "x0": 0,
+    "y0": 28,
+    "x1": 51,
+    "y1": 33,
+    "hash": "2464bf1f",
+    "logical_hash": "f169b174"
+   },
+   {
+    "x0": 0,
+    "y0": 28,
+    "x1": 67,
+    "y1": 33,
+    "hash": "c44ef9df",
+    "logical_hash": "7806d874"
+   },
+   {
+    "x0": 0,
+    "y0": 28,
+    "x1": 83,
+    "y1": 33,
+    "hash": "2dfc8562",
+    "logical_hash": "07a1ff74"
+   },
+   {
+    "x0": 0,
+    "y0": 28,
+    "x1": 99,
+    "y1": 33,
+    "hash": "db567122",
+    "logical_hash": "fc3b2674"
+   },
+   {
+    "x0": 0,
+    "y0": 28,
+    "x1": 115,
+    "y1": 33,
+    "hash": "c1f4bce2",
+    "logical_hash": "f7e40055"
+   },
+   {
+    "x0": 0,
+    "y0": 28,
+    "x1": 131,
+    "y1": 33,
+    "hash": "263d654f",
+    "logical_hash": "4f6ebb55"
+   },
+   {
+    "x0": 0,
+    "y0": 28,
+    "x1": 147,
+    "y1": 33,
+    "hash": "45efb7ef",
+    "logical_hash": "c75f7655"
+   },
+   {
+    "x0": 0,
+    "y0": 28,
+    "x1": 163,
+    "y1": 33,
+    "logical_hash": "3788d39d"
+   },
+   {
+    "x0": 0,
+    "y0": 28,
+    "x1": 179,
+    "y1": 33,
+    "logical_hash": "b5f9b21d"
+   },
+   {
+    "x0": 0,
+    "y0": 28,
+    "x1": 195,
+    "y1": 33,
+    "logical_hash": "3d6f909d"
+   },
+   {
+    "x0": 0,
+    "y0": 28,
+    "x1": 200,
+    "y1": 33,
+    "logical_hash": "e287cdab"
+   }
+  ]
+ },
+ {
+  "symbol": "texture_menu_1p_game",
+  "png": "generated/texture_tkmk00/texture_menu_1p_game.png",
+  "width": 64,
+  "height": 54,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 3,
+    "y1": 17,
+    "hash": "9aaa89e2",
+    "logical_hash": "6c3d5e4f"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 19,
+    "y1": 17,
+    "hash": "069c903a",
+    "logical_hash": "37133f83"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 35,
+    "y1": 17,
+    "hash": "d2249dc2",
+    "logical_hash": "a6b99b3b"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 51,
+    "y1": 17,
+    "hash": "231a0561",
+    "logical_hash": "272664a8"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 64,
+    "y1": 17,
+    "hash": "4be38a92",
+    "logical_hash": "672e29d5"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 33,
+    "y1": 33,
+    "hash": "5081684f",
+    "logical_hash": "1074a74d"
+   },
+   {
+    "x0": 32,
+    "y0": 0,
+    "x1": 64,
+    "y1": 33,
+    "hash": "91bf2d38",
+    "logical_hash": "262881e3"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 3,
+    "y1": 33,
+    "hash": "b9c80578",
+    "logical_hash": "8606ec42"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 19,
+    "y1": 33,
+    "hash": "3a9984a7",
+    "logical_hash": "19c8212a"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 35,
+    "y1": 33,
+    "hash": "435e3f21",
+    "logical_hash": "800b2d24"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 51,
+    "y1": 33,
+    "hash": "3c8cf36c",
+    "logical_hash": "3316d53d"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 64,
+    "y1": 33,
+    "hash": "e9a46e31",
+    "logical_hash": "00d8c01a"
+   },
+   {
+    "x0": 0,
+    "y0": 32,
+    "x1": 3,
+    "y1": 49,
+    "hash": "f89989b4",
+    "logical_hash": "23dc0326"
+   },
+   {
+    "x0": 0,
+    "y0": 32,
+    "x1": 19,
+    "y1": 49,
+    "hash": "fc739c23",
+    "logical_hash": "dd1a1886"
+   },
+   {
+    "x0": 0,
+    "y0": 32,
+    "x1": 35,
+    "y1": 49,
+    "hash": "7cb93aef",
+    "logical_hash": "7d104711"
+   },
+   {
+    "x0": 0,
+    "y0": 32,
+    "x1": 51,
+    "y1": 49,
+    "hash": "48018364",
+    "logical_hash": "85252846"
+   },
+   {
+    "x0": 0,
+    "y0": 32,
+    "x1": 64,
+    "y1": 49,
+    "hash": "3cbb36f7",
+    "logical_hash": "5ee8dd00"
+   },
+   {
+    "x0": 0,
+    "y0": 32,
+    "x1": 33,
+    "y1": 55,
+    "hash": "1af57bb0",
+    "logical_hash": "af42bb13"
+   },
+   {
+    "x0": 32,
+    "y0": 32,
+    "x1": 64,
+    "y1": 55,
+    "hash": "1f524f2f",
+    "logical_hash": "b3f27ae9"
+   },
+   {
+    "x0": 0,
+    "y0": 48,
+    "x1": 3,
+    "y1": 55,
+    "hash": "e8308b3f",
+    "logical_hash": "32db9966"
+   },
+   {
+    "x0": 0,
+    "y0": 48,
+    "x1": 19,
+    "y1": 55,
+    "hash": "b9467ffe",
+    "logical_hash": "6d17c97c"
+   },
+   {
+    "x0": 0,
+    "y0": 48,
+    "x1": 35,
+    "y1": 55,
+    "hash": "71f038ff",
+    "logical_hash": "a64bcc14"
+   },
+   {
+    "x0": 0,
+    "y0": 48,
+    "x1": 51,
+    "y1": 55,
+    "hash": "ac1db81d",
+    "logical_hash": "3057b0d2"
+   },
+   {
+    "x0": 0,
+    "y0": 48,
+    "x1": 59,
+    "y1": 55,
+    "logical_hash": "96fb14cf"
+   },
+   {
+    "x0": 0,
+    "y0": 48,
+    "x1": 64,
+    "y1": 55,
+    "logical_hash": "da972701"
+   }
+  ]
+ },
+ {
+  "symbol": "texture_menu_2p_game",
+  "png": "generated/texture_tkmk00/texture_menu_2p_game.png",
+  "width": 64,
+  "height": 54,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 3,
+    "y1": 17,
+    "hash": "9aaa89e2",
+    "logical_hash": "6c3d5e4f"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 19,
+    "y1": 17,
+    "hash": "069c903a",
+    "logical_hash": "37133f83"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 35,
+    "y1": 17,
+    "hash": "1fa9feeb",
+    "logical_hash": "1ffb1253"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 51,
+    "y1": 17,
+    "hash": "cf2424e9",
+    "logical_hash": "18bce548"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 64,
+    "y1": 17,
+    "hash": "79a296d5",
+    "logical_hash": "69cb9507"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 33,
+    "y1": 33,
+    "hash": "283b5aa4",
+    "logical_hash": "4ece688e"
+   },
+   {
+    "x0": 32,
+    "y0": 0,
+    "x1": 64,
+    "y1": 33,
+    "hash": "c866670b",
+    "logical_hash": "c73d7860"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 3,
+    "y1": 33,
+    "hash": "4ba4efc5",
+    "logical_hash": "9f94acce"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 19,
+    "y1": 33,
+    "hash": "0a330266",
+    "logical_hash": "4a6c77cc"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 35,
+    "y1": 33,
+    "hash": "fdef9e6d",
+    "logical_hash": "34177cbf"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 51,
+    "y1": 33,
+    "hash": "899b8a3a",
+    "logical_hash": "35481f11"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 64,
+    "y1": 33,
+    "hash": "9d7e0073",
+    "logical_hash": "df32a130"
+   },
+   {
+    "x0": 0,
+    "y0": 32,
+    "x1": 3,
+    "y1": 49,
+    "hash": "0d15684c",
+    "logical_hash": "2ca03fce"
+   },
+   {
+    "x0": 0,
+    "y0": 32,
+    "x1": 19,
+    "y1": 49,
+    "hash": "1f27301b",
+    "logical_hash": "eb42aaae"
+   },
+   {
+    "x0": 0,
+    "y0": 32,
+    "x1": 35,
+    "y1": 49,
+    "hash": "cd0ccd0e",
+    "logical_hash": "7063787c"
+   },
+   {
+    "x0": 0,
+    "y0": 32,
+    "x1": 51,
+    "y1": 49,
+    "hash": "fd8e79ad",
+    "logical_hash": "0e646cda"
+   },
+   {
+    "x0": 0,
+    "y0": 32,
+    "x1": 64,
+    "y1": 49,
+    "hash": "a2c040a8",
+    "logical_hash": "aca9ad2a"
+   },
+   {
+    "x0": 0,
+    "y0": 32,
+    "x1": 33,
+    "y1": 55,
+    "hash": "be4ab4fc",
+    "logical_hash": "1525ead1"
+   },
+   {
+    "x0": 32,
+    "y0": 32,
+    "x1": 64,
+    "y1": 55,
+    "hash": "f0a04614",
+    "logical_hash": "0cbf2df1"
+   },
+   {
+    "x0": 0,
+    "y0": 48,
+    "x1": 3,
+    "y1": 55,
+    "hash": "94012695",
+    "logical_hash": "7881d901"
+   },
+   {
+    "x0": 0,
+    "y0": 48,
+    "x1": 19,
+    "y1": 55,
+    "hash": "9a83b591",
+    "logical_hash": "7c980213"
+   },
+   {
+    "x0": 0,
+    "y0": 48,
+    "x1": 35,
+    "y1": 55,
+    "hash": "98cfcec2",
+    "logical_hash": "a7be52f5"
+   },
+   {
+    "x0": 0,
+    "y0": 48,
+    "x1": 51,
+    "y1": 55,
+    "hash": "3d79cb14",
+    "logical_hash": "68cb963b"
+   },
+   {
+    "x0": 0,
+    "y0": 48,
+    "x1": 59,
+    "y1": 55,
+    "logical_hash": "8fa941be"
+   },
+   {
+    "x0": 0,
+    "y0": 48,
+    "x1": 64,
+    "y1": 55,
+    "logical_hash": "e3750d84"
+   }
+  ]
+ },
+ {
+  "symbol": "texture_menu_3p_game",
+  "png": "generated/texture_tkmk00/texture_menu_3p_game.png",
+  "width": 64,
+  "height": 54,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 3,
+    "y1": 17,
+    "hash": "2270f25c",
+    "logical_hash": "8beb29a5"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 19,
+    "y1": 17,
+    "hash": "fd1d19f2",
+    "logical_hash": "3f45706b"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 35,
+    "y1": 17,
+    "hash": "e92d2d7b",
+    "logical_hash": "3bc9490e"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 51,
+    "y1": 17,
+    "hash": "5ce36e21",
+    "logical_hash": "9815de80"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 64,
+    "y1": 17,
+    "hash": "9efeec0e",
+    "logical_hash": "93711446"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 33,
+    "y1": 33,
+    "hash": "9e297c2b",
+    "logical_hash": "1afa08c8"
+   },
+   {
+    "x0": 32,
+    "y0": 0,
+    "x1": 64,
+    "y1": 33,
+    "hash": "44ffe3fa",
+    "logical_hash": "8fa793ac"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 3,
+    "y1": 33,
+    "hash": "b9d9e9e3",
+    "logical_hash": "67d71d76"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 19,
+    "y1": 33,
+    "hash": "c57f5ef9",
+    "logical_hash": "ef7e7c23"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 35,
+    "y1": 33,
+    "hash": "23b6f755",
+    "logical_hash": "c33a2b9b"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 51,
+    "y1": 33,
+    "hash": "8cbac80a",
+    "logical_hash": "5ad7b957"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 64,
+    "y1": 33,
+    "hash": "d6493e6f",
+    "logical_hash": "b22be0c1"
+   },
+   {
+    "x0": 0,
+    "y0": 32,
+    "x1": 3,
+    "y1": 49,
+    "hash": "16c9e7bd",
+    "logical_hash": "5bb37922"
+   },
+   {
+    "x0": 0,
+    "y0": 32,
+    "x1": 19,
+    "y1": 49,
+    "hash": "60444200",
+    "logical_hash": "45dea641"
+   },
+   {
+    "x0": 0,
+    "y0": 32,
+    "x1": 35,
+    "y1": 49,
+    "hash": "8f29c5dd",
+    "logical_hash": "95f336df"
+   },
+   {
+    "x0": 0,
+    "y0": 32,
+    "x1": 51,
+    "y1": 49,
+    "hash": "e7340d7e",
+    "logical_hash": "a51da314"
+   },
+   {
+    "x0": 0,
+    "y0": 32,
+    "x1": 64,
+    "y1": 49,
+    "hash": "cf813927",
+    "logical_hash": "6eec0bc1"
+   },
+   {
+    "x0": 0,
+    "y0": 32,
+    "x1": 33,
+    "y1": 55,
+    "hash": "8f43d59d",
+    "logical_hash": "a20dbd37"
+   },
+   {
+    "x0": 32,
+    "y0": 32,
+    "x1": 64,
+    "y1": 55,
+    "hash": "56aa39ea",
+    "logical_hash": "6ff4dbdc"
+   },
+   {
+    "x0": 0,
+    "y0": 48,
+    "x1": 3,
+    "y1": 55,
+    "hash": "36d75006",
+    "logical_hash": "7a655327"
+   },
+   {
+    "x0": 0,
+    "y0": 48,
+    "x1": 19,
+    "y1": 55,
+    "hash": "812aedce",
+    "logical_hash": "ff56c761"
+   },
+   {
+    "x0": 0,
+    "y0": 48,
+    "x1": 35,
+    "y1": 55,
+    "hash": "0b36c151",
+    "logical_hash": "1f71cd76"
+   },
+   {
+    "x0": 0,
+    "y0": 48,
+    "x1": 51,
+    "y1": 55,
+    "hash": "651dbb72",
+    "logical_hash": "3c9ad97d"
+   },
+   {
+    "x0": 0,
+    "y0": 48,
+    "x1": 59,
+    "y1": 55,
+    "logical_hash": "4fec70b4"
+   },
+   {
+    "x0": 0,
+    "y0": 48,
+    "x1": 64,
+    "y1": 55,
+    "logical_hash": "b04828fe"
+   }
+  ]
+ },
+ {
+  "symbol": "texture_menu_4p_game",
+  "png": "generated/texture_tkmk00/texture_menu_4p_game.png",
+  "width": 64,
+  "height": 54,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 3,
+    "y1": 17,
+    "hash": "d6ef7a6a",
+    "logical_hash": "067bc517"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 19,
+    "y1": 17,
+    "hash": "51d69e4d",
+    "logical_hash": "1923dae0"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 35,
+    "y1": 17,
+    "hash": "56fe7597",
+    "logical_hash": "6c14e407"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 49,
+    "y1": 17,
+    "hash": "eb4f8344",
+    "logical_hash": "da685e0c"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 59,
+    "y1": 17,
+    "hash": "70bc4271",
+    "logical_hash": "81ec0e0b"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 64,
+    "y1": 17,
+    "hash": "4f3b6863",
+    "logical_hash": "333f4ff1"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 33,
+    "y1": 33,
+    "hash": "52e3002e",
+    "logical_hash": "8e284a5f"
+   },
+   {
+    "x0": 32,
+    "y0": 0,
+    "x1": 64,
+    "y1": 33,
+    "hash": "3d9c9fb9",
+    "logical_hash": "a9c9af95"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 3,
+    "y1": 33,
+    "hash": "8ea60d56",
+    "logical_hash": "9c0d1570"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 19,
+    "y1": 33,
+    "hash": "59a51cbd",
+    "logical_hash": "58efc93b"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 35,
+    "y1": 33,
+    "hash": "24f4ee25",
+    "logical_hash": "f11780fa"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 49,
+    "y1": 33,
+    "hash": "a0d1e009",
+    "logical_hash": "59c89073"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 59,
+    "y1": 33,
+    "hash": "3199c57d",
+    "logical_hash": "814a9e4a"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 64,
+    "y1": 33,
+    "hash": "9884229f",
+    "logical_hash": "53149ef1"
+   },
+   {
+    "x0": 0,
+    "y0": 32,
+    "x1": 3,
+    "y1": 49,
+    "hash": "9712b579",
+    "logical_hash": "1cc28a26"
+   },
+   {
+    "x0": 0,
+    "y0": 32,
+    "x1": 19,
+    "y1": 49,
+    "hash": "8e8e26f5",
+    "logical_hash": "17eaa358"
+   },
+   {
+    "x0": 0,
+    "y0": 32,
+    "x1": 35,
+    "y1": 49,
+    "hash": "ba0d5763",
+    "logical_hash": "a9428b96"
+   },
+   {
+    "x0": 0,
+    "y0": 32,
+    "x1": 49,
+    "y1": 49,
+    "hash": "0ff1d828",
+    "logical_hash": "044a79f7"
+   },
+   {
+    "x0": 0,
+    "y0": 32,
+    "x1": 59,
+    "y1": 49,
+    "hash": "221c3e29",
+    "logical_hash": "68fd958b"
+   },
+   {
+    "x0": 0,
+    "y0": 32,
+    "x1": 64,
+    "y1": 49,
+    "hash": "5ee3e932",
+    "logical_hash": "a9ddb93b"
+   },
+   {
+    "x0": 0,
+    "y0": 32,
+    "x1": 33,
+    "y1": 55,
+    "hash": "4d68b1c0",
+    "logical_hash": "6da19dbd"
+   },
+   {
+    "x0": 32,
+    "y0": 32,
+    "x1": 64,
+    "y1": 55,
+    "hash": "30beed95",
+    "logical_hash": "f485287c"
+   },
+   {
+    "x0": 0,
+    "y0": 48,
+    "x1": 3,
+    "y1": 55,
+    "hash": "60fcf69e",
+    "logical_hash": "ddc04722"
+   },
+   {
+    "x0": 0,
+    "y0": 48,
+    "x1": 19,
+    "y1": 55,
+    "hash": "8bd163e8",
+    "logical_hash": "49483b6a"
+   },
+   {
+    "x0": 0,
+    "y0": 48,
+    "x1": 35,
+    "y1": 55,
+    "hash": "ff80db21",
+    "logical_hash": "f0d579c6"
+   },
+   {
+    "x0": 0,
+    "y0": 48,
+    "x1": 49,
+    "y1": 55,
+    "hash": "96ff578f",
+    "logical_hash": "af4e5f24"
+   },
+   {
+    "x0": 0,
+    "y0": 48,
+    "x1": 59,
+    "y1": 55,
+    "logical_hash": "59d5e46d"
+   },
+   {
+    "x0": 0,
+    "y0": 48,
+    "x1": 64,
+    "y1": 55,
+    "logical_hash": "7b7c0e7b"
+   }
+  ]
+ },
+ {
+  "symbol": "texture_mode_battle",
+  "png": "generated/texture_tkmk00/texture_mode_battle.png",
+  "width": 64,
+  "height": 18,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 3,
+    "y1": 17,
+    "hash": "9d67520e",
+    "logical_hash": "6682eadb"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 19,
+    "y1": 17,
+    "hash": "3c5b7bfc",
+    "logical_hash": "6def5b24"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 35,
+    "y1": 17,
+    "hash": "40e68bdf",
+    "logical_hash": "d27b720c"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 49,
+    "y1": 17,
+    "hash": "d2187812",
+    "logical_hash": "0cdc9b80"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 51,
+    "y1": 17,
+    "hash": "529510e5",
+    "logical_hash": "70dbba92"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 59,
+    "y1": 17,
+    "hash": "15243614",
+    "logical_hash": "5ddab6aa"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 64,
+    "y1": 17,
+    "hash": "042d231d",
+    "logical_hash": "2661833b"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 33,
+    "y1": 19,
+    "hash": "b3bb1fce",
+    "logical_hash": "c02af66c"
+   },
+   {
+    "x0": 32,
+    "y0": 0,
+    "x1": 64,
+    "y1": 19,
+    "hash": "3a706c9a",
+    "logical_hash": "885cb21b"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 3,
+    "y1": 19,
+    "hash": "e9fb8374",
+    "logical_hash": "b8eb827f"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 19,
+    "y1": 19,
+    "hash": "ec338559",
+    "logical_hash": "1b0fce5f"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 35,
+    "y1": 19,
+    "hash": "43a33d52",
+    "logical_hash": "398bc8e3"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 49,
+    "y1": 19,
+    "logical_hash": "b03c921c"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 51,
+    "y1": 19,
+    "logical_hash": "57e9efd4"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 59,
+    "y1": 19,
+    "logical_hash": "9efacaf4"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 64,
+    "y1": 19,
+    "logical_hash": "d4d7cd76"
+   }
+  ]
+ },
+ {
+  "symbol": "texture_mode_time_trials",
+  "png": "generated/texture_tkmk00/texture_mode_time_trials.png",
+  "width": 64,
+  "height": 18,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 3,
+    "y1": 17,
+    "hash": "7def07bc",
+    "logical_hash": "85eb0205"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 19,
+    "y1": 17,
+    "hash": "22406583",
+    "logical_hash": "f499fb8a"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 35,
+    "y1": 17,
+    "hash": "60d2160a",
+    "logical_hash": "1f7e4605"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 51,
+    "y1": 17,
+    "hash": "053d8f1e",
+    "logical_hash": "732b641f"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 64,
+    "y1": 17,
+    "hash": "8c39959e",
+    "logical_hash": "325604b9"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 33,
+    "y1": 19,
+    "hash": "aa6904ca",
+    "logical_hash": "89712a90"
+   },
+   {
+    "x0": 32,
+    "y0": 0,
+    "x1": 64,
+    "y1": 19,
+    "hash": "74b5c74b",
+    "logical_hash": "3a3c64a9"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 3,
+    "y1": 19,
+    "hash": "6545f2bd",
+    "logical_hash": "056b1b8b"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 19,
+    "y1": 19,
+    "hash": "a3c583e0",
+    "logical_hash": "0cc7bc9a"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 35,
+    "y1": 19,
+    "hash": "8de81023",
+    "logical_hash": "ef9eb8bc"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 49,
+    "y1": 19,
+    "logical_hash": "f68880f5"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 51,
+    "y1": 19,
+    "logical_hash": "b2c4e66d"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 59,
+    "y1": 19,
+    "logical_hash": "68ae6a4d"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 64,
+    "y1": 19,
+    "logical_hash": "f69e0d33"
+   }
+  ]
+ },
+ {
+  "symbol": "texture_mode_mario_gp",
+  "png": "generated/texture_tkmk00/texture_mode_mario_gp.png",
+  "width": 64,
+  "height": 18,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 3,
+    "y1": 17,
+    "hash": "7def07bc",
+    "logical_hash": "85eb0205"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 19,
+    "y1": 17,
+    "hash": "ae955210",
+    "logical_hash": "8637cdba"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 35,
+    "y1": 17,
+    "hash": "03215fcc",
+    "logical_hash": "9e32c451"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 51,
+    "y1": 17,
+    "hash": "4e84c889",
+    "logical_hash": "083dc240"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 64,
+    "y1": 17,
+    "hash": "20b36a42",
+    "logical_hash": "19270879"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 33,
+    "y1": 19,
+    "hash": "29c08726",
+    "logical_hash": "397439f4"
+   },
+   {
+    "x0": 32,
+    "y0": 0,
+    "x1": 64,
+    "y1": 19,
+    "hash": "8c743887",
+    "logical_hash": "18d1c4e2"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 3,
+    "y1": 19,
+    "hash": "9cf2244d",
+    "logical_hash": "0d8472fc"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 19,
+    "y1": 19,
+    "hash": "36e1190c",
+    "logical_hash": "a18aa30e"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 35,
+    "y1": 19,
+    "hash": "0a8bc005",
+    "logical_hash": "d5d8c68e"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 49,
+    "y1": 19,
+    "logical_hash": "3e02c47f"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 51,
+    "y1": 19,
+    "logical_hash": "42558557"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 59,
+    "y1": 19,
+    "logical_hash": "c6dae977"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 64,
+    "y1": 19,
+    "logical_hash": "353d5f91"
+   }
+  ]
+ },
+ {
+  "symbol": "texture_mode_vs",
+  "png": "generated/texture_tkmk00/texture_mode_vs.png",
+  "width": 64,
+  "height": 18,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 3,
+    "y1": 17,
+    "hash": "54ed6f84",
+    "logical_hash": "f568ea0d"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 19,
+    "y1": 17,
+    "hash": "3f4bf9cf",
+    "logical_hash": "74ac707d"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 35,
+    "y1": 17,
+    "hash": "561d8688",
+    "logical_hash": "7251af47"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 49,
+    "y1": 17,
+    "hash": "c3148fd0",
+    "logical_hash": "553b5a90"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 51,
+    "y1": 17,
+    "hash": "a430570d",
+    "logical_hash": "7b7f8ce7"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 59,
+    "y1": 17,
+    "hash": "6e6cc218",
+    "logical_hash": "f01cd20a"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 64,
+    "y1": 17,
+    "hash": "8e09eadd",
+    "logical_hash": "d649034f"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 33,
+    "y1": 19,
+    "hash": "d35acd84",
+    "logical_hash": "e7233f42"
+   },
+   {
+    "x0": 32,
+    "y0": 0,
+    "x1": 64,
+    "y1": 19,
+    "hash": "6b0d4afe",
+    "logical_hash": "c8ae5c9a"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 3,
+    "y1": 19,
+    "hash": "cd6fe16e",
+    "logical_hash": "f4089bb1"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 19,
+    "y1": 19,
+    "hash": "76eedcdd",
+    "logical_hash": "070d733b"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 35,
+    "y1": 19,
+    "hash": "4938d092",
+    "logical_hash": "1dc4d823"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 49,
+    "y1": 19,
+    "logical_hash": "e38bacdc"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 51,
+    "y1": 19,
+    "logical_hash": "98354d94"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 59,
+    "y1": 19,
+    "logical_hash": "04e8bbb4"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 64,
+    "y1": 19,
+    "logical_hash": "af1f1d36"
+   }
+  ]
+ },
+ {
+  "symbol": "texture_50cc",
+  "png": "generated/texture_tkmk00/texture_50cc.png",
+  "width": 64,
+  "height": 18,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 3,
+    "y1": 17,
+    "hash": "9aaa89e2",
+    "logical_hash": "6c3d5e4f"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 64,
+    "y1": 17,
+    "hash": "574cc1af",
+    "logical_hash": "9024567c"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 49,
+    "y1": 19,
+    "logical_hash": "6bb94453"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 51,
+    "y1": 19,
+    "logical_hash": "4754162b"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 59,
+    "y1": 19,
+    "logical_hash": "80f0844b"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 64,
+    "y1": 19,
+    "logical_hash": "33d9ebf5"
+   }
+  ]
+ },
+ {
+  "symbol": "texture_100cc",
+  "png": "generated/texture_tkmk00/texture_100cc.png",
+  "width": 64,
+  "height": 18,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 3,
+    "y1": 17,
+    "hash": "9aaa89e2",
+    "logical_hash": "6c3d5e4f"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 64,
+    "y1": 17,
+    "hash": "e88ff219",
+    "logical_hash": "71c26c72"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 49,
+    "y1": 19,
+    "logical_hash": "6bb94453"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 51,
+    "y1": 19,
+    "logical_hash": "4754162b"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 59,
+    "y1": 19,
+    "logical_hash": "80f0844b"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 64,
+    "y1": 19,
+    "logical_hash": "33d9ebf5"
+   }
+  ]
+ },
+ {
+  "symbol": "texture_150cc",
+  "png": "generated/texture_tkmk00/texture_150cc.png",
+  "width": 64,
+  "height": 18,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 3,
+    "y1": 17,
+    "hash": "9aaa89e2",
+    "logical_hash": "6c3d5e4f"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 64,
+    "y1": 17,
+    "hash": "b9fbf7e3",
+    "logical_hash": "70586708"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 49,
+    "y1": 19,
+    "logical_hash": "6bb94453"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 51,
+    "y1": 19,
+    "logical_hash": "4754162b"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 59,
+    "y1": 19,
+    "logical_hash": "80f0844b"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 64,
+    "y1": 19,
+    "logical_hash": "33d9ebf5"
+   }
+  ]
+ },
+ {
+  "symbol": "texture_extra",
+  "png": "generated/texture_tkmk00/texture_extra.png",
+  "width": 64,
+  "height": 18,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 3,
+    "y1": 17,
+    "hash": "9aaa89e2",
+    "logical_hash": "6c3d5e4f"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 49,
+    "y1": 19,
+    "logical_hash": "6bb94453"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 51,
+    "y1": 19,
+    "logical_hash": "4754162b"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 59,
+    "y1": 19,
+    "logical_hash": "80f0844b"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 64,
+    "y1": 19,
+    "logical_hash": "33d9ebf5"
+   }
+  ]
+ },
+ {
+  "symbol": "gTextureMenuWithoutItem",
+  "png": "generated/texture_tkmk00/gTextureMenuWithoutItem.png",
+  "width": 64,
+  "height": 18,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 3,
+    "y1": 17,
+    "hash": "9aaa89e2",
+    "logical_hash": "6c3d5e4f"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 49,
+    "y1": 19,
+    "logical_hash": "42082793"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 51,
+    "y1": 19,
+    "logical_hash": "f76c8b6b"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 59,
+    "y1": 19,
+    "logical_hash": "8ca4e38b"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 64,
+    "y1": 19,
+    "logical_hash": "d9e0df35"
+   }
+  ]
+ },
+ {
+  "symbol": "gTextureMenuWithItem",
+  "png": "generated/texture_tkmk00/gTextureMenuWithItem.png",
+  "width": 64,
+  "height": 18,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 3,
+    "y1": 17,
+    "hash": "9aaa89e2",
+    "logical_hash": "6c3d5e4f"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 49,
+    "y1": 19,
+    "logical_hash": "c9e0d9fb"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 51,
+    "y1": 19,
+    "logical_hash": "e6d077d3"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 59,
+    "y1": 19,
+    "logical_hash": "1ee4d1f3"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 64,
+    "y1": 19,
+    "logical_hash": "f33e6fcd"
+   }
+  ]
+ },
+ {
+  "symbol": "texture_begin",
+  "png": "generated/texture_tkmk00/texture_begin.png",
+  "width": 64,
+  "height": 18,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 3,
+    "y1": 17,
+    "hash": "9aaa89e2",
+    "logical_hash": "6c3d5e4f"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 64,
+    "y1": 17,
+    "hash": "2041e2ab",
+    "logical_hash": "747f2790"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 49,
+    "y1": 19,
+    "logical_hash": "6bb94453"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 51,
+    "y1": 19,
+    "logical_hash": "4754162b"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 59,
+    "y1": 19,
+    "logical_hash": "80f0844b"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 64,
+    "y1": 19,
+    "logical_hash": "33d9ebf5"
+   }
+  ]
+ },
+ {
+  "symbol": "texture_menu_ghost",
+  "png": "generated/texture_tkmk00/texture_menu_ghost.png",
+  "width": 64,
+  "height": 18,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 3,
+    "y1": 17,
+    "hash": "9aaa89e2",
+    "logical_hash": "6c3d5e4f"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 49,
+    "y1": 19,
+    "logical_hash": "6bb94453"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 51,
+    "y1": 19,
+    "logical_hash": "4754162b"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 59,
+    "y1": 19,
+    "logical_hash": "80f0844b"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 64,
+    "y1": 19,
+    "logical_hash": "33d9ebf5"
+   }
+  ]
+ },
+ {
+  "symbol": "texture_data",
+  "png": "generated/texture_tkmk00/texture_data.png",
+  "width": 64,
+  "height": 18,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 3,
+    "y1": 17,
+    "hash": "9aaa89e2",
+    "logical_hash": "6c3d5e4f"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 64,
+    "y1": 17,
+    "hash": "8da9b8e3",
+    "logical_hash": "f6b42808"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 49,
+    "y1": 19,
+    "logical_hash": "6bb94453"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 51,
+    "y1": 19,
+    "logical_hash": "4754162b"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 59,
+    "y1": 19,
+    "logical_hash": "80f0844b"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 64,
+    "y1": 19,
+    "logical_hash": "33d9ebf5"
+   }
+  ]
+ },
+ {
+  "symbol": "texture_ok",
+  "png": "generated/texture_tkmk00/texture_ok.png",
+  "width": 31,
+  "height": 19,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 16,
+    "y1": 20,
+    "hash": "35d069ff",
+    "logical_hash": "bbb0be5d"
+   },
+   {
+    "x0": 15,
+    "y0": 0,
+    "x1": 31,
+    "y1": 20,
+    "hash": "154196f3",
+    "logical_hash": "7cf67571"
+   }
+  ]
+ },
+ {
+  "symbol": "background_blue_sky",
+  "png": "generated/texture_tkmk00/background_blue_sky.png",
+  "width": 320,
+  "height": 240,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 320,
+    "y1": 3,
+    "hash": "6329c941",
+    "logical_hash": "8089b86c"
+   },
+   {
+    "x0": 0,
+    "y0": 2,
+    "x1": 320,
+    "y1": 5,
+    "hash": "5e3c6b65",
+    "logical_hash": "f7cf7c1b"
+   },
+   {
+    "x0": 0,
+    "y0": 4,
+    "x1": 320,
+    "y1": 7,
+    "hash": "064f5ed2",
+    "logical_hash": "3de1feb0"
+   },
+   {
+    "x0": 0,
+    "y0": 6,
+    "x1": 320,
+    "y1": 9,
+    "hash": "e68845b5",
+    "logical_hash": "95fa9490"
+   },
+   {
+    "x0": 0,
+    "y0": 8,
+    "x1": 320,
+    "y1": 11,
+    "hash": "53eef6fc",
+    "logical_hash": "f055d0ac"
+   },
+   {
+    "x0": 0,
+    "y0": 10,
+    "x1": 320,
+    "y1": 13,
+    "hash": "98797053",
+    "logical_hash": "8123d794"
+   },
+   {
+    "x0": 0,
+    "y0": 12,
+    "x1": 320,
+    "y1": 15,
+    "hash": "35fbc76b",
+    "logical_hash": "e629c278"
+   },
+   {
+    "x0": 0,
+    "y0": 14,
+    "x1": 320,
+    "y1": 17,
+    "hash": "1a3c1e1b",
+    "logical_hash": "17b3c397"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 320,
+    "y1": 19,
+    "hash": "59fc6a69",
+    "logical_hash": "ffdbb60c"
+   },
+   {
+    "x0": 0,
+    "y0": 18,
+    "x1": 320,
+    "y1": 21,
+    "hash": "829c8e11",
+    "logical_hash": "45783164"
+   },
+   {
+    "x0": 0,
+    "y0": 20,
+    "x1": 320,
+    "y1": 23,
+    "hash": "e3be0c45",
+    "logical_hash": "0bc19360"
+   },
+   {
+    "x0": 0,
+    "y0": 22,
+    "x1": 320,
+    "y1": 25,
+    "hash": "58f1a592",
+    "logical_hash": "3e58994b"
+   },
+   {
+    "x0": 0,
+    "y0": 24,
+    "x1": 320,
+    "y1": 27,
+    "hash": "6a1a2c93",
+    "logical_hash": "630779c7"
+   },
+   {
+    "x0": 0,
+    "y0": 26,
+    "x1": 320,
+    "y1": 29,
+    "hash": "2e7915b8",
+    "logical_hash": "5e856d37"
+   },
+   {
+    "x0": 0,
+    "y0": 28,
+    "x1": 320,
+    "y1": 31,
+    "hash": "879a67e7",
+    "logical_hash": "0c55f307"
+   },
+   {
+    "x0": 0,
+    "y0": 30,
+    "x1": 320,
+    "y1": 33,
+    "hash": "6d90c60c",
+    "logical_hash": "2fb34122"
+   },
+   {
+    "x0": 0,
+    "y0": 32,
+    "x1": 320,
+    "y1": 35,
+    "hash": "7d35c905",
+    "logical_hash": "d8445c00"
+   },
+   {
+    "x0": 0,
+    "y0": 34,
+    "x1": 320,
+    "y1": 37,
+    "hash": "6875a9b3",
+    "logical_hash": "cab3fdef"
+   },
+   {
+    "x0": 0,
+    "y0": 36,
+    "x1": 320,
+    "y1": 39,
+    "hash": "3f4170d8",
+    "logical_hash": "7efa0602"
+   },
+   {
+    "x0": 0,
+    "y0": 38,
+    "x1": 320,
+    "y1": 41,
+    "hash": "b9aad019",
+    "logical_hash": "9677f210"
+   },
+   {
+    "x0": 0,
+    "y0": 40,
+    "x1": 320,
+    "y1": 43,
+    "hash": "dd5d197e",
+    "logical_hash": "195ab89f"
+   },
+   {
+    "x0": 0,
+    "y0": 42,
+    "x1": 320,
+    "y1": 45,
+    "hash": "34c19b69",
+    "logical_hash": "17d772ef"
+   },
+   {
+    "x0": 0,
+    "y0": 44,
+    "x1": 320,
+    "y1": 47,
+    "hash": "55fc2f1d",
+    "logical_hash": "3cf5b19c"
+   },
+   {
+    "x0": 0,
+    "y0": 46,
+    "x1": 320,
+    "y1": 49,
+    "hash": "c90c7f2b",
+    "logical_hash": "22928b5f"
+   },
+   {
+    "x0": 0,
+    "y0": 48,
+    "x1": 320,
+    "y1": 51,
+    "hash": "a50abf9a",
+    "logical_hash": "d9090dae"
+   },
+   {
+    "x0": 0,
+    "y0": 50,
+    "x1": 320,
+    "y1": 53,
+    "hash": "dfd5911d",
+    "logical_hash": "ac3e786d"
+   },
+   {
+    "x0": 0,
+    "y0": 52,
+    "x1": 320,
+    "y1": 55,
+    "hash": "643d0901",
+    "logical_hash": "0150e695"
+   },
+   {
+    "x0": 0,
+    "y0": 54,
+    "x1": 320,
+    "y1": 57,
+    "hash": "0b2c7ae0",
+    "logical_hash": "f8ed576f"
+   },
+   {
+    "x0": 0,
+    "y0": 56,
+    "x1": 320,
+    "y1": 59,
+    "hash": "e4a11ac1",
+    "logical_hash": "e92368ba"
+   },
+   {
+    "x0": 0,
+    "y0": 58,
+    "x1": 320,
+    "y1": 61,
+    "hash": "5df86eaa",
+    "logical_hash": "f5045ee8"
+   },
+   {
+    "x0": 0,
+    "y0": 60,
+    "x1": 320,
+    "y1": 63,
+    "hash": "b169817e",
+    "logical_hash": "f02230ed"
+   },
+   {
+    "x0": 0,
+    "y0": 62,
+    "x1": 320,
+    "y1": 65,
+    "hash": "32aa86da",
+    "logical_hash": "875273a2"
+   },
+   {
+    "x0": 0,
+    "y0": 64,
+    "x1": 320,
+    "y1": 67,
+    "hash": "4cf487d3",
+    "logical_hash": "5d98b341"
+   },
+   {
+    "x0": 0,
+    "y0": 66,
+    "x1": 320,
+    "y1": 69,
+    "hash": "5a32ee70",
+    "logical_hash": "56b3af87"
+   },
+   {
+    "x0": 0,
+    "y0": 68,
+    "x1": 320,
+    "y1": 71,
+    "hash": "6abe6200",
+    "logical_hash": "9c8eed23"
+   },
+   {
+    "x0": 0,
+    "y0": 70,
+    "x1": 320,
+    "y1": 73,
+    "hash": "59397098",
+    "logical_hash": "193f47d3"
+   },
+   {
+    "x0": 0,
+    "y0": 72,
+    "x1": 320,
+    "y1": 75,
+    "hash": "cbe60d48",
+    "logical_hash": "1d592c6b"
+   },
+   {
+    "x0": 0,
+    "y0": 74,
+    "x1": 320,
+    "y1": 77,
+    "hash": "cd5f1ec5",
+    "logical_hash": "00c8272a"
+   },
+   {
+    "x0": 0,
+    "y0": 76,
+    "x1": 320,
+    "y1": 79,
+    "hash": "bec075ca",
+    "logical_hash": "513c50f4"
+   },
+   {
+    "x0": 0,
+    "y0": 78,
+    "x1": 320,
+    "y1": 81,
+    "hash": "7875c94a",
+    "logical_hash": "0a23677e"
+   },
+   {
+    "x0": 0,
+    "y0": 80,
+    "x1": 320,
+    "y1": 83,
+    "hash": "798db5d4",
+    "logical_hash": "86c228c2"
+   },
+   {
+    "x0": 0,
+    "y0": 82,
+    "x1": 320,
+    "y1": 85,
+    "hash": "f64c5253",
+    "logical_hash": "f25819ff"
+   },
+   {
+    "x0": 0,
+    "y0": 84,
+    "x1": 320,
+    "y1": 87,
+    "hash": "e35250cc",
+    "logical_hash": "13a03eff"
+   },
+   {
+    "x0": 0,
+    "y0": 86,
+    "x1": 320,
+    "y1": 89,
+    "hash": "26fb2fa9",
+    "logical_hash": "005b9f17"
+   },
+   {
+    "x0": 0,
+    "y0": 88,
+    "x1": 320,
+    "y1": 91,
+    "hash": "960701f6",
+    "logical_hash": "589b6d42"
+   },
+   {
+    "x0": 0,
+    "y0": 90,
+    "x1": 320,
+    "y1": 93,
+    "hash": "898aaa54",
+    "logical_hash": "c600d05a"
+   },
+   {
+    "x0": 0,
+    "y0": 92,
+    "x1": 320,
+    "y1": 95,
+    "hash": "982db928",
+    "logical_hash": "ab367134"
+   },
+   {
+    "x0": 0,
+    "y0": 94,
+    "x1": 320,
+    "y1": 97,
+    "hash": "9e66efb1",
+    "logical_hash": "ebd394a1"
+   },
+   {
+    "x0": 0,
+    "y0": 96,
+    "x1": 320,
+    "y1": 99,
+    "hash": "bf8cf172",
+    "logical_hash": "aaa98cb8"
+   },
+   {
+    "x0": 0,
+    "y0": 98,
+    "x1": 320,
+    "y1": 101,
+    "hash": "14ada41d",
+    "logical_hash": "0329bd9a"
+   },
+   {
+    "x0": 0,
+    "y0": 100,
+    "x1": 320,
+    "y1": 103,
+    "hash": "56538e65",
+    "logical_hash": "604a2037"
+   },
+   {
+    "x0": 0,
+    "y0": 102,
+    "x1": 320,
+    "y1": 105,
+    "hash": "057594c8",
+    "logical_hash": "36336766"
+   },
+   {
+    "x0": 0,
+    "y0": 104,
+    "x1": 320,
+    "y1": 107,
+    "hash": "7f4b72f4",
+    "logical_hash": "2f9272f5"
+   },
+   {
+    "x0": 0,
+    "y0": 106,
+    "x1": 320,
+    "y1": 109,
+    "hash": "e1892b2b",
+    "logical_hash": "051bc8f5"
+   },
+   {
+    "x0": 0,
+    "y0": 108,
+    "x1": 320,
+    "y1": 111,
+    "hash": "77cf2a66",
+    "logical_hash": "80b5029a"
+   },
+   {
+    "x0": 0,
+    "y0": 110,
+    "x1": 320,
+    "y1": 113,
+    "hash": "910b2a0c",
+    "logical_hash": "ac95b8e1"
+   },
+   {
+    "x0": 0,
+    "y0": 112,
+    "x1": 320,
+    "y1": 115,
+    "hash": "679abfb1",
+    "logical_hash": "ac2d86cf"
+   },
+   {
+    "x0": 0,
+    "y0": 114,
+    "x1": 320,
+    "y1": 117,
+    "hash": "18776c55",
+    "logical_hash": "065506eb"
+   },
+   {
+    "x0": 0,
+    "y0": 116,
+    "x1": 320,
+    "y1": 119,
+    "hash": "8bbe7e46",
+    "logical_hash": "b41656a3"
+   },
+   {
+    "x0": 0,
+    "y0": 118,
+    "x1": 320,
+    "y1": 121,
+    "hash": "ae1488b1",
+    "logical_hash": "11432744"
+   },
+   {
+    "x0": 0,
+    "y0": 120,
+    "x1": 320,
+    "y1": 123,
+    "hash": "fe6091a6",
+    "logical_hash": "20a08ec2"
+   },
+   {
+    "x0": 0,
+    "y0": 122,
+    "x1": 320,
+    "y1": 125,
+    "hash": "c44e81e0",
+    "logical_hash": "5e57a881"
+   },
+   {
+    "x0": 0,
+    "y0": 124,
+    "x1": 320,
+    "y1": 127,
+    "hash": "3a9c98ee",
+    "logical_hash": "17f07ac4"
+   },
+   {
+    "x0": 0,
+    "y0": 126,
+    "x1": 320,
+    "y1": 129,
+    "hash": "ccfb3c6b",
+    "logical_hash": "4b1efd39"
+   },
+   {
+    "x0": 0,
+    "y0": 128,
+    "x1": 320,
+    "y1": 131,
+    "hash": "10c86b94",
+    "logical_hash": "819d459e"
+   },
+   {
+    "x0": 0,
+    "y0": 130,
+    "x1": 320,
+    "y1": 133,
+    "hash": "99aecfda",
+    "logical_hash": "21cefbf5"
+   },
+   {
+    "x0": 0,
+    "y0": 132,
+    "x1": 320,
+    "y1": 135,
+    "hash": "ec9711ad",
+    "logical_hash": "0543113e"
+   },
+   {
+    "x0": 0,
+    "y0": 134,
+    "x1": 320,
+    "y1": 137,
+    "hash": "d377e06c",
+    "logical_hash": "b09f0ee4"
+   },
+   {
+    "x0": 0,
+    "y0": 136,
+    "x1": 320,
+    "y1": 139,
+    "hash": "c3882e29",
+    "logical_hash": "4344f96a"
+   },
+   {
+    "x0": 0,
+    "y0": 138,
+    "x1": 320,
+    "y1": 141,
+    "hash": "fdf43067",
+    "logical_hash": "48c2b9c6"
+   },
+   {
+    "x0": 0,
+    "y0": 140,
+    "x1": 320,
+    "y1": 143,
+    "hash": "495b7205",
+    "logical_hash": "00cdf368"
+   },
+   {
+    "x0": 0,
+    "y0": 142,
+    "x1": 320,
+    "y1": 145,
+    "hash": "da78d7c6",
+    "logical_hash": "d9845722"
+   },
+   {
+    "x0": 0,
+    "y0": 144,
+    "x1": 320,
+    "y1": 147,
+    "hash": "d734691d",
+    "logical_hash": "a5847485"
+   },
+   {
+    "x0": 0,
+    "y0": 146,
+    "x1": 320,
+    "y1": 149,
+    "hash": "45635c3b",
+    "logical_hash": "276048e0"
+   },
+   {
+    "x0": 0,
+    "y0": 148,
+    "x1": 320,
+    "y1": 151,
+    "hash": "f2790b5d",
+    "logical_hash": "e3da83d5"
+   },
+   {
+    "x0": 0,
+    "y0": 150,
+    "x1": 320,
+    "y1": 153,
+    "hash": "dcd83de8",
+    "logical_hash": "069c737f"
+   },
+   {
+    "x0": 0,
+    "y0": 152,
+    "x1": 320,
+    "y1": 155,
+    "hash": "9730687b",
+    "logical_hash": "128da02d"
+   },
+   {
+    "x0": 0,
+    "y0": 154,
+    "x1": 320,
+    "y1": 157,
+    "hash": "71d209be",
+    "logical_hash": "72e970d2"
+   },
+   {
+    "x0": 0,
+    "y0": 156,
+    "x1": 320,
+    "y1": 159,
+    "hash": "b2c42ebb",
+    "logical_hash": "9a3e9331"
+   },
+   {
+    "x0": 0,
+    "y0": 158,
+    "x1": 320,
+    "y1": 161,
+    "hash": "c148807e",
+    "logical_hash": "d566e961"
+   },
+   {
+    "x0": 0,
+    "y0": 160,
+    "x1": 320,
+    "y1": 163,
+    "hash": "93c3627c",
+    "logical_hash": "276abbd8"
+   },
+   {
+    "x0": 0,
+    "y0": 162,
+    "x1": 320,
+    "y1": 165,
+    "hash": "02172ccb",
+    "logical_hash": "d29f4d3a"
+   },
+   {
+    "x0": 0,
+    "y0": 164,
+    "x1": 320,
+    "y1": 167,
+    "hash": "9996e92f",
+    "logical_hash": "e08392aa"
+   },
+   {
+    "x0": 0,
+    "y0": 166,
+    "x1": 320,
+    "y1": 169,
+    "hash": "693a8cee",
+    "logical_hash": "f1416b48"
+   },
+   {
+    "x0": 0,
+    "y0": 168,
+    "x1": 320,
+    "y1": 171,
+    "hash": "208bb413",
+    "logical_hash": "934b8d08"
+   },
+   {
+    "x0": 0,
+    "y0": 170,
+    "x1": 320,
+    "y1": 173,
+    "hash": "01667747",
+    "logical_hash": "78f91584"
+   },
+   {
+    "x0": 0,
+    "y0": 172,
+    "x1": 320,
+    "y1": 175,
+    "hash": "eff2740a",
+    "logical_hash": "eea1e7e7"
+   },
+   {
+    "x0": 0,
+    "y0": 174,
+    "x1": 320,
+    "y1": 177,
+    "hash": "f2ff3012",
+    "logical_hash": "4b2984a4"
+   },
+   {
+    "x0": 0,
+    "y0": 176,
+    "x1": 320,
+    "y1": 179,
+    "hash": "4c37ffdf",
+    "logical_hash": "501f4a8d"
+   },
+   {
+    "x0": 0,
+    "y0": 178,
+    "x1": 320,
+    "y1": 181,
+    "hash": "a3189685",
+    "logical_hash": "80f9fb16"
+   },
+   {
+    "x0": 0,
+    "y0": 180,
+    "x1": 320,
+    "y1": 183,
+    "hash": "8dfafde3",
+    "logical_hash": "76765d2e"
+   },
+   {
+    "x0": 0,
+    "y0": 182,
+    "x1": 320,
+    "y1": 185,
+    "hash": "a9290315",
+    "logical_hash": "a9c9c946"
+   },
+   {
+    "x0": 0,
+    "y0": 184,
+    "x1": 320,
+    "y1": 187,
+    "hash": "9c85fc8c",
+    "logical_hash": "1c52a557"
+   },
+   {
+    "x0": 0,
+    "y0": 186,
+    "x1": 320,
+    "y1": 189,
+    "hash": "c1a936c5",
+    "logical_hash": "39e16eac"
+   },
+   {
+    "x0": 0,
+    "y0": 188,
+    "x1": 320,
+    "y1": 191,
+    "hash": "da3ed2c0",
+    "logical_hash": "d10530ef"
+   },
+   {
+    "x0": 0,
+    "y0": 190,
+    "x1": 320,
+    "y1": 193,
+    "hash": "f713aeff",
+    "logical_hash": "0f64e311"
+   },
+   {
+    "x0": 0,
+    "y0": 192,
+    "x1": 320,
+    "y1": 195,
+    "hash": "4e6b3fd3",
+    "logical_hash": "b635ef5e"
+   },
+   {
+    "x0": 0,
+    "y0": 194,
+    "x1": 320,
+    "y1": 197,
+    "hash": "8c4d2967",
+    "logical_hash": "50dbbb84"
+   },
+   {
+    "x0": 0,
+    "y0": 196,
+    "x1": 320,
+    "y1": 199,
+    "hash": "89e64518",
+    "logical_hash": "1e13582d"
+   },
+   {
+    "x0": 0,
+    "y0": 198,
+    "x1": 320,
+    "y1": 201,
+    "hash": "a1ecd7ff",
+    "logical_hash": "4c9d0a85"
+   },
+   {
+    "x0": 0,
+    "y0": 200,
+    "x1": 320,
+    "y1": 203,
+    "hash": "ae292f8b",
+    "logical_hash": "fbe1d8bd"
+   },
+   {
+    "x0": 0,
+    "y0": 202,
+    "x1": 320,
+    "y1": 205,
+    "hash": "b974dd4c",
+    "logical_hash": "dfc76118"
+   },
+   {
+    "x0": 0,
+    "y0": 204,
+    "x1": 320,
+    "y1": 207,
+    "hash": "b3c8e9da",
+    "logical_hash": "40d42876"
+   },
+   {
+    "x0": 0,
+    "y0": 206,
+    "x1": 320,
+    "y1": 209,
+    "hash": "7403fa2c",
+    "logical_hash": "9f4561c5"
+   },
+   {
+    "x0": 0,
+    "y0": 208,
+    "x1": 320,
+    "y1": 211,
+    "hash": "9030f96c",
+    "logical_hash": "8fdad0c8"
+   },
+   {
+    "x0": 0,
+    "y0": 210,
+    "x1": 320,
+    "y1": 213,
+    "hash": "b230030b",
+    "logical_hash": "9882c457"
+   },
+   {
+    "x0": 0,
+    "y0": 212,
+    "x1": 320,
+    "y1": 215,
+    "hash": "d99f0e63",
+    "logical_hash": "b16342ad"
+   },
+   {
+    "x0": 0,
+    "y0": 214,
+    "x1": 320,
+    "y1": 217,
+    "hash": "9010bf93",
+    "logical_hash": "7ca042be"
+   },
+   {
+    "x0": 0,
+    "y0": 216,
+    "x1": 320,
+    "y1": 219,
+    "hash": "2b08619c",
+    "logical_hash": "b9a8f0bc"
+   },
+   {
+    "x0": 0,
+    "y0": 218,
+    "x1": 320,
+    "y1": 221,
+    "hash": "e4e3b033",
+    "logical_hash": "0a3438ad"
+   },
+   {
+    "x0": 0,
+    "y0": 220,
+    "x1": 320,
+    "y1": 223,
+    "hash": "04f36e3b",
+    "logical_hash": "c63cf917"
+   },
+   {
+    "x0": 0,
+    "y0": 222,
+    "x1": 320,
+    "y1": 225,
+    "hash": "5f07abd6",
+    "logical_hash": "ea798ec5"
+   },
+   {
+    "x0": 0,
+    "y0": 224,
+    "x1": 320,
+    "y1": 227,
+    "hash": "f41675f2",
+    "logical_hash": "33ecb274"
+   },
+   {
+    "x0": 0,
+    "y0": 226,
+    "x1": 320,
+    "y1": 229,
+    "hash": "8ae42c8d",
+    "logical_hash": "3d4d6f8f"
+   },
+   {
+    "x0": 0,
+    "y0": 228,
+    "x1": 320,
+    "y1": 231,
+    "hash": "4ac93d35",
+    "logical_hash": "391ebe56"
+   },
+   {
+    "x0": 0,
+    "y0": 230,
+    "x1": 320,
+    "y1": 233,
+    "hash": "a677a5f0",
+    "logical_hash": "51c2100e"
+   },
+   {
+    "x0": 0,
+    "y0": 232,
+    "x1": 320,
+    "y1": 235,
+    "hash": "7dfd3b71",
+    "logical_hash": "9ab3f3a6"
+   },
+   {
+    "x0": 0,
+    "y0": 234,
+    "x1": 320,
+    "y1": 237,
+    "hash": "5fc6ade2",
+    "logical_hash": "a2765367"
+   },
+   {
+    "x0": 0,
+    "y0": 236,
+    "x1": 320,
+    "y1": 239,
+    "hash": "94dabb09",
+    "logical_hash": "de879426"
+   },
+   {
+    "x0": 0,
+    "y0": 238,
+    "x1": 320,
+    "y1": 241,
+    "logical_hash": "b139c024"
+   }
+  ]
+ },
+ {
+  "symbol": "background_sunset",
+  "png": "generated/texture_tkmk00/background_sunset.png",
+  "width": 320,
+  "height": 240,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 238,
+    "x1": 320,
+    "y1": 241,
+    "logical_hash": "82259e8b"
+   }
+  ]
+ },
+ {
+  "symbol": "gTextureTitleMarioRaceway",
+  "png": "generated/texture_tkmk00/gTextureTitleMarioRaceway.png",
+  "width": 140,
+  "height": 18,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 140,
+    "y1": 5,
+    "hash": "b485f827",
+    "logical_hash": "0751af9e"
+   },
+   {
+    "x0": 0,
+    "y0": 4,
+    "x1": 140,
+    "y1": 9,
+    "hash": "c150e40b",
+    "logical_hash": "5f693661"
+   },
+   {
+    "x0": 0,
+    "y0": 8,
+    "x1": 140,
+    "y1": 13,
+    "hash": "d015bafd",
+    "logical_hash": "c5c8c643"
+   },
+   {
+    "x0": 0,
+    "y0": 12,
+    "x1": 140,
+    "y1": 17,
+    "hash": "0e9d8ff7",
+    "logical_hash": "3b21b024"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 140,
+    "y1": 19,
+    "logical_hash": "8d720e4d"
+   }
+  ]
+ },
+ {
+  "symbol": "gTextureTitleChocoMountain",
+  "png": "generated/texture_tkmk00/gTextureTitleChocoMountain.png",
+  "width": 140,
+  "height": 18,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 140,
+    "y1": 5,
+    "hash": "95c4808a",
+    "logical_hash": "3f953560"
+   },
+   {
+    "x0": 0,
+    "y0": 4,
+    "x1": 140,
+    "y1": 9,
+    "hash": "421b1864",
+    "logical_hash": "1052de5a"
+   },
+   {
+    "x0": 0,
+    "y0": 8,
+    "x1": 140,
+    "y1": 13,
+    "hash": "99a53065",
+    "logical_hash": "02a3df16"
+   },
+   {
+    "x0": 0,
+    "y0": 12,
+    "x1": 140,
+    "y1": 17,
+    "hash": "cb8dad68",
+    "logical_hash": "42849c9b"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 140,
+    "y1": 19,
+    "logical_hash": "8d720e4d"
+   }
+  ]
+ },
+ {
+  "symbol": "gTextureTitleBowsersCastle",
+  "png": "generated/texture_tkmk00/gTextureTitleBowsersCastle.png",
+  "width": 140,
+  "height": 18,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 140,
+    "y1": 5,
+    "hash": "c802220d",
+    "logical_hash": "3ecdaa67"
+   },
+   {
+    "x0": 0,
+    "y0": 4,
+    "x1": 140,
+    "y1": 9,
+    "hash": "8754ef82",
+    "logical_hash": "9a3b1cbb"
+   },
+   {
+    "x0": 0,
+    "y0": 8,
+    "x1": 140,
+    "y1": 13,
+    "hash": "463a1f63",
+    "logical_hash": "1b8bc5a5"
+   },
+   {
+    "x0": 0,
+    "y0": 12,
+    "x1": 140,
+    "y1": 17,
+    "hash": "bf885fde",
+    "logical_hash": "5976dfbd"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 140,
+    "y1": 19,
+    "logical_hash": "8d720e4d"
+   }
+  ]
+ },
+ {
+  "symbol": "gTextureTitleBansheeBoardwalk",
+  "png": "generated/texture_tkmk00/gTextureTitleBansheeBoardwalk.png",
+  "width": 140,
+  "height": 18,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 140,
+    "y1": 5,
+    "hash": "f8f8d5dc",
+    "logical_hash": "3fdcf962"
+   },
+   {
+    "x0": 0,
+    "y0": 4,
+    "x1": 140,
+    "y1": 9,
+    "hash": "2b321a04",
+    "logical_hash": "121619d1"
+   },
+   {
+    "x0": 0,
+    "y0": 8,
+    "x1": 140,
+    "y1": 13,
+    "hash": "850cccae",
+    "logical_hash": "3705b4f4"
+   },
+   {
+    "x0": 0,
+    "y0": 12,
+    "x1": 140,
+    "y1": 17,
+    "hash": "d7448c3d",
+    "logical_hash": "d2d71846"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 140,
+    "y1": 19,
+    "logical_hash": "a74b1b35"
+   }
+  ]
+ },
+ {
+  "symbol": "gTextureTitleYoshiValley",
+  "png": "generated/texture_tkmk00/gTextureTitleYoshiValley.png",
+  "width": 140,
+  "height": 18,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 140,
+    "y1": 5,
+    "hash": "6c3d2487",
+    "logical_hash": "032a800d"
+   },
+   {
+    "x0": 0,
+    "y0": 4,
+    "x1": 140,
+    "y1": 9,
+    "hash": "a132d62a",
+    "logical_hash": "ffa5dc6b"
+   },
+   {
+    "x0": 0,
+    "y0": 8,
+    "x1": 140,
+    "y1": 13,
+    "hash": "3aedaf35",
+    "logical_hash": "df5fa15d"
+   },
+   {
+    "x0": 0,
+    "y0": 12,
+    "x1": 140,
+    "y1": 17,
+    "hash": "082a0665",
+    "logical_hash": "c16036b6"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 140,
+    "y1": 19,
+    "logical_hash": "8d720e4d"
+   }
+  ]
+ },
+ {
+  "symbol": "gTextureTitleFrappeSnowland",
+  "png": "generated/texture_tkmk00/gTextureTitleFrappeSnowland.png",
+  "width": 140,
+  "height": 18,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 140,
+    "y1": 5,
+    "hash": "24dbeed3",
+    "logical_hash": "26b6a613"
+   },
+   {
+    "x0": 0,
+    "y0": 4,
+    "x1": 140,
+    "y1": 9,
+    "hash": "b8799274",
+    "logical_hash": "1ff81cc9"
+   },
+   {
+    "x0": 0,
+    "y0": 8,
+    "x1": 140,
+    "y1": 13,
+    "hash": "3698b29b",
+    "logical_hash": "c097271b"
+   },
+   {
+    "x0": 0,
+    "y0": 12,
+    "x1": 140,
+    "y1": 17,
+    "hash": "406d54fc",
+    "logical_hash": "8e5a4207"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 140,
+    "y1": 19,
+    "logical_hash": "8d720e4d"
+   }
+  ]
+ },
+ {
+  "symbol": "gTextureTitleKoopaTroopaBeach",
+  "png": "generated/texture_tkmk00/gTextureTitleKoopaTroopaBeach.png",
+  "width": 140,
+  "height": 18,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 140,
+    "y1": 5,
+    "hash": "723ee8c5",
+    "logical_hash": "e44212b0"
+   },
+   {
+    "x0": 0,
+    "y0": 4,
+    "x1": 140,
+    "y1": 9,
+    "hash": "cb92e9e6",
+    "logical_hash": "ae63b0f7"
+   },
+   {
+    "x0": 0,
+    "y0": 8,
+    "x1": 140,
+    "y1": 13,
+    "hash": "e095b652",
+    "logical_hash": "fd0736ff"
+   },
+   {
+    "x0": 0,
+    "y0": 12,
+    "x1": 140,
+    "y1": 17,
+    "hash": "b05bd2f9",
+    "logical_hash": "3f483ef2"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 140,
+    "y1": 19,
+    "logical_hash": "8d720e4d"
+   }
+  ]
+ },
+ {
+  "symbol": "gTextureTitleRoyalRaceway",
+  "png": "generated/texture_tkmk00/gTextureTitleRoyalRaceway.png",
+  "width": 140,
+  "height": 18,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 140,
+    "y1": 5,
+    "hash": "984fab92",
+    "logical_hash": "5a933317"
+   },
+   {
+    "x0": 0,
+    "y0": 4,
+    "x1": 140,
+    "y1": 9,
+    "hash": "906ae16c",
+    "logical_hash": "8969f8a9"
+   },
+   {
+    "x0": 0,
+    "y0": 8,
+    "x1": 140,
+    "y1": 13,
+    "hash": "ea13eafd",
+    "logical_hash": "281cb358"
+   },
+   {
+    "x0": 0,
+    "y0": 12,
+    "x1": 140,
+    "y1": 17,
+    "hash": "8ad6688f",
+    "logical_hash": "4347d6bc"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 140,
+    "y1": 19,
+    "logical_hash": "8d720e4d"
+   }
+  ]
+ },
+ {
+  "symbol": "gTextureTitleLuigiRaceway",
+  "png": "generated/texture_tkmk00/gTextureTitleLuigiRaceway.png",
+  "width": 140,
+  "height": 18,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 140,
+    "y1": 5,
+    "hash": "4d290bf6",
+    "logical_hash": "b9b5c9fb"
+   },
+   {
+    "x0": 0,
+    "y0": 4,
+    "x1": 140,
+    "y1": 9,
+    "hash": "9c290717",
+    "logical_hash": "d1a43d65"
+   },
+   {
+    "x0": 0,
+    "y0": 8,
+    "x1": 140,
+    "y1": 13,
+    "hash": "4ca0383e",
+    "logical_hash": "95aec44d"
+   },
+   {
+    "x0": 0,
+    "y0": 12,
+    "x1": 140,
+    "y1": 17,
+    "hash": "a51d5d2c",
+    "logical_hash": "d1218297"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 140,
+    "y1": 19,
+    "logical_hash": "8d720e4d"
+   }
+  ]
+ },
+ {
+  "symbol": "gTextureTitleMooMooFarm",
+  "png": "generated/texture_tkmk00/gTextureTitleMooMooFarm.png",
+  "width": 140,
+  "height": 18,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 140,
+    "y1": 5,
+    "hash": "ec598766",
+    "logical_hash": "45a73aa1"
+   },
+   {
+    "x0": 0,
+    "y0": 4,
+    "x1": 140,
+    "y1": 9,
+    "hash": "27337a9d",
+    "logical_hash": "d61dec8d"
+   },
+   {
+    "x0": 0,
+    "y0": 8,
+    "x1": 140,
+    "y1": 13,
+    "hash": "918adb3e",
+    "logical_hash": "39ce5836"
+   },
+   {
+    "x0": 0,
+    "y0": 12,
+    "x1": 140,
+    "y1": 17,
+    "hash": "b2068d1d",
+    "logical_hash": "c79d924e"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 140,
+    "y1": 19,
+    "logical_hash": "8d720e4d"
+   }
+  ]
+ },
+ {
+  "symbol": "gTextureTitleToadsTurnpike",
+  "png": "generated/texture_tkmk00/gTextureTitleToadsTurnpike.png",
+  "width": 140,
+  "height": 18,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 140,
+    "y1": 5,
+    "hash": "ce6359b5",
+    "logical_hash": "d2d77ad6"
+   },
+   {
+    "x0": 0,
+    "y0": 4,
+    "x1": 140,
+    "y1": 9,
+    "hash": "f337749b",
+    "logical_hash": "d0fa8205"
+   },
+   {
+    "x0": 0,
+    "y0": 8,
+    "x1": 140,
+    "y1": 13,
+    "hash": "c8cf5032",
+    "logical_hash": "9045ad0c"
+   },
+   {
+    "x0": 0,
+    "y0": 12,
+    "x1": 140,
+    "y1": 17,
+    "hash": "a55f9a31",
+    "logical_hash": "32b16b6a"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 140,
+    "y1": 19,
+    "logical_hash": "8d720e4d"
+   }
+  ]
+ },
+ {
+  "symbol": "gTextureTitleKalimariDesert",
+  "png": "generated/texture_tkmk00/gTextureTitleKalimariDesert.png",
+  "width": 140,
+  "height": 18,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 140,
+    "y1": 5,
+    "hash": "e8e3eecc",
+    "logical_hash": "d086a8ea"
+   },
+   {
+    "x0": 0,
+    "y0": 4,
+    "x1": 140,
+    "y1": 9,
+    "hash": "41e900a7",
+    "logical_hash": "034c50d3"
+   },
+   {
+    "x0": 0,
+    "y0": 8,
+    "x1": 140,
+    "y1": 13,
+    "hash": "848e5f41",
+    "logical_hash": "cd7c5b23"
+   },
+   {
+    "x0": 0,
+    "y0": 12,
+    "x1": 140,
+    "y1": 17,
+    "hash": "9bedd0ec",
+    "logical_hash": "0dacd6d7"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 140,
+    "y1": 19,
+    "logical_hash": "8d720e4d"
+   }
+  ]
+ },
+ {
+  "symbol": "gTextureTitleSherbetLand",
+  "png": "generated/texture_tkmk00/gTextureTitleSherbetLand.png",
+  "width": 140,
+  "height": 18,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 140,
+    "y1": 5,
+    "hash": "f992a0ec",
+    "logical_hash": "eab95d08"
+   },
+   {
+    "x0": 0,
+    "y0": 4,
+    "x1": 140,
+    "y1": 9,
+    "hash": "9af8681e",
+    "logical_hash": "52111d15"
+   },
+   {
+    "x0": 0,
+    "y0": 8,
+    "x1": 140,
+    "y1": 13,
+    "hash": "00aa0d21",
+    "logical_hash": "26355658"
+   },
+   {
+    "x0": 0,
+    "y0": 12,
+    "x1": 140,
+    "y1": 17,
+    "hash": "ded9a8ca",
+    "logical_hash": "a2241b01"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 140,
+    "y1": 19,
+    "logical_hash": "8d720e4d"
+   }
+  ]
+ },
+ {
+  "symbol": "gTextureTitleRainbowRoad",
+  "png": "generated/texture_tkmk00/gTextureTitleRainbowRoad.png",
+  "width": 140,
+  "height": 18,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 140,
+    "y1": 5,
+    "hash": "8f14364b",
+    "logical_hash": "98835817"
+   },
+   {
+    "x0": 0,
+    "y0": 4,
+    "x1": 140,
+    "y1": 9,
+    "hash": "8ea1e45c",
+    "logical_hash": "69e33f36"
+   },
+   {
+    "x0": 0,
+    "y0": 8,
+    "x1": 140,
+    "y1": 13,
+    "hash": "bdd27d06",
+    "logical_hash": "fdde16ea"
+   },
+   {
+    "x0": 0,
+    "y0": 12,
+    "x1": 140,
+    "y1": 17,
+    "hash": "e8e68dfd",
+    "logical_hash": "a6e73fee"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 140,
+    "y1": 19,
+    "logical_hash": "8d720e4d"
+   }
+  ]
+ },
+ {
+  "symbol": "gTextureTitleWarioStadium",
+  "png": "generated/texture_tkmk00/gTextureTitleWarioStadium.png",
+  "width": 140,
+  "height": 18,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 140,
+    "y1": 5,
+    "hash": "49c1d555",
+    "logical_hash": "daa4c668"
+   },
+   {
+    "x0": 0,
+    "y0": 4,
+    "x1": 140,
+    "y1": 9,
+    "hash": "9f283288",
+    "logical_hash": "96dd2d1d"
+   },
+   {
+    "x0": 0,
+    "y0": 8,
+    "x1": 140,
+    "y1": 13,
+    "hash": "a7c86eab",
+    "logical_hash": "402f07eb"
+   },
+   {
+    "x0": 0,
+    "y0": 12,
+    "x1": 140,
+    "y1": 17,
+    "hash": "e73d17cd",
+    "logical_hash": "41ad2fde"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 140,
+    "y1": 19,
+    "logical_hash": "8d720e4d"
+   }
+  ]
+ },
+ {
+  "symbol": "gTextureTitleBlockFort",
+  "png": "generated/texture_tkmk00/gTextureTitleBlockFort.png",
+  "width": 140,
+  "height": 18,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 140,
+    "y1": 19,
+    "logical_hash": "8d720e4d"
+   }
+  ]
+ },
+ {
+  "symbol": "gTextureTitleSkyscraper",
+  "png": "generated/texture_tkmk00/gTextureTitleSkyscraper.png",
+  "width": 140,
+  "height": 18,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 140,
+    "y1": 19,
+    "logical_hash": "8d720e4d"
+   }
+  ]
+ },
+ {
+  "symbol": "gTextureTitleDoubleDeck",
+  "png": "generated/texture_tkmk00/gTextureTitleDoubleDeck.png",
+  "width": 140,
+  "height": 18,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 140,
+    "y1": 19,
+    "logical_hash": "8d720e4d"
+   }
+  ]
+ },
+ {
+  "symbol": "gTextureTitleDKsJungleParkway",
+  "png": "generated/texture_tkmk00/gTextureTitleDKsJungleParkway.png",
+  "width": 140,
+  "height": 18,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 140,
+    "y1": 5,
+    "hash": "d383da7f",
+    "logical_hash": "092c46f6"
+   },
+   {
+    "x0": 0,
+    "y0": 4,
+    "x1": 140,
+    "y1": 9,
+    "hash": "1a0f8b85",
+    "logical_hash": "a6f4416f"
+   },
+   {
+    "x0": 0,
+    "y0": 8,
+    "x1": 140,
+    "y1": 13,
+    "hash": "ed118f87",
+    "logical_hash": "26c6fd43"
+   },
+   {
+    "x0": 0,
+    "y0": 12,
+    "x1": 140,
+    "y1": 17,
+    "hash": "41d44f66",
+    "logical_hash": "f89f8365"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 140,
+    "y1": 19,
+    "logical_hash": "8d720e4d"
+   }
+  ]
+ },
+ {
+  "symbol": "gTextureTitleBigDonut",
+  "png": "generated/texture_tkmk00/gTextureTitleBigDonut.png",
+  "width": 140,
+  "height": 18,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 140,
+    "y1": 19,
+    "logical_hash": "8d720e4d"
+   }
+  ]
+ },
+ {
+  "symbol": "gTextureMapSelect",
+  "png": "generated/texture_tkmk00/gTextureMapSelect.png",
+  "width": 190,
+  "height": 32,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 190,
+    "y1": 5,
+    "hash": "a791e2a4",
+    "logical_hash": "f4eeec0c"
+   },
+   {
+    "x0": 0,
+    "y0": 4,
+    "x1": 190,
+    "y1": 9,
+    "hash": "fc54929c",
+    "logical_hash": "40a5f0de"
+   },
+   {
+    "x0": 0,
+    "y0": 8,
+    "x1": 190,
+    "y1": 13,
+    "hash": "14cef378",
+    "logical_hash": "ff32b3f6"
+   },
+   {
+    "x0": 0,
+    "y0": 12,
+    "x1": 190,
+    "y1": 17,
+    "hash": "ae44f133",
+    "logical_hash": "f19347f9"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 190,
+    "y1": 21,
+    "hash": "db8f1256",
+    "logical_hash": "e3029d0b"
+   },
+   {
+    "x0": 0,
+    "y0": 20,
+    "x1": 190,
+    "y1": 25,
+    "hash": "865771cb",
+    "logical_hash": "f9ac3b0c"
+   },
+   {
+    "x0": 0,
+    "y0": 24,
+    "x1": 190,
+    "y1": 29,
+    "hash": "45918a40",
+    "logical_hash": "a2f0dac2"
+   },
+   {
+    "x0": 0,
+    "y0": 28,
+    "x1": 190,
+    "y1": 33,
+    "logical_hash": "8b2d768e"
+   }
+  ]
+ },
+ {
+  "symbol": "gTextureMenuFlowerCup",
+  "png": "generated/texture_tkmk00/gTextureMenuFlowerCup.png",
+  "width": 65,
+  "height": 40,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 65,
+    "y1": 9,
+    "hash": "e6a1aab3",
+    "logical_hash": "a145970e"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 33,
+    "y1": 33,
+    "hash": "22b3a991",
+    "logical_hash": "99274328"
+   },
+   {
+    "x0": 32,
+    "y0": 0,
+    "x1": 65,
+    "y1": 33,
+    "hash": "1a3ec070",
+    "logical_hash": "fcefe4b5"
+   },
+   {
+    "x0": 0,
+    "y0": 8,
+    "x1": 65,
+    "y1": 17,
+    "hash": "48558246",
+    "logical_hash": "477a58d0"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 65,
+    "y1": 25,
+    "hash": "432a9163",
+    "logical_hash": "c33212db"
+   },
+   {
+    "x0": 0,
+    "y0": 24,
+    "x1": 65,
+    "y1": 33,
+    "hash": "dd9857de",
+    "logical_hash": "0c245975"
+   },
+   {
+    "x0": 0,
+    "y0": 32,
+    "x1": 65,
+    "y1": 41,
+    "logical_hash": "cf1863a5"
+   },
+   {
+    "x0": 0,
+    "y0": 32,
+    "x1": 33,
+    "y1": 41,
+    "hash": "d208a88c",
+    "logical_hash": "e97af4de"
+   },
+   {
+    "x0": 32,
+    "y0": 32,
+    "x1": 65,
+    "y1": 41,
+    "hash": "c5356c31",
+    "logical_hash": "d72dc640"
+   }
+  ]
+ },
+ {
+  "symbol": "gTextureMenuMushroomCup",
+  "png": "generated/texture_tkmk00/gTextureMenuMushroomCup.png",
+  "width": 65,
+  "height": 40,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 65,
+    "y1": 9,
+    "hash": "3cc825ee",
+    "logical_hash": "c35f3940"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 33,
+    "y1": 33,
+    "hash": "dc63728c",
+    "logical_hash": "c0b96a40"
+   },
+   {
+    "x0": 32,
+    "y0": 0,
+    "x1": 65,
+    "y1": 33,
+    "hash": "e355692d",
+    "logical_hash": "64ac49ac"
+   },
+   {
+    "x0": 0,
+    "y0": 8,
+    "x1": 65,
+    "y1": 17,
+    "hash": "5b5abdb9",
+    "logical_hash": "fc3114b2"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 65,
+    "y1": 25,
+    "hash": "fb9dcd62",
+    "logical_hash": "9d73cd3e"
+   },
+   {
+    "x0": 0,
+    "y0": 24,
+    "x1": 65,
+    "y1": 33,
+    "hash": "75df2cf4",
+    "logical_hash": "2cf518ad"
+   },
+   {
+    "x0": 0,
+    "y0": 32,
+    "x1": 65,
+    "y1": 41,
+    "logical_hash": "bf97891f"
+   },
+   {
+    "x0": 0,
+    "y0": 32,
+    "x1": 33,
+    "y1": 41,
+    "hash": "e5c3de16",
+    "logical_hash": "9c4afae4"
+   },
+   {
+    "x0": 32,
+    "y0": 32,
+    "x1": 65,
+    "y1": 41,
+    "hash": "c61e4c11",
+    "logical_hash": "70f81720"
+   }
+  ]
+ },
+ {
+  "symbol": "gTextureMenuStarCup",
+  "png": "generated/texture_tkmk00/gTextureMenuStarCup.png",
+  "width": 65,
+  "height": 40,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 65,
+    "y1": 9,
+    "hash": "cbfad9e7",
+    "logical_hash": "b3e907c8"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 33,
+    "y1": 33,
+    "hash": "aab162fd",
+    "logical_hash": "deed52db"
+   },
+   {
+    "x0": 32,
+    "y0": 0,
+    "x1": 65,
+    "y1": 33,
+    "hash": "22e0fc38",
+    "logical_hash": "6f73224d"
+   },
+   {
+    "x0": 0,
+    "y0": 8,
+    "x1": 65,
+    "y1": 17,
+    "hash": "d9b7dd24",
+    "logical_hash": "c81c8041"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 65,
+    "y1": 25,
+    "hash": "4cdc8408",
+    "logical_hash": "a3ac9715"
+   },
+   {
+    "x0": 0,
+    "y0": 24,
+    "x1": 65,
+    "y1": 33,
+    "hash": "af557dd2",
+    "logical_hash": "dbacc51a"
+   },
+   {
+    "x0": 0,
+    "y0": 32,
+    "x1": 65,
+    "y1": 41,
+    "logical_hash": "c692bd14"
+   },
+   {
+    "x0": 0,
+    "y0": 32,
+    "x1": 33,
+    "y1": 41,
+    "hash": "41481b49",
+    "logical_hash": "5f438b5f"
+   },
+   {
+    "x0": 32,
+    "y0": 32,
+    "x1": 65,
+    "y1": 41,
+    "hash": "0e4fb3b4",
+    "logical_hash": "7f435e29"
+   }
+  ]
+ },
+ {
+  "symbol": "gTextureMenuSpecialCup",
+  "png": "generated/texture_tkmk00/gTextureMenuSpecialCup.png",
+  "width": 65,
+  "height": 40,
+  "tiles": [
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 65,
+    "y1": 9,
+    "hash": "e4d13c37",
+    "logical_hash": "aeff5f3a"
+   },
+   {
+    "x0": 0,
+    "y0": 0,
+    "x1": 33,
+    "y1": 33,
+    "hash": "859a0585",
+    "logical_hash": "2a542540"
+   },
+   {
+    "x0": 32,
+    "y0": 0,
+    "x1": 65,
+    "y1": 33,
+    "hash": "35319044",
+    "logical_hash": "ede682b9"
+   },
+   {
+    "x0": 0,
+    "y0": 8,
+    "x1": 65,
+    "y1": 17,
+    "hash": "8daaad56",
+    "logical_hash": "f316b404"
+   },
+   {
+    "x0": 0,
+    "y0": 16,
+    "x1": 65,
+    "y1": 25,
+    "hash": "b61719e2",
+    "logical_hash": "70425626"
+   },
+   {
+    "x0": 0,
+    "y0": 24,
+    "x1": 65,
+    "y1": 33,
+    "hash": "a9fbf1be",
+    "logical_hash": "3eb132c7"
+   },
+   {
+    "x0": 0,
+    "y0": 32,
+    "x1": 65,
+    "y1": 41,
+    "logical_hash": "e8af5c3d"
+   },
+   {
+    "x0": 0,
+    "y0": 32,
+    "x1": 33,
+    "y1": 41,
+    "hash": "a25d7f64",
+    "logical_hash": "fa38e046"
+   },
+   {
+    "x0": 32,
+    "y0": 32,
+    "x1": 65,
+    "y1": 41,
+    "hash": "371431fb",
+    "logical_hash": "dcdca19a"
+   }
+  ]
+ }
+]

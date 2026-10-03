@@ -1,0 +1,154 @@
+[
+  {
+    "symbol": "texture_name_dk",
+    "png": "generated/texture_tkmk00/texture_name_dk.png",
+    "width": 64,
+    "height": 12,
+    "tile_width": 64,
+    "tile_height": 16,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 64,
+        "y1": 12,
+        "hash": "f1d0a4e9",
+        "logical_hash": "59a45e1b",
+        "hash_source": "trace"
+      }
+    ]
+  },
+  {
+    "symbol": "texture_name_toad",
+    "png": "generated/texture_tkmk00/texture_name_toad.png",
+    "width": 64,
+    "height": 12,
+    "tile_width": 64,
+    "tile_height": 16,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 64,
+        "y1": 12,
+        "hash": "ae85bd9f",
+        "logical_hash": "916164e7",
+        "hash_source": "trace"
+      }
+    ]
+  },
+  {
+    "symbol": "texture_name_bowser",
+    "png": "generated/texture_tkmk00/texture_name_bowser.png",
+    "width": 64,
+    "height": 12,
+    "tile_width": 64,
+    "tile_height": 16,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 64,
+        "y1": 12,
+        "hash": "c37efd6d",
+        "logical_hash": "cd2d2e87",
+        "hash_source": "trace"
+      }
+    ]
+  },
+  {
+    "symbol": "texture_name_luigi",
+    "png": "generated/texture_tkmk00/texture_name_luigi.png",
+    "width": 64,
+    "height": 12,
+    "tile_width": 64,
+    "tile_height": 16,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 64,
+        "y1": 12,
+        "hash": "979f597b",
+        "logical_hash": "830c0246",
+        "hash_source": "trace"
+      }
+    ]
+  },
+  {
+    "symbol": "texture_name_mario",
+    "png": "generated/texture_tkmk00/texture_name_mario.png",
+    "width": 64,
+    "height": 12,
+    "tile_width": 64,
+    "tile_height": 16,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 64,
+        "y1": 12,
+        "hash": "b16f0190",
+        "logical_hash": "3e97679a",
+        "hash_source": "trace"
+      }
+    ]
+  },
+  {
+    "symbol": "texture_name_peach",
+    "png": "generated/texture_tkmk00/texture_name_peach.png",
+    "width": 64,
+    "height": 12,
+    "tile_width": 64,
+    "tile_height": 16,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 64,
+        "y1": 12,
+        "hash": "fd0b45b6",
+        "logical_hash": "5e434358",
+        "hash_source": "trace"
+      }
+    ]
+  },
+  {
+    "symbol": "texture_name_wario",
+    "png": "generated/texture_tkmk00/texture_name_wario.png",
+    "width": 64,
+    "height": 12,
+    "tile_width": 64,
+    "tile_height": 16,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 64,
+        "y1": 12,
+        "hash": "dd231ea5",
+        "logical_hash": "111abc49",
+        "hash_source": "trace"
+      }
+    ]
+  },
+  {
+    "symbol": "texture_name_yoshi",
+    "png": "generated/texture_tkmk00/texture_name_yoshi.png",
+    "width": 64,
+    "height": 12,
+    "tile_width": 64,
+    "tile_height": 16,
+    "tmem_tiles_runtime": [
+      {
+        "x0": 0,
+        "y0": 0,
+        "x1": 64,
+        "y1": 12,
+        "hash": "3274b0c7",
+        "logical_hash": "f4a27ded",
+        "hash_source": "trace"
+      }
+    ]
+  }
+]

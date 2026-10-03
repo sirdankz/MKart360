@@ -613,13 +613,13 @@ int x360_race8_hud_line_for_view(int view,int row,char *out,int size) {
     /* Native graphics own item/lap/time/place. Text is only for status/results. */
     if(row==0) {
         if(results.done)
-            _snprintf(out,size,"RESULTS - HOST A: REMATCH   B: CHANGE COURSE");
+            _snprintf(out,size,"RESULTADOS - HOST A: JOGAR NOVAMENTE   B: TROCAR PISTA");
         else if(gIsGamePaused)
-            _snprintf(out,size,"PAUSED BY HOST - HOST START TO RESUME");
+            _snprintf(out,size,"PAUSADO PELO HOST - START DO HOST PARA CONTINUAR");
         else if(results.place[local]>=0)
-            _snprintf(out,size,"FINISHED - WAITING FOR THE OTHER RACERS");
+            _snprintf(out,size,"FINALIZOU - AGUARDANDO OS OUTROS CORREDORES");
         else if(gModeSelection==BATTLE)
-            _snprintf(out,size,"BALLOONS %d",gPlayerBalloonCount[local]+1);
+            _snprintf(out,size,"BALOES %d",gPlayerBalloonCount[local]+1);
     } else if(results.done && row>=1 && row<1+results.players) {
         int slot=results.order[row-1];
         _snprintf(out,size,"%d. P%d  %s",row,slot+1,names[gPlayers[slot].characterId&7]);

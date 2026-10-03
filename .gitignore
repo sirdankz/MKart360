@@ -1,0 +1,14 @@
+# --- Compilacao do Xbox 360 (Visual Studio) ---
+# Tudo dentro de MK64\ e gerado pela compilacao (Release\, objetos, .xex,
+# .pdb, logs), exceto os arquivos do projeto.
+/MK64/*
+!/MK64/MK64.vcxproj
+!/MK64/MK64.vcxproj.filters
+
+# Arquivos locais do Visual Studio
+/.vs/
+/ipch/
+*.suo
+*.sdf
+*.opensdf
+*.user

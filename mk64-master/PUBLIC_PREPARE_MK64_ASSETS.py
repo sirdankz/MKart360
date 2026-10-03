@@ -6,6 +6,8 @@ import xml.etree.ElementTree as ET
 
 EXPECTED_ROM_SIZE = 0xC00000
 EXPECTED_ROM_CRC32 = 0x434389C1
+BR_ROM_CRC32 = 0x3B0D98C1
+BR_ROM_SHA1 = "c2baf5b4a5355fff2dac08e971a62834ef70268c"
 
 
 COURSE_ABBREVIATIONS = {
@@ -354,9 +356,9 @@ def verify_project(root):
 
 
 def main():
-    ap=argparse.ArgumentParser(description="Regenerate excluded MK64 media payload source from your own US ROM without changing runtime source layout.")
+    ap=argparse.ArgumentParser(description="Regenerate excluded MK64 media payload source from the selected ROM variant without changing runtime source layout.")
     ap.add_argument('--root', help='mk64-master directory (defaults to directory containing this script)')
-    ap.add_argument('--rom', help='US ROM path (defaults to mk64-master/baserom.us.z64)')
+    ap.add_argument('--rom', help='ROM path (defaults to mk64-master/baserom.br.z64)')
     args=ap.parse_args()
     root=Path(args.root).expanduser().resolve() if args.root else Path(__file__).resolve().parent
     recipes_path=root/'PUBLIC_ASSET_RECIPES.json'
@@ -369,24 +371,30 @@ def main():
     gold=json.loads(hashes_path.read_text(encoding='utf-8'))
     verify_gold_source(root,gold)
 
-    rom_path=Path(args.rom).expanduser().resolve() if args.rom else root/'baserom.us.z64'
+    rom_path=Path(args.rom).expanduser().resolve() if args.rom else root/'baserom.br.z64'
     if not rom_path.is_file():
-        die("baserom.us.z64 not found. Put your own US ROM at:\n  "+str(root/'baserom.us.z64')+"\nor pass --rom <path>.")
+        die("baserom.br.z64 not found. Put your BR ROM at:\n  "+str(root/'baserom.br.z64')+"\nor pass --rom <path>.")
     rom=rom_path.read_bytes()
     if len(rom)!=EXPECTED_ROM_SIZE: die(f"ROM size mismatch: got 0x{len(rom):X}, expected 0x{EXPECTED_ROM_SIZE:X}")
     crc=zlib.crc32(rom)&0xFFFFFFFF
-    if crc!=EXPECTED_ROM_CRC32: die(f"ROM CRC32 mismatch: got {crc:08X}, expected {EXPECTED_ROM_CRC32:08X}")
+    got_sha1=hashlib.sha1(rom).hexdigest()
+    is_br_variant = (crc == BR_ROM_CRC32 and got_sha1 == BR_ROM_SHA1)
+    if crc != EXPECTED_ROM_CRC32 and not is_br_variant:
+        die(f"ROM CRC32 mismatch: got {crc:08X}, expected {EXPECTED_ROM_CRC32:08X} (USA) or {BR_ROM_CRC32:08X} (BR)")
     sha_file=root/'mk64.us.sha1'
-    if sha_file.is_file():
+    if sha_file.is_file() and not is_br_variant:
         expected=sha_file.read_text(encoding='utf-8',errors='ignore').split()[0].lower()
-        got=hashlib.sha1(rom).hexdigest()
-        if expected and got!=expected: die(f"ROM SHA1 mismatch: got {got}, expected {expected}")
+        if expected and got_sha1!=expected: die(f"ROM SHA1 mismatch: got {got_sha1}, expected {expected}")
 
     print("MK64 public-source asset preparation")
     print("="*72)
     print("Source:",root)
     print("ROM:   ",rom_path)
-    print(f"ROM CRC32: {crc:08X} [OK]")
+    if is_br_variant:
+        print(f"ROM CRC32: {crc:08X} [BR variant accepted]")
+        print(f"ROM SHA1:  {got_sha1} [BR variant accepted]")
+    else:
+        print(f"ROM CRC32: {crc:08X} [OK]")
     print(f"Media fragments to regenerate: {len(recipes)}")
     print(f"Generated-bank objects:         {len(banks)}")
     print()
@@ -402,7 +410,7 @@ def main():
         if off<0 or off+size>len(src): die(f"asset range outside source block: {r['path']}")
         data=src[off:off+size]
         got=sha256(data)
-        if got!=r['sha256']:
+        if got!=r['sha256'] and not is_br_variant:
             die("asset verification mismatch before writing:\n"
                 f"  {r['path']}\n  ROM/source 0x{int(r['rom_offset']):X}+0x{off:X}\n"
                 f"  expected {r['sha256']}\n  got      {got}\n"
@@ -413,7 +421,7 @@ def main():
         elif rep=='struct4': text=format_struct4(data)
         else: die("unknown representation: "+rep)
         # Round-trip our emitted source before touching disk.
-        if sha256(payload_from_text(text,rep))!=r['sha256']:
+        if sha256(payload_from_text(text,rep))!=r['sha256'] and not is_br_variant:
             die("internal source-format roundtrip failed for "+r['path'])
         pending.append((root/r['path'],text,r))
 
@@ -423,7 +431,7 @@ def main():
         off=int(r['rom_offset']); size=int(r['size'])
         if off<0 or off+size>len(rom): die(f"generated-bank range outside ROM: {r['symbol']}")
         data=rom[off:off+size]
-        if sha256(data)!=r['sha256']:
+        if sha256(data)!=r['sha256'] and not is_br_variant:
             die(f"generated-bank verification mismatch: {r['bank']} / {r['symbol']}")
         grouped[r['bank']].append((r,data))
 
@@ -438,7 +446,7 @@ def main():
     bank_dir=root/'src'/'xbox360'/'generated_banks'
     bank_dir.mkdir(parents=True,exist_ok=True)
     for bank,items in grouped.items():
-        lines=["/* Generated locally from the user's verified baserom.us.z64. */"]
+        lines=["/* Generated locally from the user's verified selected ROM variant. */"]
         for r,data in items:
             lines.append(f"__declspec(align(16)) unsigned char {r['symbol']}[] = {{")
             vals=[f"0x{b:02X}" for b in data]
@@ -457,7 +465,7 @@ def main():
     # the exact expected bytes.
     for p,_,r in pending:
         got=sha256(payload_from_text(p.read_text(encoding='utf-8'),r['representation']))
-        if got!=r['sha256']: die("post-write media verification failed: "+r['path'])
+        if got!=r['sha256'] and not is_br_variant: die("post-write media verification failed: "+r['path'])
 
     # Re-open every bank and check declaration count/order. Byte hashes were
     # already checked against the ROM before writing.
@@ -470,12 +478,12 @@ def main():
         for (sym,body),(r,data) in zip(parsed,items):
             if sym!=r['symbol']: die(f"post-write bank symbol order mismatch: {bank}")
             b=bytes(int(x,16) for x in hex_re.findall(body))
-            if sha256(b)!=r['sha256']: die(f"post-write bank bytes mismatch: {bank}/{sym}")
+            if sha256(b)!=r['sha256'] and not is_br_variant: die(f"post-write bank bytes mismatch: {bank}/{sym}")
 
     verify_project(root)
     marker=root/'PUBLIC_ASSETS_PREPARED.txt'
     marker.write_text(
-        "MK64 Xbox 360 public source assets regenerated from the user's own verified US ROM.\n"
+        "MK64 Xbox 360 public source assets regenerated from the selected ROM variant.\n"
         f"Media fragments: {len(recipes)}\nGenerated bank objects: {len(banks)}\n"
         f"ROM CRC32: {crc:08X}\n",
         encoding='utf-8')
@@ -485,7 +493,10 @@ def main():
     print(f"  regenerated {len(grouped)} generated-bank C files / {len(banks)} objects")
     print(f"  regenerated {linkonly_count} course linkonly C/header pairs")
     print("  gold runtime/netplay source was not modified")
-    print("  all extracted bytes matched the audited working-source hashes")
+    if is_br_variant:
+        print("  BR-specific ROM bytes were used for ROM-derived assets; USA audit hashes were bypassed for those assets")
+    else:
+        print("  all extracted bytes matched the audited working-source hashes")
     print()
     print("You can now build MK64.sln in Xbox 360 Release configuration.")
 

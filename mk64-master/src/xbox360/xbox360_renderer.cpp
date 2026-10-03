@@ -90,6 +90,59 @@ static void shader_info(ShaderProgram*p,uint8_t*n,bool tex[2]) {
     if(tex){tex[0]=p && p->features.used_textures[0];tex[1]=p && p->features.used_textures[1];}
 }
 static uint32_t new_tex(void){textures.push_back(0);return (uint32_t)textures.size();}
+
+/* Reciclagem de texturas da GPU (texturas HD).
+   Criar e destruir uma textura a cada envio custava ~1 ms por envio -- medido:
+   ate ~560 ms por segundo numa corrida com sprites de kart em HD trocando de
+   quadro o tempo todo. Agora a textura substituida vai para uma reserva, e um
+   envio futuro do MESMO tamanho a reaproveita.
+   Cuidado essencial: so reaproveitamos depois de X360_TEX_RECYCLE_DELAY quadros,
+   para a GPU ja ter terminado de desenhar com ela. Reescrever uma textura ainda
+   em uso foi o que causou as piscadas na primeira tentativa de reaproveitamento.
+   A reserva tem limite de memoria; acima dele, as mais antigas sao liberadas. */
+#define X360_TEX_RECYCLE_DELAY 3                     /* quadros */
+#define X360_TEX_RECYCLE_MAX   512                   /* texturas na reserva */
+#define X360_TEX_RECYCLE_BYTES (24u * 1024u * 1024u) /* memoria da reserva */
+struct X360RecycledTex { IDirect3DTexture9 *t; int w, h; unsigned bytes, frame; };
+static X360RecycledTex recycle_bin[X360_TEX_RECYCLE_MAX];
+static int recycle_n;
+static unsigned recycle_bytes, frame_no;
+
+static void recycle_drop(int i) {
+    recycle_bin[i].t->Release();
+    recycle_bytes -= recycle_bin[i].bytes;
+    recycle_bin[i] = recycle_bin[--recycle_n];
+}
+static int recycle_oldest(void) {
+    int v = -1;
+    for (int i = 0; i < recycle_n; i++)
+        if (v < 0 || recycle_bin[i].frame < recycle_bin[v].frame) v = i;
+    return v;
+}
+static IDirect3DTexture9 *recycle_take(int w, int h) {
+    for (int i = 0; i < recycle_n; i++) {
+        if (recycle_bin[i].w == w && recycle_bin[i].h == h &&
+            frame_no - recycle_bin[i].frame >= X360_TEX_RECYCLE_DELAY) {
+            IDirect3DTexture9 *t = recycle_bin[i].t;
+            recycle_bytes -= recycle_bin[i].bytes;
+            recycle_bin[i] = recycle_bin[--recycle_n];
+            return t;
+        }
+    }
+    return 0;
+}
+static void recycle_put(IDirect3DTexture9 *t) {
+    D3DSURFACE_DESC desc;
+    if (FAILED(t->GetLevelDesc(0, &desc))) { t->Release(); return; }
+    const unsigned bytes = desc.Width * desc.Height * 4;
+    if (bytes > X360_TEX_RECYCLE_BYTES) { t->Release(); return; }
+    while (recycle_n > 0 && (recycle_n >= X360_TEX_RECYCLE_MAX ||
+                             recycle_bytes + bytes > X360_TEX_RECYCLE_BYTES))
+        recycle_drop(recycle_oldest());
+    X360RecycledTex r = { t, (int)desc.Width, (int)desc.Height, bytes, frame_no };
+    recycle_bin[recycle_n++] = r;
+    recycle_bytes += bytes;
+}
 static void select_tex(int tile,uint32_t id) {
     if(tile<0||tile>1||!id||id>textures.size())return;
     selected[tile]=id;upload_tile=tile;
@@ -98,8 +151,8 @@ static void select_tex(int tile,uint32_t id) {
 static void upload_tex(const uint8_t*rgba,int w,int h) {
     IDirect3DDevice9*d=x360_d3d_device();uint32_t id=selected[upload_tile];
     if(!d||!rgba||w<=0||h<=0||w>4096||h>4096||!id||id>textures.size())return;
-    IDirect3DTexture9*t=0;
-    HRESULT hr=d->CreateTexture(w,h,1,0,D3DFMT_LIN_A8R8G8B8,D3DPOOL_DEFAULT,&t,0);
+    IDirect3DTexture9*t=recycle_take(w,h);
+    HRESULT hr=t?S_OK:d->CreateTexture(w,h,1,0,D3DFMT_LIN_A8R8G8B8,D3DPOOL_DEFAULT,&t,0);
     D3DLOCKED_RECT lock;
     if(SUCCEEDED(hr))hr=t->LockRect(0,&lock,0,0);
     if(FAILED(hr)){if(t)t->Release();x360_log("MK64: texture allocation/lock failed\n");return;}
@@ -110,7 +163,7 @@ static void upload_tex(const uint8_t*rgba,int w,int h) {
     t->UnlockRect(0);
     IDirect3DTexture9*old=textures[id-1];textures[id-1]=t;
     for(int i=0;i<2;i++)if(selected[i]==id)d->SetTexture(i,t);
-    if(old)old->Release();
+    if(old)recycle_put(old);
 }
 static DWORD address_mode(uint32_t mode){return (mode&2)?D3DTADDRESS_CLAMP:(mode&1)?D3DTADDRESS_MIRROR:D3DTADDRESS_WRAP;}
 static void sampler(int s,bool linear,uint32_t cms,uint32_t cmt) {
@@ -377,6 +430,6 @@ static void start_frame(void){
     }
 }
 extern "C" void x360_net8_draw_hud(void);
-static void end_frame(void){IDirect3DDevice9*d=x360_d3d_device();if(d){x360_net8_draw_hud();d->EndScene();}}
+static void end_frame(void){IDirect3DDevice9*d=x360_d3d_device();if(d){x360_net8_draw_hud();d->EndScene();}++frame_no;}
 static void finish(void){}
 extern "C" struct GfxRenderingAPI gfx_xbox360_api={z01,unload_shader,load_shader,create_shader,lookup_shader,shader_info,new_tex,select_tex,upload_tex,sampler,depth_test,depth_mask,zmode,viewport,scissor,use_alpha,draw,init,resize,start_frame,end_frame,finish};

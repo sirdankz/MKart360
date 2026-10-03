@@ -126,3 +126,49 @@ torch.hash.yml
 !/assets/code/startup_logo/
 !/assets/code/startup_logo/startup_logo.c
 
+# --- Texturas HD (derivados da ROM: nunca versionar) ---
+/extracted_textures/
+/extracted_originais/
+/tex/
+tex.pak
+*.tex
+*.orig.png
+# gerados pelo PUBLIC_PREPARE_MK64_ASSETS.py a partir da ROM
+/src/xbox360/generated_banks/
+# outros formatos de ROM (o *.z64 ja esta ignorado acima)
+*.n64
+*.v64
+
+# --- Logs de diagnostico ---
+hdtex-trace.log
+hdtex-stats*.log
+
+# --- Backups e arquivos de teste locais ---
+*.exp60bak
+*.bak
+*.BAK
+gfx_pc_MEDIR_*.c
+IMPORTAR_PACK_HD.py
+
+# --- Ferramentas baixadas/compiladas pelo xbox360/setup_windows_asset_tools.ps1 ---
+# (w64devkit, CMake, Ninja, Git portatil, Torch, fontes das tools do decomp e
+#  os executaveis n64graphics/mio0/tkmk00). Nada aqui deve ser versionado.
+/tools/
+
+# --- Gerados a partir da ROM pelo PUBLIC_PREPARE_MK64_ASSETS.py ---
+# (os de assets/ ja sao ignorados pela regra /assets/**/*.inc.c acima;
+#  os course_textures.linkonly.* pela regra *linkonly*)
+/textures/standalone/*.inc.c
+/textures/crash_screen/*.inc.c
+/courses/*/staff_ghost.inc.c
+/PUBLIC_ASSETS_PREPARED.txt
+
+# --- Relatorios gravados pelo EXTRACT_MK64_TEXTURES.py a cada extracao ---
+# (hashes e offsets da ROM do usuario; nenhum script os le)
+/texture_dims.json
+/texture_repack_recipes.json
+/texture_skip_list.txt
+
+# --- Gerado pelo EXTRACT_MK64_TEXTURES.py ---
+# (hashes calculados a partir da ROM de cada usuario)
+/manifest_runtime/texture_tkmk00_tinted_manifest.json
