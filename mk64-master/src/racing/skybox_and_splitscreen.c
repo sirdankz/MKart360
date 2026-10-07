@@ -1810,11 +1810,38 @@ void func_802A74BC(void) {
     }
 }
 
+#ifdef XBOX360_PORT
+/* Jumbotron (Luigi Raceway / Wario Stadium). On the N64 the game copies pieces of
+   the RDRAM framebuffer into the jumbotron textures. On the Xbox 360 the image is
+   drawn by the GPU and that framebuffer is never filled, so the jumbotron stayed
+   white. The renderer supplies the piece from a recent screen capture, and gfx_pc.c
+   keeps the written blocks for the jumbotron draw. */
+#ifdef __cplusplus
+extern "C" {
+#endif
+int x360_capture_n64_region(int x, int y, int w, int h, u16* target);
+void x360_telao_set_ram_seg5(uintptr_t base, uintptr_t bloco);
+void x360_telao_gravado(uintptr_t base, uintptr_t bloco, const void* dados, int bytes);
+void x360_telao_contexto(int modo, uintptr_t base);
+#ifdef __cplusplus
+}
+#endif
+#endif
+
 void copy_framebuffer(s32 arg0, s32 arg1, s32 width, s32 height, u16* source, u16* target) {
     s32 var_v1;
     s32 var_a1;
     s32 targetIndex;
     s32 sourceIndex;
+#ifdef XBOX360_PORT
+    x360_telao_set_ram_seg5((uintptr_t) PHYSICAL_TO_VIRTUAL(gSegmentTable[5]), (uintptr_t) target);
+    x360_telao_contexto(gActiveScreenMode, (uintptr_t) PHYSICAL_TO_VIRTUAL(gSegmentTable[5]));
+    if (x360_capture_n64_region(arg0, arg1, width, height, target)) {
+        x360_telao_gravado((uintptr_t) PHYSICAL_TO_VIRTUAL(gSegmentTable[5]), (uintptr_t) target,
+                           target, width * height * 2);
+        return;
+    }
+#endif
 
     targetIndex = 0;
     for (var_v1 = 0; var_v1 < height; var_v1++) {

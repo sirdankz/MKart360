@@ -2,6 +2,7 @@ extern "C" void x360_log(const char*);
 #include <xtl.h>
 #include <d3d9.h>
 #include <d3dx9.h>
+#include <xgraphics.h>
 #include <vector>
 #include <string.h>
 #include <stdio.h>
@@ -377,6 +378,143 @@ static void start_frame(void){
     }
 }
 extern "C" void x360_net8_draw_hud(void);
-static void end_frame(void){IDirect3DDevice9*d=x360_d3d_device();if(d){x360_net8_draw_hud();d->EndScene();}}
+/* ---- Jumbotron (Luigi Raceway / Wario Stadium) ------------------------------
+   On the N64 the game copies pieces of the screen image into the jumbotron
+   texture: with 1 player, one 64x32 piece per frame while approaching it; with
+   2+ players, all 6 pieces once at the start line (player 1's view, frozen).
+   Here the image lives in GPU memory: while the jumbotron is in use, the screen
+   is captured (Resolve) every X360_TELAO_INTERVALO frames into two alternating
+   textures, and each piece is read from a capture at least 2 frames old -- the
+   CPU never waits for the GPU. If no capture is ready yet, the request is kept
+   and served as soon as one is. 0 disables (white jumbotron). */
+#define X360_TELAO 1
+#define X360_TELAO_INTERVALO 3
+/* Framing (N64 pixels; scale around the center of the requested area), tuned
+   on real hardware: _AJ_ for 1 player, _AJ2_ for 2+ players. */
+#define X360_TELAO_AJ_X 0.0f
+#define X360_TELAO_AJ_Y 16.0f
+#define X360_TELAO_AJ_ESCALA 1.2f
+#define X360_TELAO_AJ2_X 0.0f
+#define X360_TELAO_AJ2_Y 0.0f
+#define X360_TELAO_AJ2_ESCALA 1.0f
+#if X360_TELAO
+static unsigned telao_quadro;          /* jumbotron frame counter */
+extern "C" void x360_telao_gravado(uintptr_t base,uintptr_t bloco,const void*dados,int bytes); /* gfx_pc.c */
+static IDirect3DTexture9*telao_tex[2];
+static unsigned telao_frame[2];
+static int telao_ok[2],telao_proxima,telao_pediu;
+static unsigned telao_pedido;
+static int telao_modo;                 /* gActiveScreenMode of the current request */
+static uintptr_t telao_base;           /* segment-5 RAM base of the current request */
+static float telao_aj[2][3]={{X360_TELAO_AJ_X,X360_TELAO_AJ_Y,X360_TELAO_AJ_ESCALA},
+                             {X360_TELAO_AJ2_X,X360_TELAO_AJ2_Y,X360_TELAO_AJ2_ESCALA}};
+struct TelaoPendente{int x,y,w,h,modo;uint16_t*alvo;uintptr_t base;unsigned quadro;};
+static TelaoPendente telao_pend[8];
+static int telao_n_pend;
+extern "C" void x360_telao_contexto(int modo,uintptr_t base){telao_modo=modo;telao_base=base;}
+static void telao_captura(IDirect3DDevice9*d){
+    if(!telao_pediu||telao_quadro-telao_pedido>30||(telao_quadro%X360_TELAO_INTERVALO)!=0)return;
+    const int i=telao_proxima;
+    if(!telao_tex[i]){
+        /* native (tiled) format: that is what Resolve writes; reads convert
+           each coordinate with XGAddress2DTiledOffset */
+        if(FAILED(d->CreateTexture((UINT)x360_video_width(),(UINT)x360_video_height(),1,0,
+                                   D3DFMT_A8R8G8B8,D3DPOOL_DEFAULT,&telao_tex[i],0))){
+            telao_tex[i]=0;return;
+        }
+    }
+    if(SUCCEEDED(d->Resolve(D3DRESOLVE_RENDERTARGET0,NULL,telao_tex[i],NULL,0,0,NULL,0.0f,0,NULL))){
+        telao_frame[i]=telao_quadro;telao_ok[i]=1;telao_proxima^=1;
+    }
+}
+/* Usable capture: at least 2 frames old (the GPU is done with it) and at most
+   X360_TELAO_IDADE_MAX frames -- older captures may show another screen
+   (e.g. the menu, after leaving a race). */
+#define X360_TELAO_IDADE_MAX 12
+static int telao_captura_pronta(void){
+    int b=-1;
+    for(int i=0;i<2;i++){
+        const unsigned idade=telao_quadro-telao_frame[i];
+        if(telao_ok[i]&&idade>=2&&idade<=X360_TELAO_IDADE_MAX&&(b<0||telao_frame[i]>telao_frame[b]))b=i;
+    }
+    return b;
+}
+/* Reads the N64 screen piece (x,y,w,h) from a locked capture. */
+static void telao_preenche(const D3DLOCKED_RECT&lk,int x,int y,int w,int h,int modo,uint16_t*alvo){
+    const int sw=(int)x360_video_width(),sh=(int)x360_video_height();
+    const DWORD*base=(const DWORD*)lk.pBits;
+    const int m=modo?1:0;
+    const float ajx=telao_aj[m][0],ajy=telao_aj[m][1],esc=telao_aj[m][2];
+    const float cxp=(float)x+(float)w*0.5f,cyp=(float)y+(float)h*0.5f;   /* piece center */
+    /* 1 player: center of the whole jumbotron area (152,120) */
+    const float cx0=m?cxp:152.0f,cy0=m?cyp:120.0f;
+    for(int ty=0;ty<h;ty++){
+        const float ny=cy0+((float)(y+ty)+0.5f-cy0)*esc+ajy;
+        int py=(int)(ny*3.0f*(float)sh/720.0f);if(py<0)py=0;if(py>=sh)py=sh-1;
+        for(int tx=0;tx<w;tx++){
+            const float nx=cx0+((float)(x+tx)+0.5f-cx0)*esc+ajx;
+            /* N64 320x240 -> logical 1280x720 screen, 3 pixels per N64 pixel, with
+               each view's 4:3 image centered in the view. Side-by-side splits
+               (2P vertical, 3P/4P): each half has its own center. */
+            const float c=(modo==2||modo==3)?(nx<160.0f?80.0f:240.0f):160.0f;
+            int px=(int)((c*4.0f+(nx-c)*3.0f)*(float)sw/1280.0f);if(px<0)px=0;if(px>=sw)px=sw-1;
+            const DWORD cor=base[XGAddress2DTiledOffset((UINT)px,(UINT)py,(UINT)sw,4)];
+            const unsigned r=(cor>>16)&255,g=(cor>>8)&255,bl=cor&255;
+            alvo[ty*w+tx]=(uint16_t)(((r>>3)<<11)|((g>>3)<<6)|((bl>>3)<<1)|1);
+        }
+    }
+}
+/* Serves kept requests once a capture is ready (called at the end of the frame). */
+static void telao_atende_pendentes(void){
+    if(!telao_n_pend)return;
+    /* stale requests (e.g. the player left the race) are dropped */
+    int v=0;
+    for(int k=0;k<telao_n_pend;k++)if(telao_quadro-telao_pend[k].quadro<=30)telao_pend[v++]=telao_pend[k];
+    telao_n_pend=v;
+    if(!telao_n_pend)return;
+    const int b=telao_captura_pronta();
+    D3DLOCKED_RECT lk;
+    if(b<0||FAILED(telao_tex[b]->LockRect(0,&lk,0,D3DLOCK_READONLY)))return;
+    for(int k=0;k<telao_n_pend;k++){
+        TelaoPendente&p=telao_pend[k];
+        telao_preenche(lk,p.x,p.y,p.w,p.h,p.modo,p.alvo);
+        x360_telao_gravado(p.base,(uintptr_t)p.alvo,p.alvo,p.w*p.h*2);
+    }
+    telao_tex[b]->UnlockRect(0);
+    telao_n_pend=0;
+}
+extern "C" int x360_capture_n64_region(int x,int y,int w,int h,uint16_t*target){
+    if(!target||w<=0||h<=0||w>64||h>32)return 0;
+    telao_pedido=telao_quadro;telao_pediu=1;
+    const int b=telao_captura_pronta();
+    D3DLOCKED_RECT lk;
+    if(b<0||FAILED(telao_tex[b]->LockRect(0,&lk,0,D3DLOCK_READONLY))){
+        /* no capture ready: the piece stays as is (original texture) and the
+           request is served as soon as there is a capture */
+        int k;
+        for(k=0;k<telao_n_pend;k++)if(telao_pend[k].alvo==target)break;
+        if(k==telao_n_pend&&telao_n_pend<8)++telao_n_pend;
+        if(k<8){
+            TelaoPendente&p=telao_pend[k];
+            p.x=x;p.y=y;p.w=w;p.h=h;p.modo=telao_modo;p.alvo=target;p.base=telao_base;p.quadro=telao_quadro;
+        }
+        return 1;
+    }
+    telao_preenche(lk,x,y,w,h,telao_modo,target);
+    telao_tex[b]->UnlockRect(0);
+    return 1;
+}
+#endif
+static void end_frame(void){IDirect3DDevice9*d=x360_d3d_device();if(d){x360_net8_draw_hud();d->EndScene();
+#if X360_TELAO
+    telao_captura(d);
+    if(telao_n_pend)telao_pedido=telao_quadro;   /* keep capturing until served */
+    telao_atende_pendentes();
+#endif
+    }
+#if X360_TELAO
+    ++telao_quadro;
+#endif
+}
 static void finish(void){}
 extern "C" struct GfxRenderingAPI gfx_xbox360_api={z01,unload_shader,load_shader,create_shader,lookup_shader,shader_info,new_tex,select_tex,upload_tex,sampler,depth_test,depth_mask,zmode,viewport,scissor,use_alpha,draw,init,resize,start_frame,end_frame,finish};

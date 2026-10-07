@@ -2600,6 +2600,145 @@ static inline void *seg_addr(uintptr_t w1) {
     return x360_resolve_address(w1,rspSegments);
 }
 
+/* ---- Jumbotron (Luigi Raceway / Wario Stadium) --------------------------------
+   As on the N64: the jumbotron blocks are course textures, reloaded from ROM on
+   every race; with 1 player the game writes screen pieces into them while you
+   approach it, with 2+ players it writes all of them once at the start line
+   (frozen image). Here each written block is kept in a per-course store, CLEARED
+   on every new race (original texture), and the jumbotron draw reads from it.
+   The course draw reads its textures from a STATIC COPY (a mirror of segment 5 at
+   another address); its base is found by matching textures loaded by the draw
+   against the segment-5 RAM copy. 0 disables. */
+#define X360_TELAO_DESVIO 1
+#define X360_TELAO_PISTAS 4
+#define X360_TELAO_BLOCOS 8
+struct X360TelaoPista {
+    int curso;                         /* gCurrentCourseId; -1 = free */
+    uintptr_t s5;                      /* static copy base (0 = unknown) */
+    int n;                             /* stored blocks */
+    uintptr_t off[X360_TELAO_BLOCOS];  /* offset of each block in segment 5 */
+    uint8_t dados[X360_TELAO_BLOCOS][4096];
+};
+static struct X360TelaoPista x360_telao_pistas[X360_TELAO_PISTAS];
+static struct X360TelaoPista *x360_telao_atual;    /* current course (with jumbotron) */
+static int x360_telao_iniciado;
+static uintptr_t x360_telao_ram5;                  /* segment-5 RAM base */
+static uintptr_t x360_telao_s5_cand;
+static unsigned x360_telao_s5_tentativas;
+static uintptr_t x360_telao_s5_tentados[16];
+static unsigned x360_telao_quadro, x360_telao_quadro_pista;   /* gfx frame counter */
+
+#ifdef __cplusplus
+extern "C"
+#endif
+void x360_telao_pista(int um_jogador, int curso) {
+    int k, livre = -1;
+    struct X360TelaoPista *t = 0;
+    if (!x360_telao_iniciado) {
+        for (k = 0; k < X360_TELAO_PISTAS; k++) x360_telao_pistas[k].curso = -1;
+        x360_telao_iniciado = 1;
+    }
+    if (x360_telao_quadro - x360_telao_quadro_pista > 60) {   /* new race */
+        x360_telao_ram5 = 0;
+        x360_telao_s5_cand = 0;
+        x360_telao_s5_tentativas = 0;
+    }
+    for (k = 0; k < X360_TELAO_PISTAS; k++) {
+        if (x360_telao_pistas[k].curso == curso) { t = &x360_telao_pistas[k]; break; }
+        if (x360_telao_pistas[k].curso < 0 && livre < 0) livre = k;
+    }
+    if (!t && livre >= 0) {
+        t = &x360_telao_pistas[livre];
+        t->curso = curso; t->s5 = 0; t->n = 0;
+    }
+    /* new race: back to the original texture (reloaded from ROM) */
+    if (t && x360_telao_quadro - x360_telao_quadro_pista > 60)
+        t->n = 0;
+    (void)um_jogador;
+    x360_telao_atual = t;
+    x360_telao_quadro_pista = x360_telao_quadro;
+}
+/* called before the game writes a block */
+#ifdef __cplusplus
+extern "C"
+#endif
+void x360_telao_set_ram_seg5(uintptr_t base, uintptr_t bloco) {
+    (void)bloco;
+    x360_telao_ram5 = base;
+}
+/* called after the game writes a block: keep it in the course store */
+#ifdef __cplusplus
+extern "C"
+#endif
+void x360_telao_gravado(uintptr_t base, uintptr_t bloco, const void *dados, int bytes) {
+    struct X360TelaoPista *t = x360_telao_atual;
+    int k;
+    if (!t || bloco < base || bloco - base >= 0x80000u || bytes <= 0 || bytes > 4096) return;
+    const uintptr_t o = bloco - base;
+    for (k = 0; k < t->n; k++) if (t->off[k] == o) break;
+    if (k == t->n) {
+        if (t->n >= X360_TELAO_BLOCOS) return;
+        t->off[t->n++] = o;
+    }
+    memcpy(t->dados[k], dados, (size_t)bytes);
+}
+static int x360_telao_e_bloco(const struct X360TelaoPista *t, uintptr_t o) {
+    int k;
+    for (k = 0; k < t->n; k++) if (o >= t->off[k] && o < t->off[k] + 0x1000u) return 1;
+    return 0;
+}
+static uintptr_t x360_telao_procura_base(const struct X360TelaoPista *t, uintptr_t a) {
+    const uint8_t *pa = (const uint8_t *)a;
+    unsigned k, varia = 0;
+    for (k = 2; k < 1024; k += 2)          /* flat textures cannot identify a position */
+        if (pa[k] != pa[0] || pa[k + 1] != pa[1]) { varia = 1; break; }
+    if (!varia) return 0;
+    for (uintptr_t o = 0; o < 0x80000u; o += 0x800u) {
+        if (x360_telao_e_bloco(t, o)) continue;          /* jumbotron blocks (overwritten) */
+        const uint8_t *pr = (const uint8_t *)(x360_telao_ram5 + o);
+        if (pr[0] == pa[0] && pr[1] == pa[1] && memcmp(pr, pa, 1024) == 0)
+            return a - o;
+    }
+    return 0;
+}
+static void *x360_telao_desvia(uintptr_t w1, void *resolvido) {
+#if X360_TELAO_DESVIO
+    struct X360TelaoPista *t = x360_telao_atual;
+    int k;
+    if (!t || !t->n || x360_telao_quadro - x360_telao_quadro_pista > 60)
+        return resolvido;
+    uintptr_t off;
+    if (w1 < 0x10000000u && ((w1 >> 24) & 0x0F) == 5) {
+        off = w1 & 0x00FFFFFFu;
+    } else {
+        const uintptr_t a = (uintptr_t)resolvido;
+        if (!t->s5) {
+            /* learn the static copy base (needs the course RAM) */
+            unsigned q;
+            if (!x360_telao_ram5 || x360_telao_s5_tentativas >= 16 || a < 0x80000000u)
+                return resolvido;
+            for (q = 0; q < x360_telao_s5_tentativas; q++)
+                if (x360_telao_s5_tentados[q] == a) return resolvido;
+            x360_telao_s5_tentados[x360_telao_s5_tentativas++] = a;
+            const uintptr_t base = x360_telao_procura_base(t, a);
+            if (!base) return resolvido;
+            if (x360_telao_s5_cand == base) t->s5 = base;
+            else x360_telao_s5_cand = base;
+            return resolvido;
+        }
+        if (a < t->s5) return resolvido;
+        off = a - t->s5;
+    }
+    for (k = 0; k < t->n; k++)
+        if (off >= t->off[k] && off < t->off[k] + 0x1000u)
+            return (void *)(t->dados[k] + (off - t->off[k]));
+    return resolvido;
+#else
+    (void)w1;
+    return resolvido;
+#endif
+}
+
 /*
  * B8 race-transition diagnostic.
  *
@@ -3247,7 +3386,8 @@ static void gfx_run_dl(Gfx* cmd) {
 
             // RDP Commands:
             case G_SETTIMG:
-                gfx_dp_set_texture_image(C0(21, 3), C0(19, 2), C0(0, 12), seg_addr(cmd->words.w1));
+                gfx_dp_set_texture_image(C0(21, 3), C0(19, 2), C0(0, 12),
+                                         x360_telao_desvia(cmd->words.w1, seg_addr(cmd->words.w1)));
                 break;
             case G_LOADBLOCK:
                 gfx_dp_load_block(C1(24, 3), C0(12, 12), C0(0, 12), C1(12, 12), C1(0, 12));
@@ -3521,6 +3661,7 @@ void gfx_run(Gfx *commands) {
 }
 
 void gfx_end_frame(void) {
+    ++x360_telao_quadro;
     if (!dropped_frame) {
         gfx_rapi->finish_render();
         gfx_wapi->swap_buffers_end();
