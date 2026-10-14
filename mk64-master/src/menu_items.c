@@ -835,6 +835,26 @@ MkAnimation* D_800E7E20[] = {
     D_020020DC, D_020020EC, D_020020FC, D_0200210C, D_0200210C,
 };
 
+/* Xbox 360: the cup-select trophy lookup indexes D_800E7E20 with
+ * ((gCCSelection / 2) * 4) - points, which goes negative (-1..-3) for 50cc/100cc
+ * cups that already have a trophy. On N64 that read fell into D_800E7E14, laid out
+ * right before it; MSVC does not keep that layout, so the read hit garbage and the
+ * cup select screen froze once the save had a 50cc/100cc trophy. This table is
+ * D_800E7E14 + D_800E7E20 laid out explicitly, indexed with the +3 offset. */
+static MkAnimation* sCupSelectTrophyAnimations[] = {
+    D_020020BC, D_020020CC, D_020020DC, D_020020DC, D_020020EC, D_020020FC, D_0200210C, D_0200210C,
+};
+
+static MkAnimation* cup_select_trophy_animation(s32 points) {
+    s32 index = ((gCCSelection / 2) * 4) - points + 3;
+    if (index < 0) {
+        index = 0;
+    } else if (index >= (s32) ARRAY_COUNT(sCupSelectTrophyAnimations)) {
+        index = ARRAY_COUNT(sCupSelectTrophyAnimations) - 1;
+    }
+    return sCupSelectTrophyAnimations[index];
+}
+
 MkAnimation* D_800E7E34[] = {
     D_02001E64, D_02001E74, D_02001E84, D_02001E94, D_02001EA4, D_02001EB4, D_02001EC4,
     D_02001ED4, D_02001EE4, D_02001EF4, D_02001F04, D_02001F14, D_02001F24, D_02001F34,
@@ -5639,7 +5659,7 @@ void add_menu_item(s32 type, s32 column, s32 row, s8 priority) {
             menuItem->param1 = (s32) gCupSelection;
             menuItem->param2 = func_800B54C0(gCupSelection, gCCSelection);
             menuItem->D_8018DEE0_index = animate_character_select_menu(
-                segmented_to_virtual_dupe_2(D_800E7E20[((gCCSelection / 2) * 4) - menuItem->param2]));
+                segmented_to_virtual_dupe_2(cup_select_trophy_animation(menuItem->param2)));
             menuItem->column = D_800E7268[0].column;
             menuItem->row = D_800E7268[0].row;
             break;
@@ -10481,7 +10501,7 @@ void func_800AB9B0(MenuItem* arg0) {
         arg0->param1 = gCupSelection;
         arg0->param2 = func_800B54C0((s32) gCupSelection, gCCSelection);
         func_8009A594(arg0->D_8018DEE0_index, 0,
-                      segmented_to_virtual_dupe_2(D_800E7E20[((gCCSelection / 2) * 4) - arg0->param2]));
+                      segmented_to_virtual_dupe_2(cup_select_trophy_animation(arg0->param2)));
         arg0->column = (s32) D_800E7268->column;
         arg0->row = D_800E7268->row;
     }
