@@ -39,8 +39,8 @@ static std::string x360_shader_source(const CCFeatures&f){
     if(f.two_cycle)s+="combined=float4("+x360_formula(f,0,1)+","+x360_formula(f,1,1)+");";
     s+="float4 result=combined;";
     if(!f.opt_alpha)s+="result.a=1.0;";
-    if(f.opt_texture_edge)s+="clip(compare_alpha-0.3);result.a=1.0;";
-    if(f.opt_noise&&f.opt_alpha)s+="clip(compare_alpha-frac(sin(dot(screen,float2(12.9898,78.233)))*43758.5453));result.a=1.0;";
+    if(f.opt_texture_edge){s+="clip(compare_alpha-0.3);";if(!f.opt_preserve_alpha)s+="result.a=1.0;";}
+    if(f.opt_noise&&f.opt_alpha){s+="clip(compare_alpha-frac(sin(dot(screen,float2(12.9898,78.233)))*43758.5453));";if(!f.opt_preserve_alpha)s+="result.a=1.0;";}
     if(f.opt_fog)s+="result.rgb=lerp(result.rgb,v.fog.rgb,saturate(v.fog.a));";
     return s+"return saturate(result);}\n";
 }

@@ -6,7 +6,7 @@ static std::vector<RegisteredCombiner> registered;
 extern "C" uint32_t gfx_cc_register(uint64_t combine,uint32_t options){
     for(size_t i=0;i<registered.size();++i)if(registered[i].combine==combine&&registered[i].options==options)return (uint32_t)i+1;
     RegisteredCombiner r;memset(&r,0,sizeof(r));r.combine=combine;r.options=options;
-    CCFeatures &f=r.features;f.opt_alpha=(options&SHADER_OPT_ALPHA)!=0;f.opt_fog=(options&SHADER_OPT_FOG)!=0;f.opt_texture_edge=(options&SHADER_OPT_TEXTURE_EDGE)!=0;f.opt_noise=(options&SHADER_OPT_NOISE)!=0;f.two_cycle=(options&SHADER_OPT_2CYCLE)!=0;
+    CCFeatures &f=r.features;f.opt_alpha=(options&SHADER_OPT_ALPHA)!=0;f.opt_fog=(options&SHADER_OPT_FOG)!=0;f.opt_texture_edge=(options&SHADER_OPT_TEXTURE_EDGE)!=0;f.opt_noise=(options&SHADER_OPT_NOISE)!=0;f.opt_preserve_alpha=(options&SHADER_OPT_PRESERVE_ALPHA)!=0;f.two_cycle=(options&SHADER_OPT_2CYCLE)!=0;
     for(int cycle=0;cycle<(f.two_cycle?2:1);++cycle){
         // One-cycle RDP rendering uses the second set of mux fields.
         uint32_t word=(uint32_t)(combine>>((f.two_cycle?cycle:1)*32));
