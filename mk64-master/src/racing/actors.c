@@ -35,7 +35,7 @@ u8* D_802BA054;
 u8* D_802BA058;
 
 struct Actor* gActorHotAirBalloonItemBox;
-s8 gTLUTRedShell[512]; // tlut 256
+u16 gTLUTRedShell[256]; // 256-entry RGBA16 TLUT
 u16 D_802BA260;
 
 /**
@@ -400,22 +400,23 @@ void func_802977E4(Player* arg0) {
     arg0->tyres[BACK_LEFT].unk_14 &= ~2 & 0xFFFF;
 }
 
-// Invert green and red on green shell texture
+// Invert green and red on green shell texture.
+// Use unsigned values: storing 0xF800 in s16 makes it negative, and
+// right-shifting that negative value can sign-extend and corrupt the TLUT.
 void init_red_shell_texture(void) {
-    s16* red_shell_texture = (s16*) &gTLUTRedShell[0];
-    s16* green_shell_texture = (s16*) segmented_to_virtual((const void*) common_tlut_green_shell);
-    s16 color_pixel, red_color, green_color, blue_color, alpha_color;
+    u16* red_shell_texture = gTLUTRedShell;
+    const u16* green_shell_texture = (const u16*) segmented_to_virtual((const void*) common_tlut_green_shell);
+    u16 color_pixel;
+    u16 red_color, green_color, blue_color, alpha_color;
     s32 i;
     for (i = 0; i < 256; i++) {
-        color_pixel = *green_shell_texture;
+        color_pixel = green_shell_texture[i];
         red_color = color_pixel & 0xF800;
-        green_color = color_pixel & 0x7C0;
-        blue_color = color_pixel & 0x3E;
-        alpha_color = color_pixel & 0x1;
+        green_color = color_pixel & 0x07C0;
+        blue_color = color_pixel & 0x003E;
+        alpha_color = color_pixel & 0x0001;
 
-        *red_shell_texture = (red_color >> 5) | (green_color << 5) | blue_color | alpha_color; // Invert green to red
-        green_shell_texture++;
-        red_shell_texture++;
+        red_shell_texture[i] = (u16)((red_color >> 5) | (green_color << 5) | blue_color | alpha_color);
     }
 }
 

@@ -120,7 +120,7 @@ extern u8* D_802BA050;
 extern u8* D_802BA054;
 extern u8* D_802BA058;
 extern struct Actor* gActorHotAirBalloonItemBox;
-extern s8 gTLUTRedShell[]; // tlut 256
+extern u16 gTLUTRedShell[256]; // 256-entry RGBA16 TLUT
 extern u16 D_802BA260;     // Box Truck sub-type?
 
 // end of definition of actor.c variables
